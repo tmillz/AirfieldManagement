@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+    package="com.tmillz.airfieldmanagement"
+    android:versionCode="10"
+    android:versionName="2.0" >
+ 
+    <permission
+          android:name="com.tmillz.airfieldmanagement.permission.MAPS_RECEIVE"
+          android:protectionLevel="signature"/>
+    
+    <uses-permission android:name="com.tmillz.airfieldmanagement.permission.MAPS_RECEIVE"/>
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
+  	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+  	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  	<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+  	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<uses-permission android:name="android.permission.USE_CREDENTIALS" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="com.google.android.apps.photos.permission.GOOGLE_PHOTOS"/>
+	
+	
+	<uses-feature android:name="android.hardware.location" android:required="false" />
+    <uses-feature android:name="android.hardware.location.network" android:required="false" />
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+    <uses-feature android:name="android.hardware.telephony" android:required="false" />
+    <uses-feature android:name="android.hardware.wifi" android:required="false" />
+
+    <!--  for Maps v2 functionality, want:
+    	uses-feature android:glEsVersion="0x00020000" android:required="false"
+    	BUT, the gl setting is not modified by the required parameter, so
+    	do not declare anything here - detect capabilities at runtime.
+    	<uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+    -->
+
+    <uses-permission android:name="org.opendatakit.tables.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="21" />
+    
+    <supports-screens
+        android:anyDensity="true"
+        android:xlargeScreens="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+    
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:name="org.odk.collect.android.application.Collect"
+        tools:replace="android:icon,android:theme">
+        
+        <provider
+            android:exported="true"
+            android:name="org.odk.collect.android.provider.FormsProviderA"
+            android:authorities="org.odk.collect.android.provider.odk.forms" />
+        <provider
+            android:exported="true"
+            android:name="org.odk.collect.android.provider.InstanceProviderA"
+            android:authorities="org.odk.collect.android.provider.odk.instances" />
+        
+        <activity
+            android:name="org.odk.collect.android.application.Collect"
+	        android:label="@string/app_name"
+	        android:largeHeap="true"
+	        android:icon="@drawable/notes">
+        </activity>
+
+        <activity
+            android:name="com.tmillz.airfieldmanagement.MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+    		android:hardwareAccelerated="true"
+    		android:windowSoftInputMode="adjustPan"
+            android:label="@string/app_name">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchResultsActivity"/>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!-- Search results activity -->
+        <activity android:name=".SearchResultsActivity"
+            android:parentActivityName="com.tmillz.airfieldmanagement.MainActivity">
+             <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+             <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+             
+        </activity>
+        
+        <activity 
+            android:name="com.tmillz.airfieldmanagement.Discrepancies"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+    		android:hardwareAccelerated="true"
+    		android:windowSoftInputMode="adjustPan">
+            
+            <intent-filter>
+			    <action android:name="android.intent.action.VIEW" />
+			    <category android:name="android.intent.category.DEFAULT" />
+			    <category android:name="android.intent.category.BROWSABLE"/>
+			    <data android:scheme="http" android:host="maps.google.com" />
+			    <data android:scheme="geo" />
+			</intent-filter>
+    		
+        </activity>
+        
+        <activity 
+            android:name="com.tmillz.airfieldmanagement.ShowSettings">
+        </activity>
+        
+        <activity
+            android:name="org.odk.collect.android.activities.MainMenuActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name" >
+        </activity>
+        
+        <activity
+            android:name="org.odk.collect.android.activities.FormEntryActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/vnd.odk.form" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.odk.instance" />
+            </intent-filter>
+        </activity>
+        
+        <activity 
+            android:name="org.odk.collect.android.activities.NotificationActivity"
+            android:label="@string/app_name"
+            android:taskAffinity=""
+            android:launchMode="singleTask"
+            android:excludeFromRecents="true"
+            />
+        <activity
+            android:name="org.odk.collect.android.activities.DrawActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.activities.GoogleDriveActivity"
+            android:label="@string/app_name" 
+            android:windowSoftInputMode="stateHidden"
+            />
+        <activity
+            android:name="org.odk.collect.android.activities.InstanceChooserList"
+            android:label="@string/app_name" />
+
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <action android:name="android.intent.action.EDIT" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+
+            <data android:mimeType="vnd.android.cursor.dir/vnd.odk.instance" />
+        </intent-filter>
+
+        <activity
+            android:name="org.odk.collect.android.activities.InstanceChooserTabs"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.activities.FormChooserList"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+                <action android:name="android.intent.action.PICK" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.dir/vnd.odk.form" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.odk.collect.android.activities.FormManagerList"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.activities.FormDownloadList"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.activities.DataManagerList"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.activities.FileManagerTabs"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.activities.GoogleMapsEngineUploaderActivity"
+            android:label="@string/app_name" />
+        <!--activity
+            android:name="org.odk.collect.android.activities.GoogleMapsEngineUploaderActivityWithGoogleTask"
+            android:label="@string/app_name" /-->
+        <activity
+            android:name="org.odk.collect.android.activities.InstanceUploaderList"
+            android:label="@string/app_name">
+	        <intent-filter>
+	            <action android:name="android.intent.action.VIEW" />
+	            <action android:name="android.intent.action.EDIT" />
+
+	            <category android:name="android.intent.category.DEFAULT" />
+	        </intent-filter>
+        </activity>
+        <activity
+            android:name="org.odk.collect.android.activities.InstanceUploaderActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.preferences.PreferencesActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.preferences.GMEPreferencesActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.preferences.OtherPreferencesActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.preferences.AggregatePreferencesActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.preferences.AdminPreferencesActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.activities.FormHierarchyActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.activities.GeoPointActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.activities.GeoPointMapActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.activities.GeoPointMapActivitySdk7"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.activities.BearingActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="org.odk.collect.android.activities.SplashScreenActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Dialog" >
+            <intent-filter>
+				<action android:name="org.odk.collect.android.application.Collect.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- Enable Shortcuts for Command Actions -->
+        <activity
+            android:name="org.odk.collect.android.activities.AndroidShortcuts"
+            android:label="ODK Form"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <receiver
+            android:name="org.odk.collect.android.receivers.NetworkReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.odk.collect.android.FormSaved" />
+            </intent-filter>
+        </receiver>
+        
+		<provider 
+            android:name="LocationsContentProvider"
+            android:authorities="com.tmillz.airfieldmanagement.locations"
+            android:exported="false" />
+		
+		<meta-data
+    		android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/map_api_key_debug"/>
+			<!--Debug Key-->
+            <!--Old Key android:value="AIzaSyAFXrcHfpMCSUbLa-kcAUHCdQRn4A3HsGE"/-->
+			<!--Old Release Key android:value="AIzaSyAJEyd8RQUng497P19uLRmVYnSUrdoWhto"/> -->
+            <!--New Release Key android:value="AIzaSyCH_PdftxrygmKLQVQOdQJjPDPJgKuOpqg"/>-->
+		<meta-data
+            android:name="com.google.android.gms.version"
+			android:value="@integer/google_play_services_version"/>
+		
+    </application>
+    
+</manifest>

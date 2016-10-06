@@ -1,0 +1,306 @@
+[
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_dark.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable/abc_item_background_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_paste_dark.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_paste_dark.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/f_111f.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/f_111f.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/abc_switch_thumb_material.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable/abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_calculator_dark.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_calculator_dark.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/c_5.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/c_5.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_map_dark.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_map_dark.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_new.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_new.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/a_7k.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/a_7k.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/fa_18.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/fa_18.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_web_site_dark.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_web_site_dark.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/common_signin_btn_icon_light.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/drawable/common_signin_btn_icon_light.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/common_signin_btn_text_light.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/drawable/common_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_airplane_mode_on.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_airplane_mode_on.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/a_7d.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/a_7d.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_email_dark.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_email_dark.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/abc_textfield_search_material.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable/abc_textfield_search_material.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_email.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_email.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/abc_edit_text_material.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_menu_save.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/res/drawable/ic_menu_save.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/common_signin_btn_text_dark.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/drawable/common_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/kc_135.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/kc_135.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/abc_btn_check_material.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable/abc_btn_check_material.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable/abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/row_borders.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/row_borders.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/common_signin_btn_icon_dark.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/drawable/common_signin_btn_icon_dark.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_menu_backward.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/res/drawable/ic_menu_backward.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/c_17.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/c_17.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/dc_10.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/dc_10.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_send_now.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_send_now.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/abc_tab_indicator_material.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable/abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_menu_forward.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/res/drawable/ic_menu_forward.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_dark.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/f_16.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/f_16.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_important_dark.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_important_dark.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_warning.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_warning.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/shadow.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/shadow.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/thumb.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/res/drawable/thumb.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/c_20.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/c_20.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_map.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_map.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_search_dark.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_search_dark.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/red.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/red.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_calculator.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_calculator.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_paste.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_paste.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/abc_cab_background_top_material.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable/abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/kc_10.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/kc_10.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_web_site.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_web_site.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_airplane_mode_on_dark.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_airplane_mode_on_dark.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/abc_cab_background_internal_bg.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable/abc_cab_background_internal_bg.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_send_now_dark.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_send_now_dark.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/e_4b.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/e_4b.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_new_dark.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_new_dark.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/f_22.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/f_22.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/c_12.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/c_12.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_dark.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable/abc_list_selector_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/b_747.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/b_747.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_light.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable/abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/b_1b.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/b_1b.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/c_21.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/c_21.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/f_4.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/f_4.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/a_10.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/a_10.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_light.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable/abc_item_background_holo_light.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/f_15.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/f_15.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/e_3.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/e_3.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/t_38.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/t_38.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_search.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_search.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_important.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_important.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/c_9.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/c_9.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_launcher.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/border.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/border.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_send.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_send.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_light.xml",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/drawable/abc_list_selector_background_transition_holo_light.xml"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/blue.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/blue.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/b_52.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/b_52.jpg"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/ic_action_warning_dark.png",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/ic_action_warning_dark.png"
+    },
+    {
+        "merged": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/res/merged/debug/drawable/c_130.jpg",
+        "source": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/src/main/res/drawable/c_130.jpg"
+    }
+]

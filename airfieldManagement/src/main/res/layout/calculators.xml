@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+        
+	<ScrollView
+		android:id="@+id/scrollView1"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" >
+
+       	<LinearLayout
+           	android:layout_width="fill_parent"
+           	android:layout_height="wrap_content"
+           	android:orientation="vertical"
+           	android:padding="8dp" >
+    
+    
+		    <!-- <TableLayout 
+		    	android:layout_width="fill_parent"
+		    	android:layout_height="wrap_content"
+		    	android:clickable="false"
+		    	android:focusable="false"
+		    	android:focusableInTouchMode="false"
+		    	android:padding="8dp"
+		    	android:shrinkColumns=",1"> -->
+
+			    <TableRow
+			        android:id="@+id/TableRow1"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content" >
+			
+			        <TextView
+			            android:id="@+id/TextView01"
+			            android:layout_width="0dp"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:gravity="center_horizontal"
+			            android:text="Class B Transitional Surface 7:1"
+			            android:textStyle="bold" />
+			
+			    </TableRow>
+
+			    <TableRow
+			        android:id="@+id/TableRow2"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:gravity="center_vertical" >
+			
+			        <TextView
+			            android:id="@+id/TextView02"
+			            android:layout_width="0dp"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:text="The distance from the centerline (ft):" />
+			
+			        <EditText
+			            android:id="@+id/editText1"
+			            android:layout_width="0dp"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:focusable="true"
+			            android:focusableInTouchMode="true"
+			            android:gravity="center|center_horizontal"
+			            android:inputType="numberDecimal|numberSigned">
+			
+			            <requestFocus android:layout_width="wrap_content" />
+			            
+			        </EditText>
+			        
+			    </TableRow>
+
+			    <TableRow
+			        android:id="@+id/TableRow3"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:gravity="center_horizontal" >
+			
+			        <Button
+			            android:id="@+id/button1"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:text="Calculate" />
+			        
+			    </TableRow>
+
+			    <TableRow
+			        android:id="@+id/TableRow4"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:gravity="center_vertical" >
+
+			        <TextView
+			            android:id="@+id/TextView03"
+			            android:layout_width="0dp"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:text="The object's max allowable height (ft):" />
+
+			        <EditText
+			            android:id="@+id/editText2"
+			            android:layout_width="0dp"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:gravity="center|center_horizontal"
+			            android:longClickable="false"
+						android:clickable="false"    
+						android:cursorVisible="false"
+						android:editable="false"/>
+        
+    			</TableRow>
+
+		    <View
+		        android:layout_width="match_parent"
+		        android:layout_height="1dp"
+		        android:background="#808080"
+		        android:layout_marginTop="10dp"/>
+
+			    <TableRow
+			        android:id="@+id/tableRow5"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content" 
+			        android:layout_marginTop="10dp">
+
+			        <TextView
+			            android:id="@+id/textView2"
+			            android:layout_width="0dp"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:gravity="center_horizontal"
+			            android:textStyle="bold" 
+			            android:text="Class B Approach-Departure Surface 50:1" />
+        
+    			</TableRow>
+
+			    <TableRow
+			        android:id="@+id/tableRow6"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:gravity="center_vertical">
+
+        			<TextView
+            			android:id="@+id/textView1"
+			            android:layout_width="0dp"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:text="The object's distance from the threshold (ft):" />
+
+        			<EditText
+           				android:id="@+id/editText3"
+            			android:layout_width="0dp"
+            			android:layout_height="wrap_content"
+            			android:layout_weight="1"
+            			android:focusable="true"
+            			android:focusableInTouchMode="true"
+			            android:gravity="center|center_horizontal"
+            			android:inputType="numberDecimal|numberSigned"/>
+        
+    			</TableRow>
+
+    			<TableRow
+        			android:id="@+id/tableRow7"
+        			android:layout_width="match_parent"
+        			android:layout_height="wrap_content"
+        			android:gravity="center_horizontal" >
+
+
+        			<Button
+            			android:id="@+id/button2"
+            			android:layout_width="wrap_content"
+            			android:layout_height="wrap_content"
+            			android:text="Calculate" />
+    			</TableRow>
+
+    			<TableRow
+        			android:id="@+id/tableRow8"
+        			android:layout_width="match_parent"
+        			android:layout_height="wrap_content"
+        			android:gravity="center_vertical" >
+
+        			<TextView
+            			android:id="@+id/textView8"
+            			android:layout_width="0dp"
+            			android:layout_height="wrap_content"
+            			android:layout_weight="1"
+            			android:text="The objects max allowable height (ft):" />
+
+        			<EditText
+           			 	android:id="@+id/editText4"
+            			android:layout_width="0dp"
+            			android:layout_height="wrap_content"
+            			android:layout_weight="1"
+            			android:gravity="center|center_horizontal"
+            			android:longClickable="false"
+						android:clickable="false"    
+						android:cursorVisible="false"
+						android:editable="false">
+        			</EditText>
+        			
+    			</TableRow>
+
+    			<TableRow
+        			android:id="@+id/tableRow9"
+        			android:layout_width="match_parent"
+        			android:layout_height="wrap_content"
+        			android:gravity="center_horizontal" >
+
+        			<TextView
+            			android:id="@+id/textView3"
+            			android:layout_width="wrap_content"
+            			android:layout_height="wrap_content"
+            			
+            			android:gravity="center_horizontal"
+            			android:text="NOTE: This does not factor in elevation"
+            			android:textStyle="italic" />
+        			<!-- android:layout_weight="1" -->
+
+    			</TableRow>
+
+			<!-- 0</TableLayout> -->
+
+    	</LinearLayout>
+    	
+    </ScrollView>
+
+</LinearLayout>

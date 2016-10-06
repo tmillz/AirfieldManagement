@@ -1,0 +1,60 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="android:searchViewStyle"> @drawable/ic_action_search</item>
+        <item name="android:imageButtonStyle">?android:borderlessButtonStyle</item>
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    
+    <style name="AppBaseTheme.Dark" parent="@style/Theme.AppCompat">
+        <item name="android:searchViewStyle"> @drawable/ic_action_search_dark</item>
+        <item name="android:imageButtonStyle">?android:borderlessButtonStyle</item>
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="android:searchViewStyle"> @drawable/ic_action_search</item>
+        <item name="airplane"> @drawable/ic_action_airplane_mode_on</item>
+        <item name="email"> @drawable/ic_action_email</item>
+        <item name="important"> @drawable/ic_action_important</item>
+        <item name="map"> @drawable/ic_action_map</item>
+        <item name="paste"> @drawable/ic_action_paste</item>
+        <item name="search"> @drawable/ic_action_search</item>
+        <item name="warning"> @drawable/ic_action_warning</item>
+        <item name="web"> @drawable/ic_action_web_site</item>
+        <item name="calc"> @drawable/ic_calculator</item>
+        <item name="android:imageButtonStyle">?android:borderlessButtonStyle</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+    <style name="AppTheme.Dark" parent="@style/Theme.AppCompat">
+        <item name="android:searchViewStyle"> @drawable/ic_action_search_dark</item>
+        <item name="airplane"> @drawable/ic_action_airplane_mode_on_dark</item>
+        <item name="email"> @drawable/ic_action_email_dark</item>
+        <item name="important"> @drawable/ic_action_important_dark</item>
+        <item name="map"> @drawable/ic_action_map_dark</item>
+        <item name="paste"> @drawable/ic_action_paste_dark</item>
+        <item name="search"> @drawable/ic_action_search_dark</item>
+        <item name="warning"> @drawable/ic_action_warning_dark</item>
+        <item name="web"> @drawable/ic_action_web_site_dark</item>
+        <item name="calc"> @drawable/ic_calculator_dark</item>
+        <item name="android:imageButtonStyle">?android:borderlessButtonStyle</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+</resources>

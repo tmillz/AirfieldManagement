@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/jars/libs/opencsv-2.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c0ffd01065bc3fe571e1a4eb7014a03333f0663d">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/opencsv-2.3-a80164891ffd0b1ae30b96aa325e5103279a51cd.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-e3f78a11b927e040b59fd26d8034f4c1febe795f.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/jars/libs/google-http-client-gson-1.20.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9204765f39000f6109c927ac66c7963bf9c7df19">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/google-http-client-gson-1.20.0-ee59f3a0e679b372f0cc4f56ce99961d88315f49.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/jars/libs/google-http-client-1.15.0-rc.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a1c29595b27ca983388ee025c25737728779cc94">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/google-http-client-1.15.0-rc-981dd00a689141eec3f9565c85b0bba04ab0462c.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/jars/libs/commons-io-2.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/commons-io-2.4-aebe1760f5981f2481f4e6c0658f6eb0a6c0e62a.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.0/752c0fe8a5b2d6704c9d9d6f06d9abdcacf4045d/joda-time-2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="752c0fe8a5b2d6704c9d9d6f06d9abdcacf4045d">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/joda-time-2.0-27fb82ba696f8b9abdc23d5e996c4abfb20602a8.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/classes-a2e7af3a23090d7dba83d29de9d22dd89cfee3ea.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/jars/libs/google-api-client-android-1.17.0-rc.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2783966394e2b63cf39f25e015bc5fc9ec21dd6f">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/google-api-client-android-1.17.0-rc-c1eefd7660f84696b49d09caa6d7e7356dff8033.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.1/2e66da15851f9f5b5079228f856c2f090ba98c38/gson-2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2e66da15851f9f5b5079228f856c2f090ba98c38">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/gson-2.1-a95a2d07f385ef628c4222c6cea13e141b45b409.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/classes-18a05aa24e626d96492e273e6b724b84b8849b53.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/jars/libs/kxml2-2.3.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ccbc77a5fd907ef863c29f3596c6f54ffa4e9442">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/kxml2-2.3.0-15ab2290ac1aa109d2cdd73d73b8f7c38a41f33f.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-ff02b6596792b0e3997bc5b3ffb564ddc925c23f.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/jars/libs/httpclientandroidlib-4.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8bdf7922c7f165bc2f4ec893eaf97e4abe47f97f">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/httpclientandroidlib-4.2.1-02c92e5a4aed20ea0a1218a984a0eecf6a9ff97d.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/jars/libs/httpmime-4.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e0340636480aea12d38b0fb6a6ed1f06c5c79c5a">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/httpmime-4.0-7911b0b9944d556fe1855666b484af2f14bee98f.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/jars/libs/google-api-services-drive-v2-rev113-1.17.0-rc.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3b40f653e45c9cff6b4171c8d78f916ec6fb7e87">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/google-api-services-drive-v2-rev113-1.17.0-rc-89b61c5cb87ba16cdb2a1c71464e10690e76c0a6.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/classes-e5ea4748a61d8af5fea8ba70c54dfffbd08f79e6.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="dea3021df09bb34a52320335c93ca804866b6ccb">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/classes-5d892d2c875d71cef4c9f6cac9117d07d7b1721f.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/jars/libs/javarosa-libraries-2015-04-17.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="106ae8e9337c7c44c5b115ecdba6aa9b00157773">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/javarosa-libraries-2015-04-17-e96300d3a7eaf1051af3fe938f9f47d17fdbf44a.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/jars/libs/google-api-client-1.15.0-rc.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4958c880609690963014be977cf0e28458dace8f">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/google-api-client-1.15.0-rc-03b979764f55cb00b3abea7b65c48a7c2959deb3.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/jars/libs/apache-mime4j-0.6.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="12e7270b1819bae792c9a9e5e8076ebbcdaaac4b">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/apache-mime4j-0.6-07b801942f6933352c305ddb576bc2aeb6d00615.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/jars/libs/google-http-client-android-1.17.0-rc.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9974e4dcbc9b8aad2c0d9e2f9249e4d13849072a">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/google-http-client-android-1.17.0-rc-d29ce3ba93173f6f01f1443e03420a5396c3de52.jar" />
+    </item>
+    <item
+        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/AirfieldManagement/oDKCollect/unspecified/jars/libs/google-oauth-client-1.17.0-rc.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="dda715e4ec80c73fc7f0e297e98597046900d2a0">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/pre-dexed/debug/google-oauth-client-1.17.0-rc-bbb1716ff36fca3e0aeac7137beadb30d39574ef.jar" />
+    </item>
+
+</items>

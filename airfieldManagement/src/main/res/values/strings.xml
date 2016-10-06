@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Airfield Manager</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_search">Search</string>
+    <string name="search_hint">Search ICAO (4 letters)</string>
+    <string name="settings_description">Settings</string>
+    <string name="link"><a href="https://www.aisr.nas.faa.gov/AISR/">https://www.aisr.nas.faa.gov/AISR/</a></string>
+    <string name="link2"><a href="http://www.faa.gov/air_traffic/publications/atpubs/LID/L_B.htm">Location Identifiers (US 3 letter Decode)</a></string>
+    <string name="link3"><a href="http://www.e-publishing.af.mil/">http://www.e-publishing.af.mil/</a></string>
+    <string name="link4"><a href="https://transportation.wes.army.mil/acnpcn/Default.aspx">ACN PCN Calculators</a></string>
+
+    
+    <string-array name="aircraft_array">
+        <item>Select Aircraft</item>
+        <item>B-1B</item>
+        <item>B-52G</item>
+        <item>B-52H</item>
+        <item>FB-111A</item>
+        <item>F-4C</item>
+        <item>F-4D</item>
+        <item>F-4E</item>
+        <item>F-4G</item>
+        <item>F-5E</item>
+        <item>F-5F</item>
+        <item>F-15A</item>
+        <item>F-15B</item>
+        <item>F-15C</item>
+        <item>F-15D</item>
+        <item>F-15E</item>
+        <item>F-16A</item>
+        <item>F-16B</item>
+        <item>F-16C</item>
+        <item>F-16D</item>
+        <item>F-22</item>
+        <item>F-100</item>
+        <item>F-106A/B</item>
+        <item>F-111A</item>
+        <item>F-111D</item>
+        <item>F-111E</item>
+        <item>F-111F</item>
+        <item>A-7D</item>
+        <item>A-7K</item>
+        <item>A-10A</item>
+        <item>AC-130A</item>
+        <item>AC-130H/U</item>
+        <item>A-37B</item>
+        <item>OV-10A</item>
+        <item>SR-71A</item>
+        <item>RF-4C</item>
+        <item>EC-130E/H</item>
+        <item>EC-135A</item>
+        <item>EC-135C</item>
+        <item>EC-135E</item>
+        <item>EC-135G</item>
+        <item>EC-135H</item>
+        <item>EC-135J</item>
+        <item>EC-135K</item>
+        <item>EC-135L</item>
+        <item>EC-135P</item>
+        <item>EC-135Y</item>
+        <item>RC-135M</item>
+        <item>RC-135S</item>
+        <item>RC-135U</item>
+        <item>RC-135V</item>
+        <item>RC-135W</item>
+        <item>WC-135B</item>
+        <item>EF-111A</item>
+        <item>E-3A Core</item>
+        <item>E-3A STD</item>
+        <item>E-3B</item>
+        <item>E-3C</item>
+        <item>E-4B</item>
+        <item>EC-18B</item>
+        <item>WC-130E/H</item>
+        <item>MC-130E/H</item>
+        <item>C-5A</item>
+        <item>C-5B</item>
+        <item>C-9A</item>
+        <item>C-9C</item>
+        <item>C-12A</item>
+        <item>C-12C/D</item>
+        <item>C-12F</item>
+        <item>C-12J</item>
+        <item>C-17A</item>
+        <item>C-20A</item>
+        <item>C-20B</item>
+        <item>C-21A</item>
+        <item>C-22B</item>
+        <item>C-23A</item>
+        <item>VC-25A</item>
+        <item>CT-39A/B</item>
+        <item>C-130B</item>
+        <item>C-130D</item>
+        <item>C-130E</item>
+        <item>C-130H</item>
+        <item>HC-130H</item>
+        <item>HC-130N</item>
+        <item>HC-130P</item>
+        <item>KC-135E</item>
+        <item>KC-135R</item>
+        <item>KC-135A</item>
+        <item>C-135A</item>
+        <item>C-135B</item>
+        <item>VC-137B</item>
+        <item>VC-137C</item>
+        <item>C-140A/B</item>
+        <item>C-141B</item>
+        <item>KC-10A</item>
+        <item>T-33A</item>
+        <item>T-37B</item>
+        <item>T-38A</item>
+        <item>T-38B</item>
+        <item>T-43A</item>
+        <item>DC-9-30</item>
+        <item>B-700-120B</item>
+        <item>B-700-320C</item>
+        <item>B-727</item>
+        <item>B-737-200</item>
+        <item>DC-8-73</item>
+        <item>A-300-600</item>
+        <item>A-300C</item>
+        <item>A-300F</item>
+        <item>DC-10-10</item>
+        <item>DC-10-30</item>
+        <item>DC-10-40</item>
+        <item>L-1011-500</item>
+        <item>B-747-100B</item>
+        <item>B-747-200B</item>
+        <item>B-747 SR</item>
+        <item>B-747 SP</item>
+        <item>B-747-200F</item>
+        <item>B-747-300</item>
+        <item>B-747-300M Combi</item>
+        <item>B-747-400</item>
+        <item>B-757-200</item>
+        <item>B-757-200PF</item>
+        <item>B-767-200</item>
+        <item>B-767-200ER</item>
+        <item>B-767-300</item>
+        <item>B-767-300ER</item>
+        <item>Tornado</item>
+    </string-array>
+
+    <string-array name="menu_array">
+        <item>Regulations</item>
+        <item>Aircraft</item>
+        <item>Calculators</item>
+        <item>NOTAMs</item>
+        <item>BowMonk Converter</item>
+        <item>Links</item>
+        <item>Map</item>
+        <item>Forms</item>
+        <item>Rate App</item>
+        <item>Email Developer</item>
+    </string-array>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+</resources>
