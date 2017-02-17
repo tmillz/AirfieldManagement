@@ -11,8 +11,9 @@
     <string name="link2"><a href="http://www.faa.gov/air_traffic/publications/atpubs/LID/L_B.htm">Location Identifiers (US 3 letter Decode)</a></string>
     <string name="link3"><a href="http://www.e-publishing.af.mil/">http://www.e-publishing.af.mil/</a></string>
     <string name="link4"><a href="https://transportation.wes.army.mil/acnpcn/Default.aspx">ACN PCN Calculators</a></string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 
-    
     <string-array name="aircraft_array">
         <item>Select Aircraft</item>
         <item>B-1B</item>
@@ -143,20 +144,5 @@
         <item>B-767-300ER</item>
         <item>Tornado</item>
     </string-array>
-
-    <string-array name="menu_array">
-        <item>Regulations</item>
-        <item>Aircraft</item>
-        <item>Calculators</item>
-        <item>NOTAMs</item>
-        <item>BowMonk Converter</item>
-        <item>Links</item>
-        <item>Map</item>
-        <item>Forms</item>
-        <item>Rate App</item>
-        <item>Email Developer</item>
-    </string-array>
-    <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
 
 </resources>

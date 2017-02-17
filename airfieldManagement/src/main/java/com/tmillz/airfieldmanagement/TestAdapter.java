@@ -1,7 +1,5 @@
 package com.tmillz.airfieldmanagement;
 
-import java.io.IOException;
-
 import android.app.ListActivity;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,11 +7,13 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.io.IOException;
+
 public class TestAdapter extends ListActivity{
 	
     protected static final String TAG = "DataAdapter";
 
-    private final Context mContext;
+    Context mContext;
     private SQLiteDatabase mDb;
     private DataBaseHelper mDbHelper;
    
@@ -50,44 +50,11 @@ public class TestAdapter extends ListActivity{
         mDbHelper.close();
     }
 
-    public Cursor getTestData() {
-         try {
-             String sql ="SELECT * FROM airports";
-
-             Cursor mCur = mDb.rawQuery(sql, null);
-             if (mCur!=null) {
-                mCur.moveToNext();
-             }
-             return mCur;
-         }
-         catch (SQLException mSQLException) {
-             Log.e(TAG, "getTestData >>"+ mSQLException.toString());
-             throw mSQLException;
-         }
-     }
     public Cursor getAirport(String sql, String[] query) {
         try {
             Cursor mCur = mDb.rawQuery(sql, query);
             if (mCur!=null) {
                mCur.moveToNext();
-            } else {
-            	//To Do
-            }
-            return mCur;
-        }
-        catch (SQLException mSQLException) {
-            Log.e(TAG, "getTestData >>"+ mSQLException.toString());
-            throw mSQLException;
-        }
-    }
-    
-    public Cursor getAircraft(String sql, String[] acftquery) {
-        try {
-            Cursor mCur = mDb.rawQuery(sql, acftquery);
-            if (mCur!=null) {
-               mCur.moveToNext();
-            } else {
-            	//To Do
             }
             return mCur;
         }

@@ -1,13 +1,13 @@
 package com.tmillz.airfieldmanagement;
 
-import java.sql.SQLException;
-
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+
+import java.sql.SQLException;
 
 /** A custom Content Provider to do the database operations */
 public class LocationsContentProvider extends ContentProvider{
@@ -58,11 +58,9 @@ public class LocationsContentProvider extends ContentProvider{
 
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        // TODO Auto-generated method stub
-    	//this.getContext().getContentResolver().notifyChange(null, null);
         return 0;
     }
-    
+
     /** A callback method which is invoked when delete operation is requested on this content provider */
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {

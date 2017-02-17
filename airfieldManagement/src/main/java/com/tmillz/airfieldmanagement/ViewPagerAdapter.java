@@ -1,18 +1,29 @@
 package com.tmillz.airfieldmanagement;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.SparseArray;
 import android.view.ViewGroup;
- 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
-	SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
 
-    private final int PAGES = 3;
- 
-    public ViewPagerAdapter(FragmentManager fm) {
-        super(fm);
+class ViewPagerAdapter extends FragmentPagerAdapter {
+	SparseArray<Fragment> registeredFragments = new SparseArray<>();
+
+    private final int PAGES = 2;
+
+    private String[] tabTitles = new String[]{"Map", "Markers"};
+
+    private Context ctxt;
+
+    ViewPagerAdapter(Context ctxt, FragmentManager mgr) {
+        super(mgr);
+        this.ctxt=ctxt;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return tabTitles[position];
     }
 
     @Override
@@ -26,12 +37,10 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     	case 0:
     		return Maps.newInstance();
         case 1:
-            return EditDisc.newInstance();
-        case 2:
-            return Disc.newInstance();
+            return MarkersList.newInstance();
         default:
             throw new IllegalArgumentException("The item position should be less or equal to:" + PAGES);
-    	}    
+    	}
     }
 
     @Override
@@ -41,13 +50,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return fragment;
     }
 
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        registeredFragments.remove(position);
-        super.destroyItem(container, position, object);
-    }
-
-    public Fragment getRegisteredFragment(int position) {
+    Fragment getRegisteredFragment(int position) {
         return registeredFragments.get(position);
     }
 }

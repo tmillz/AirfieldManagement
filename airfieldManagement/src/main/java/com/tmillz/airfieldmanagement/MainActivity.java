@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class MainActivity extends BaseActivity{
+public class MainActivity extends BaseActivity {
 	
 	final static String TARGET_BASE_PATH = "/sdcard/odk/forms/";
 	
@@ -29,12 +29,10 @@ public class MainActivity extends BaseActivity{
 		
 		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
 		boolean choose_theme = pref.getBoolean("choose_theme", false);
-	    if(choose_theme == true){
+	    if(choose_theme){
 	    	setTheme(R.style.AppTheme_Dark);
-	    if(choose_theme == false){
-	    	setTheme(R.style.AppTheme);
-	    	}
-	    }
+	    } else setTheme(R.style.AppTheme);
+
 		super.onCreate(savedInstanceState);
 
 		//Experimental
@@ -67,11 +65,8 @@ public class MainActivity extends BaseActivity{
 	@Override
 	public void onSaveInstanceState(Bundle outState){
 		super.onSaveInstanceState(outState);
-		//getSupportFragmentManager().putFragment(outState, "mContent", mContent);
 	}
-	
 
-	
 	private void copyAssets() {
 		AssetManager assetManager = getAssets();
 	    String[] files = null;

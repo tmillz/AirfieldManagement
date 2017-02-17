@@ -3,7 +3,7 @@ package com.tmillz.airfieldmanagement;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,10 +19,6 @@ import java.math.RoundingMode;
 
 public class Bowmonk extends Fragment {
 	
-	public Bowmonk(){
-		super();
-	}
-	
 	Button calculate;
 	TextView rcr;
 	EditText bm;
@@ -31,12 +27,12 @@ public class Bowmonk extends Fragment {
 	BigDecimal value;
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-		View v =inflater.inflate(R.layout.bowmonk, container, false);
+		View view =inflater.inflate(R.layout.bowmonk, container, false);
 		final Context context = getActivity();
-		calculate = (Button) v.findViewById(R.id.button1);
-		bm=(EditText) v.findViewById(R.id.editText1);
-		rcr=(TextView) v.findViewById(R.id.textView3);
-		((ActionBarActivity) getActivity()).getSupportActionBar().setTitle("Bowmonk Converter");
+		calculate = (Button) view.findViewById(R.id.button1);
+		bm=(EditText) view.findViewById(R.id.editText1);
+		rcr=(TextView) view.findViewById(R.id.textView3);
+		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Bowmonk Converter");
 		final InputMethodManager inputManager = (InputMethodManager)
                 context.getSystemService(Context.INPUT_METHOD_SERVICE);
 		inputManager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, InputMethodManager.RESULT_SHOWN);
@@ -53,7 +49,7 @@ public class Bowmonk extends Fragment {
                         context, "Please enter a bowmonk reading", Toast.LENGTH_SHORT).show();
 				return;
 			}
-			bms = new String (new BigDecimal (bm.getText().toString()).multiply(new BigDecimal("0.323")).toString());
+			bms = new BigDecimal (bm.getText().toString()).multiply(new BigDecimal("0.323")).toString();
 			value = new BigDecimal (bms);
 			scaled = value.setScale(0, RoundingMode.DOWN);
 			if ((scaled.compareTo(new BigDecimal("17"))== 1) || (scaled.compareTo(new BigDecimal("17"))== 0)) {
@@ -67,7 +63,7 @@ public class Bowmonk extends Fragment {
 			}
 		}
 		});
-		return v;
+		return view;
 	}
 	
 	@Override

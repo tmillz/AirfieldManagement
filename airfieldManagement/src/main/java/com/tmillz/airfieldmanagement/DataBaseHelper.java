@@ -13,35 +13,30 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class DataBaseHelper extends SQLiteOpenHelper
-{
+public class DataBaseHelper extends SQLiteOpenHelper {
 private static String TAG = "DataBaseHelper"; // Tag just for the LogCat window
-//destination path (location) of our database on device
-private static String DB_PATH = ""; 
-private static String DB_NAME ="Database";// Database name
-private static int DB_VERSION = 2;// Database Version
 
-//Table Names
-//private static String AIRPORTS = "airports";
-//private static String AIRCRAFT = "aircraft";
+private static String DB_PATH = ""; 
+private static String DB_NAME ="Database"; // Database name
+private static int DB_VERSION = 2; // Database Version
 
 //Table AIRPORTS field names
-public static String Field_2 ="field2";
-public static String Field_3 ="field3";
-public static String Field_4 ="field4";
-public static String Field_6 ="field6";
-public static String Field_7 ="field7";
-public static String Field_8 ="field8";
-public static String Field_9 ="field9";
-public static String Field_10 ="field10";
-public static String Field_11 ="field11";
+//public static String Field_2 ="field2";
+//public static String Field_3 ="field3";
+//public static String Field_4 ="field4";
+//public static String Field_6 ="field6";
+//public static String Field_7 ="field7";
+//public static String Field_8 ="field8";
+//public static String Field_9 ="field9";
+//public static String Field_10 ="field10";
+//public static String Field_11 ="field11";
 
 //Table AIRCRAFT field names
-public static String TYPE = "aircraft";
-public static String ALC_MGR = "alc_mgr";
-public static String MANUFACTURER = "manufacturer";
-public static String GROUP_INDEX = "group_index0";
-public static String WING_SPAN = "wing_span";
+//public static String TYPE = "aircraft";
+//public static String ALC_MGR = "alc_mgr";
+//public static String MANUFACTURER = "manufacturer";
+//public static String GROUP_INDEX = "group_index0";
+//public static String WING_SPAN = "wing_span";
 
 
 private SQLiteDatabase mDataBase; 
@@ -49,7 +44,7 @@ private final Context mContext;
 
 @SuppressLint("SdCardPath")
 public DataBaseHelper(Context context) {
-    super(context, DB_NAME, null, DB_VERSION);// 1? its Database Version
+    super(context, DB_NAME, null, DB_VERSION); // 1? its Database Version
     if(android.os.Build.VERSION.SDK_INT >= 17){
        DB_PATH = context.getApplicationInfo().dataDir + "/databases/";         
     }
@@ -79,7 +74,6 @@ public void createDataBase() throws IOException {
     //Check that the database exists here: /data/data/your package/databases/Da Name
     private boolean checkDataBase() {
         File dbFile = new File(DB_PATH + DB_NAME);
-        //Log.v("dbFile", dbFile + "   "+ dbFile.exists());
         return dbFile.exists();
     }
 
@@ -101,9 +95,7 @@ public void createDataBase() throws IOException {
     //Open the database, so we can query it
     public boolean openDataBase() throws SQLException {
         String mPath = DB_PATH + DB_NAME;
-        //Log.v("mPath", mPath);
         mDataBase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.CREATE_IF_NECESSARY);
-        //mDataBase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
         return mDataBase != null;
     }
 
@@ -130,8 +122,6 @@ public void createDataBase() throws IOException {
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-	    } else {
-
 	    }
 	}
 }

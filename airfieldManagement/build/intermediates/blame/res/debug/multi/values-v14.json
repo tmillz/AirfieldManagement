@@ -49,19 +49,57 @@
                     "startLine": 32,
                     "startColumn": 4,
                     "startOffset": 1984,
-                    "endLine": 38,
+                    "endLine": 36,
                     "endColumn": 12,
-                    "endOffset": 2493
+                    "endOffset": 2255
                 },
                 "from": {
-                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v14/values.xml",
+                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v14/values-v14.xml",
                     "position": {
-                        "startLine": 3,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 56,
-                        "endLine": 9,
+                        "startOffset": 55,
+                        "endLine": 6,
                         "endColumn": 12,
-                        "endOffset": 565
+                        "endOffset": 326
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 37,
+                    "startColumn": 4,
+                    "startOffset": 2260,
+                    "endColumn": 70,
+                    "endOffset": 2326
+                },
+                "from": {
+                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 331,
+                        "endColumn": 70,
+                        "endOffset": 397
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 38,
+                    "startColumn": 4,
+                    "startOffset": 2331,
+                    "endColumn": 82,
+                    "endOffset": 2409
+                },
+                "from": {
+                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 402,
+                        "endColumn": 82,
+                        "endOffset": 480
                     }
                 }
             },
@@ -69,41 +107,79 @@
                 "to": {
                     "startLine": 39,
                     "startColumn": 4,
-                    "startOffset": 2498,
-                    "endLine": 45,
+                    "startOffset": 2414,
+                    "endLine": 44,
                     "endColumn": 12,
-                    "endOffset": 3021
+                    "endOffset": 2819
                 },
                 "from": {
-                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v14/values.xml",
+                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v14/values-v14.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 571,
-                        "endLine": 17,
+                        "startOffset": 485,
+                        "endLine": 14,
                         "endColumn": 12,
-                        "endOffset": 1094
+                        "endOffset": 890
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 46,
+                    "startLine": 45,
                     "startColumn": 4,
-                    "startOffset": 3026,
-                    "endLine": 52,
+                    "startOffset": 2824,
+                    "endLine": 50,
                     "endColumn": 12,
-                    "endOffset": 3547
+                    "endOffset": 3241
                 },
                 "from": {
-                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v14/values.xml",
+                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v14/values-v14.xml",
                     "position": {
-                        "startLine": 19,
+                        "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 1100,
-                        "endLine": 25,
+                        "startOffset": 895,
+                        "endLine": 20,
                         "endColumn": 12,
-                        "endOffset": 1621
+                        "endOffset": 1312
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 51,
+                    "startColumn": 4,
+                    "startOffset": 3246,
+                    "endColumn": 119,
+                    "endOffset": 3361
+                },
+                "from": {
+                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1317,
+                        "endColumn": 119,
+                        "endOffset": 1432
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 52,
+                    "startColumn": 4,
+                    "startOffset": 3366,
+                    "endColumn": 62,
+                    "endOffset": 3424
+                },
+                "from": {
+                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1437,
+                        "endColumn": 62,
+                        "endOffset": 1495
                     }
                 }
             },
@@ -111,96 +187,58 @@
                 "to": {
                     "startLine": 53,
                     "startColumn": 4,
-                    "startOffset": 3552,
-                    "endLine": 59,
+                    "startOffset": 3429,
+                    "endLine": 55,
                     "endColumn": 12,
-                    "endOffset": 4087
+                    "endOffset": 3578
                 },
                 "from": {
-                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v14/values.xml",
+                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1500,
+                        "endLine": 25,
+                        "endColumn": 12,
+                        "endOffset": 1649
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 56,
+                    "startColumn": 4,
+                    "startOffset": 3583,
+                    "endColumn": 62,
+                    "endOffset": 3641
+                },
+                "from": {
+                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 1654,
+                        "endColumn": 62,
+                        "endOffset": 1712
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 57,
+                    "startColumn": 4,
+                    "startOffset": 3646,
+                    "endColumn": 131,
+                    "endOffset": 3773
+                },
+                "from": {
+                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v14/values-v14.xml",
                     "position": {
                         "startLine": 27,
                         "startColumn": 4,
-                        "startOffset": 1627,
-                        "endLine": 33,
-                        "endColumn": 12,
-                        "endOffset": 2162
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 60,
-                    "startColumn": 4,
-                    "startOffset": 4092,
-                    "endColumn": 78,
-                    "endOffset": 4166
-                },
-                "from": {
-                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v14/values.xml",
-                    "position": {
-                        "startLine": 35,
-                        "startColumn": 4,
-                        "startOffset": 2168,
-                        "endColumn": 79,
-                        "endOffset": 2243
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 61,
-                    "startColumn": 4,
-                    "startOffset": 4171,
-                    "endColumn": 92,
-                    "endOffset": 4259
-                },
-                "from": {
-                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v14/values.xml",
-                    "position": {
-                        "startLine": 37,
-                        "startColumn": 4,
-                        "startOffset": 2249,
-                        "endColumn": 93,
-                        "endOffset": 2338
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 62,
-                    "startColumn": 4,
-                    "startOffset": 4264,
-                    "endColumn": 90,
-                    "endOffset": 4350
-                },
-                "from": {
-                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v14/values.xml",
-                    "position": {
-                        "startLine": 39,
-                        "startColumn": 4,
-                        "startOffset": 2344,
-                        "endColumn": 91,
-                        "endOffset": 2431
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 63,
-                    "startColumn": 4,
-                    "startOffset": 4355,
-                    "endColumn": 104,
-                    "endOffset": 4455
-                },
-                "from": {
-                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v14/values.xml",
-                    "position": {
-                        "startLine": 41,
-                        "startColumn": 4,
-                        "startOffset": 2437,
-                        "endColumn": 105,
-                        "endOffset": 2538
+                        "startOffset": 1717,
+                        "endColumn": 131,
+                        "endOffset": 1844
                     }
                 }
             }

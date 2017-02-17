@@ -1,8 +1,5 @@
 package com.tmillz.airfieldmanagement;
 
-import java.util.HashMap;
-import java.util.List;
-
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -11,14 +8,16 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-public class ExpandableListAdapter extends BaseExpandableListAdapter {
+import java.util.HashMap;
+import java.util.List;
+
+class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 	private Context _context;
-	private List<String> _listDataHeader; // header titles
-	// child data in format of header title, child title
+	private List<String> _listDataHeader;
 	private HashMap<String, List<String>> _listDataChild;
 
-	public ExpandableListAdapter(Context context, List<String> listDataHeader,
+	ExpandableListAdapter(Context context, List<String> listDataHeader,
 			HashMap<String, List<String>> listChildData) {
 		this._context = context;
 		this._listDataHeader = listDataHeader;

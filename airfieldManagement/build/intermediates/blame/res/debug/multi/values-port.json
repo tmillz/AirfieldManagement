@@ -11,13 +11,13 @@
                     "endOffset": 106
                 },
                 "from": {
-                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-port/values.xml",
+                    "file": "/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-port/values-port.xml",
                     "position": {
-                        "startLine": 3,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 56,
+                        "startOffset": 55,
                         "endColumn": 55,
-                        "endOffset": 107
+                        "endOffset": 106
                     }
                 }
             }

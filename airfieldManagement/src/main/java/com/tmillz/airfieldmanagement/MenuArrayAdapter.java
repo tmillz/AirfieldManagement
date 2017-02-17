@@ -33,7 +33,7 @@ public class MenuArrayAdapter extends ArrayAdapter<String> {
 		// Change icon based on name
 		String s = values[position];
  
-		System.out.println(s);
+		//System.out.println(s);
 		
 		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
 		boolean choose_theme = pref.getBoolean("choose_theme", false);

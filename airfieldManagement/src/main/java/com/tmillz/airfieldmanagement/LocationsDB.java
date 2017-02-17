@@ -31,7 +31,7 @@ public class LocationsDB extends SQLiteOpenHelper {
     public static final String FIELD_ZOOM = "zoom";
     
     /** Field 5 of the table locations, stores the discription*/
-    public static final String FIELD_DISC = "disc";
+    public static final String FIELD_DISC = "markers_list";
     
     /** Field 6 of the table locations, stores color*/
     public static final String FIELD_COLOR = "color";

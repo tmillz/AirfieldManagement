@@ -6,7 +6,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.graphics.Bitmap;
 import android.location.Criteria;
 import android.location.Location;
@@ -20,24 +19,20 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.GoogleMap.SnapshotReadyCallback;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -49,16 +44,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
-	
-	public Maps(){
-		super();
-	}
-	
-	public Maps(ViewPager viewPager){
-		super();
-		this.viewPager = viewPager;
-	}
+public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>, OnMapReadyCallback {
 	
 	public static Maps newInstance() {
         Maps frag = new Maps();
@@ -66,17 +52,16 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
     }
 	
 	View view;
-	private ViewPager viewPager;
 	public GoogleMap mMap;
 	public Marker mMarker;
-	ImageButton sendNow;
-	ImageButton add;
-	Discrepancies activity;
-	LocationsDB locationsDB;
+	//ImageButton sendNow;
+	//ImageButton add;
+	//ViewPagerFragment activity;
+	//LocationsDB locationsDB;
 	EditText editTitle;
 	LocationManager mLocationManager;
 	LocationListener mlocationListener;
-	TextView latlongLocation;
+	//TextView latlongLocation;
 	String latlng;
 	String slat;
 	String slng;
@@ -86,13 +71,11 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-	
-		activity = (Discrepancies) getActivity();
-		viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
-		int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity.getBaseContext());
+
+		int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getActivity().getBaseContext());
 		
 		//Prompt user to turn on GPS if GPS is off
-		if (!((LocationManager) activity.getSystemService(Context.LOCATION_SERVICE))
+		if (!((LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE))
 			    .isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 			 //prompt user to enable gps
 			Intent gpsOptionsIntent = new Intent(  
@@ -106,7 +89,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
         if(status!=ConnectionResult.SUCCESS){ // Google Play Services are not available
         
         	int requestCode = 10;
-            Dialog dialog = GooglePlayServicesUtil.getErrorDialog(status, activity, requestCode);
+            Dialog dialog = GooglePlayServicesUtil.getErrorDialog(status, getActivity(), requestCode);
             dialog.show();
             
         // Google Play Services are available    
@@ -118,32 +101,34 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
     	            parent.removeView(view);
     	    } try {
     	        view = inflater.inflate(R.layout.maps, container, false);
-    	        
-    	    } catch (InflateException e) {
+				SupportMapFragment mapFrag = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+				mapFrag.getMapAsync(this);
+
+
+			} catch (InflateException e) {
     	        /* map is already there, just return view as it is */
     	    }
-	        
-	    	mMap = ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map)).getMap();
-		    mMap.setMyLocationEnabled(true);
-	        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
 			LoaderManager.enableDebugLogging(true);
 	        Criteria cri= new Criteria();
-	        
-	        mLocationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
+
+	        mLocationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 	        String bbb = mLocationManager.getBestProvider(cri, true);
-	        
+
 	        Location myLocation = mLocationManager.getLastKnownLocation(bbb);
-	        
+
 	        if(myLocation != null) {
 	        	double lat= myLocation.getLatitude();
 		        double lng = myLocation.getLongitude();
 		        LatLng ll = new LatLng(lat, lng);
-		        
-		        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ll, 15));
+
+				//map async
+		        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ll, 15));
+
 		        //Map.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("Look what I found!")
 		        		//.draggable(true).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
 	        }
-	        
+
 	        mlocationListener = new LocationListener() {
 	            public void onLocationChanged(Location location) {
 	                LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
@@ -158,13 +143,13 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 				public void onStatusChanged(String provider, int status,
 						Bundle extras) {
 					// TODO Auto-generated method stub
-					
+
 				}
 
 				@Override
 				public void onProviderEnabled(String provider) {
 					// TODO Auto-generated method stub
-					
+
 				}
 
 				@Override
@@ -176,34 +161,35 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 	        
 	        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, mlocationListener);
 
-	        sendNow = (ImageButton) view.findViewById(R.id.sendnow);
-	        add = (ImageButton) view.findViewById(R.id.add);
+	        //sendNow = (ImageButton) view.findViewById(R.id.sendnow);
+	        //add = (ImageButton) view.findViewById(R.id.add);
 	        editTitle = (EditText) view.findViewById(R.id.editTitle);
-	        latlongLocation = (TextView) view.findViewById(R.id.latlongLocation);
+	        //latlongLocation = (TextView) view.findViewById(R.id.latlongLocation);
 	        
-	        sendNow.setOnClickListener(new OnClickListener() {
+	        /*sendNow.setOnClickListener(new OnClickListener() {
 				@Override
 	        	public void onClick(View v) {
 					captureScreen();
 				}
 	        	
-	        });
+	        });*/
 	        
-	        add.setOnClickListener(new OnClickListener() {
+	        /*add.setOnClickListener(new OnClickListener() {
 				@Override
 	        	public void onClick(View v) {
 					viewPager.setCurrentItem(1);
 				}
-	        });
-	        
-	        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+	        });*/
+
+	        //async
+	        /*mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
 	        	//@Override
 				public void onMapClick(LatLng point) {
 
-					String disc = editTitle.getText().toString();
+					String markers_list = editTitle.getText().toString();
 
 					// Drawing marker on the map
-					drawMarker(point, disc);
+					drawMarker(point, markers_list);
 
 					// Creating an instance of ContentValues
 					ContentValues contentValues = new ContentValues();
@@ -218,7 +204,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 		            contentValues.put(LocationsDB.FIELD_ZOOM, mMap.getCameraPosition().zoom);
 
 		            // Setting title text
-		            contentValues.put(LocationsDB.FIELD_DISC, disc);
+		            contentValues.put(LocationsDB.FIELD_DISC, markers_list);
 
 		            // Setting color of marker
 		            contentValues.put(LocationsDB.FIELD_COLOR, "blue" );
@@ -235,7 +221,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 
 			        latlongLocation.setText("");
 				}
-			});
+			});*/
 
 			/*mMap.setOnMapLongClickListener(new OnMapLongClickListener() {				
 				@Override
@@ -254,7 +240,8 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 				}
 			});*/
 			
-			mMap.setOnMarkerClickListener(new OnMarkerClickListener() {
+			//async
+			/*mMap.setOnMarkerClickListener(new OnMarkerClickListener() {
 
 				@Override
 				public boolean onMarkerClick(Marker marker) {
@@ -267,7 +254,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 					latlongLocation.setText(marker.getTitle() + "" + latlnga + newline + degLat + "," + degLng);
 					return false;
 				}
-			});
+			});*/
         }
 		return view;
 	}
@@ -303,13 +290,114 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
     	// Adding marker on the Google Map
     	mMap.addMarker(markerOptions);    		
     }
-	
+
+	@Override
+	public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        googleMap.setMyLocationEnabled(true);
+		mMap.setMyLocationEnabled(true);
+		mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
+		LoaderManager.enableDebugLogging(true);
+		Criteria cri= new Criteria();
+		mLocationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+		String bbb = mLocationManager.getBestProvider(cri, true);
+
+		Location myLocation = mLocationManager.getLastKnownLocation(bbb);
+
+		if(myLocation != null) {
+			double lat= myLocation.getLatitude();
+			double lng = myLocation.getLongitude();
+			LatLng ll = new LatLng(lat, lng);
+
+			//map async
+			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ll, 15));
+
+			//Map.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("Look what I found!")
+			//.draggable(true).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+		}
+
+		mlocationListener = new LocationListener() {
+			public void onLocationChanged(Location location) {
+				LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
+				mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ll, 15));
+				//mMap.animateCamera(cameraUpdate);
+				//mMap.addMarker(new MarkerOptions().position(ll).title("Look what I found!")
+				//.draggable(true).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+				//mLocationManager.removeUpdates(this);
+			}
+
+			@Override
+			public void onStatusChanged(String provider, int status,
+										Bundle extras) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onProviderEnabled(String provider) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onProviderDisabled(String provider) {
+				// TODO Auto-generated method stub
+
+			}
+		};
+
+		mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, mlocationListener);
+
+		mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+			//@Override
+			public void onMapLongClick(LatLng point) {
+
+				String disc = editTitle.getText().toString();
+
+				// Drawing marker on the map
+				drawMarker(point, disc);
+
+				// Creating an instance of ContentValues
+				ContentValues contentValues = new ContentValues();
+
+				// Setting latitude in ContentValues
+				contentValues.put(LocationsDB.FIELD_LAT, point.latitude );
+
+				// Setting longitude in ContentValues
+				contentValues.put(LocationsDB.FIELD_LNG, point.longitude);
+
+				// Setting zoom in ContentValues
+				contentValues.put(LocationsDB.FIELD_ZOOM, mMap.getCameraPosition().zoom);
+
+				// Setting title text
+				contentValues.put(LocationsDB.FIELD_DISC, disc);
+
+				// Setting color of marker
+				contentValues.put(LocationsDB.FIELD_COLOR, "blue" );
+
+				// Creating an instance of LocationInsertTask
+				LocationInsertTask insertTask = new LocationInsertTask();
+
+				// Storing the latitude, longitude and zoom level to SQLite database
+				insertTask.execute(contentValues);
+
+				Toast.makeText(getActivity(), "Marker is added to the Map", Toast.LENGTH_SHORT).show();
+
+				editTitle.setText("");
+
+				//latlongLocation.setText("");
+			}
+		});
+
+	}
+
 	private class LocationInsertTask extends AsyncTask<ContentValues, Void, Void>{
 		@Override
 		protected Void doInBackground(ContentValues... contentValues) {
 			
 			/** Setting up values to insert the clicked location into SQLite database */           
-            activity.getContentResolver().insert(LocationsContentProvider.CONTENT_URI, contentValues[0]);			
+            getActivity().getContentResolver().insert(LocationsContentProvider.CONTENT_URI, contentValues[0]);
 			return null;
 		}		
 	}
@@ -331,9 +419,8 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 		Uri uri = LocationsContentProvider.CONTENT_URI;
 	
 		// Fetches all the rows from locations table
-        return new CursorLoader(activity, uri, null, null, null, null);
-		
-        
+        return new CursorLoader(getActivity(), uri, null, null, null, null);
+
 	}
 
 	@Override
@@ -350,7 +437,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 		// Move the current record pointer to the first row of the table
 		arg1.moveToFirst();
 		
-		Log.v("Cursor Object", DatabaseUtils.dumpCursorToString(arg1));
+		//Log.v("Cursor Object", DatabaseUtils.dumpCursorToString(arg1));
 		
 		for(int i=0;i<locationCount;i++){
 			
@@ -412,7 +499,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
                 String filePath = System.currentTimeMillis() + ".jpeg";
 
                 try {
-                    fout = activity.openFileOutput(filePath,
+                    fout = getActivity().openFileOutput(filePath,
                             Context.MODE_WORLD_READABLE);
 
                     // Write the string to the file
@@ -439,7 +526,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
     }
     
     public void openShareImageDialog(String filePath) {
-    File file = activity.getFileStreamPath(filePath);
+    File file = getActivity().getFileStreamPath(filePath);
     //Criteria cri= new Criteria();
     //LocationManager mLocationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
     //String bbb = mLocationManager.getBestProvider(cri, true);
@@ -451,7 +538,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
         final ContentValues values = new ContentValues(2);
         values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
         values.put(MediaStore.Images.Media.DATA, file.getAbsolutePath());
-        final Uri contentUriFile = activity.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+        final Uri contentUriFile = getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
         final Intent intent = new Intent(android.content.Intent.ACTION_SEND);
         intent.setType("image/jpeg");
         intent.putExtra(android.content.Intent.EXTRA_STREAM, contentUriFile);
@@ -459,9 +546,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
         		+ newline + newline + degLat + " " + degLng);
         startActivity(Intent.createChooser(intent, "Share Image"));
         
-	    } else {
-	        //Toast!
-	    } 
+	    }
     }
 }
 	

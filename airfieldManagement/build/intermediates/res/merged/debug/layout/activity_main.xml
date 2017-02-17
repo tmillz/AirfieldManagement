@@ -20,7 +20,7 @@
 
 	<fragment
 		android:id="@+id/menu_fragment"
-		android:name="com.tmillz.airfieldmanagement.RandomList"
+		android:name="com.tmillz.airfieldmanagement.MenuList"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_weight="1" />

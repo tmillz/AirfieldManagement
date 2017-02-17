@@ -3,7 +3,7 @@ package com.tmillz.airfieldmanagement;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,10 +19,6 @@ import java.math.RoundingMode;
 
 public class Calculators extends Fragment {
 	
-	public Calculators(){
-		super();
-	}
-	
 	Button button1;
 	Button button2;
 	EditText editText1;
@@ -30,21 +26,19 @@ public class Calculators extends Fragment {
 	EditText editText3;
 	EditText editText4;
 	String ts;
-	String as;
 	BigDecimal scaled;
 	BigDecimal value;
-	//BigDecimal divbyseven;
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-		View v =inflater.inflate(R.layout.calculators, container, false);
+		View view = inflater.inflate(R.layout.calculators, container, false);
 		final Context context = getActivity();
-		button1 = (Button) v.findViewById(R.id.button1);
-		button2 = (Button) v.findViewById(R.id.button2);
-		editText1=(EditText) v.findViewById(R.id.editText1);
-		editText2=(EditText) v.findViewById(R.id.editText2);
-		editText3=(EditText) v.findViewById(R.id.editText3);
-		editText4=(EditText) v.findViewById(R.id.editText4);
-		((ActionBarActivity) getActivity()).getSupportActionBar().setTitle("Calculators");
+		button1 = (Button) view.findViewById(R.id.button1);
+		button2 = (Button) view.findViewById(R.id.button2);
+		editText1=(EditText) view.findViewById(R.id.editText1);
+		editText2=(EditText) view.findViewById(R.id.editText2);
+		editText3=(EditText) view.findViewById(R.id.editText3);
+		editText4=(EditText) view.findViewById(R.id.editText4);
+		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Calculators");
 		
 		final InputMethodManager inputManager = (InputMethodManager)
                 context.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -62,12 +56,11 @@ public class Calculators extends Fragment {
                         context, "Please enter a value", Toast.LENGTH_SHORT).show();
 				return;
 			}
-			ts =  new String (new BigDecimal (editText1.getText().toString()).subtract(new BigDecimal("1000")).toString());
+			ts =  new BigDecimal (editText1.getText().toString()).subtract(new BigDecimal("1000")).toString();
 			value = new BigDecimal (ts);
 			MathContext mc = new MathContext(4, RoundingMode.FLOOR);
 			scaled = value.divide(new BigDecimal ("7"), mc);
 			editText2.setText(scaled.toString());
-			 
 		}
 		});
 
@@ -81,14 +74,14 @@ public class Calculators extends Fragment {
 	                        context, "Please enter a value", Toast.LENGTH_SHORT).show();
 					return;
 				}
-				ts =  new String (new BigDecimal (editText3.getText().toString()).subtract(new BigDecimal("200")).toString());
+				ts =  new BigDecimal (editText3.getText().toString()).subtract(new BigDecimal("200")).toString();
 				value = new BigDecimal (ts);
 				MathContext mc = new MathContext(4, RoundingMode.FLOOR);
 				scaled = value.divide(new BigDecimal ("50"), mc);
 				editText4.setText(scaled.toString());
 			}
 			});
-		return v;
+		return view;
 	}
 	
 	@Override

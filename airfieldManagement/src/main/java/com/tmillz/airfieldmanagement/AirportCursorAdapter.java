@@ -31,9 +31,6 @@ public class AirportCursorAdapter extends ResourceCursorAdapter {
         TextView txtQuery4 = (TextView) view.findViewById(R.id.txtQuery4);
         txtQuery4.setText("Lat/Lng (\u00b0dd): " + cursor.getString(cursor.getColumnIndex("field7")) + " " + cursor.getString(cursor.getColumnIndex("field8")));
         
-        //TextView txtQuery5 = (TextView) view.findViewById(R.id.txtQuery5);
-        //txtQuery5.setText(cursor.getString(cursor.getColumnIndex("field8")));
-        
         TextView txtQuery6 = (TextView) view.findViewById(R.id.txtQuery6);
         txtQuery6.setText("Alt (ft): " + cursor.getString(cursor.getColumnIndex("field9")));
         

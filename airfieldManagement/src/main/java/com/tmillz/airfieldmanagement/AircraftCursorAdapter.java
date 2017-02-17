@@ -5,16 +5,11 @@ import android.database.Cursor;
 import android.support.v4.widget.ResourceCursorAdapter;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-public class AircraftCursorAdapter extends ResourceCursorAdapter {
+class AircraftCursorAdapter extends ResourceCursorAdapter {
 
-	ListView lv;
-	String picID;
-	ImageView pic;
-
-	public AircraftCursorAdapter(Context context, int layout, Cursor cursor, int flags) {
+	AircraftCursorAdapter(Context context, int layout, Cursor cursor, int flags) {
 		super(context, layout, cursor, flags);
 	}
 
@@ -23,13 +18,12 @@ public class AircraftCursorAdapter extends ResourceCursorAdapter {
 		
 		String ft = "ft";
 		String k = "K Lbs";
-		
-		lv = (ListView) view.findViewById(android.R.id.list);
-		picID = arg1.getString(arg1.getColumnIndex("pic"));
+
+		String picID = arg1.getString(arg1.getColumnIndex("pic"));
 		
 		int id = context.getResources().getIdentifier("com.tmillz.airfieldmanagement:drawable/" + picID, null, null);
 		
-		pic = (ImageView) view.findViewById(R.id.imageView1);
+		ImageView pic = (ImageView) view.findViewById(R.id.imageView1);
 		pic.setImageResource(id);
 		
 		TextView wingSpan = (TextView) view.findViewById(R.id.wingSpan);
