@@ -47,7 +47,7 @@ public class MenuList extends ListFragment {
 			 //titleRes = Regulations;
 			break;
         case 1:
-        	 BaseActivity.switchContent(new Acft());
+        	 BaseActivity.switchContent(new Aircraft());
         	 break;
         case 2:
         	 BaseActivity.switchContent(new Calculators());

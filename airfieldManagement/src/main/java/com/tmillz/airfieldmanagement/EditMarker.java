@@ -3,8 +3,6 @@ package com.tmillz.airfieldmanagement;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +12,6 @@ import android.widget.ListView;
 public class EditMarker extends Fragment {
 
 	Cursor editmarker;
-	ActionBar actionBar;
 	Button save;
 
 	@Override
@@ -34,8 +31,6 @@ public class EditMarker extends Fragment {
 		EditMarkerCursorAdapter adapter = new EditMarkerCursorAdapter(
 				getActivity(), R.layout.edit_marker, editmarker, 0 );
 		listView.setAdapter(adapter);
-		actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-		actionBar.setTitle("Edit Marker");
 
 		save.setOnClickListener(new View.OnClickListener() {
 			@Override

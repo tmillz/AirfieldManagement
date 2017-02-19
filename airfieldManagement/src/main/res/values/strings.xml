@@ -13,6 +13,7 @@
     <string name="link4"><a href="https://transportation.wes.army.mil/acnpcn/Default.aspx">ACN PCN Calculators</a></string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string name="rationale_location">need permission</string>
 
     <string-array name="aircraft_array">
         <item>Select Aircraft</item>

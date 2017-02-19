@@ -1,5 +1,6 @@
 package com.tmillz.airfieldmanagement;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
@@ -18,7 +19,7 @@ import java.io.OutputStream;
 
 public class MainActivity extends BaseActivity {
 	
-	final static String TARGET_BASE_PATH = "/sdcard/odk/forms/";
+	//final static String TARGET_BASE_PATH = "/sdcard/odk/forms/";
 	
 	public MainActivity(){
 		super(R.string.app_name);
@@ -61,7 +62,12 @@ public class MainActivity extends BaseActivity {
 	        e.printStackTrace();
 	    }
 	}
-	
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+
 	@Override
 	public void onSaveInstanceState(Bundle outState){
 		super.onSaveInstanceState(outState);
@@ -89,7 +95,7 @@ public class MainActivity extends BaseActivity {
 	          out.close();
 	          out = null;
 	          
-	          TestAdapter mDbHelper = new TestAdapter(getBaseContext());        
+	          AircraftListAdapter mDbHelper = new AircraftListAdapter(getBaseContext());
 	          mDbHelper.createDatabase();      
 	          mDbHelper.open();
 	          mDbHelper.close();
@@ -121,12 +127,12 @@ public class MainActivity extends BaseActivity {
 	        if (assets.length == 0) {
 	            copyFile(path);
 	        } else {
-	            String fullPath =  TARGET_BASE_PATH + path;
-	            Log.i("tag", "path="+fullPath);
-	            File dir = new File(fullPath);
-	            if (!dir.exists() && !path.startsWith("images") && !path.startsWith("sounds") && !path.startsWith("webkit"))
-	                if (!dir.mkdirs())
-	                    Log.i("tag", "could not create dir "+fullPath);
+	            //String fullPath =  TARGET_BASE_PATH + path;
+	            //Log.i("tag", "path="+fullPath);
+	            //File dir = new File(fullPath);
+	            //if (!dir.exists() && !path.startsWith("images") && !path.startsWith("sounds") && !path.startsWith("webkit"))
+	                //if (!dir.mkdirs())
+	                    //Log.i("tag", "could not create dir "+fullPath);
 	            for (int i = 0; i < assets.length; ++i) {
 	                String p;
 	                if (path.equals(""))
@@ -156,7 +162,7 @@ public class MainActivity extends BaseActivity {
 		        /*if (filename.endsWith(".jpg")) // extension was added to avoid compression on APK file
 		            newFileName = TARGET_BASE_PATH + filename.substring(0, filename.length()-4);
 		        else*/
-		            newFileName = TARGET_BASE_PATH + filename;
+		           // newFileName = TARGET_BASE_PATH + filename;
 		        out = new FileOutputStream(newFileName);
 
 		        byte[] buffer = new byte[1024];

@@ -20,11 +20,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class MarkersList extends DialogFragment implements LoaderCallbacks<Cursor> {
-	
-	public static MarkersList newInstance() {
-        MarkersList frag = new MarkersList();
-        return frag;
-    }
 
 	MarkersCursorAdapter adapter;
 	ListView listview;
@@ -91,7 +86,7 @@ public class MarkersList extends DialogFragment implements LoaderCallbacks<Curso
 	}
 	
 	public void deletemarker(long id) {
-		//Log.v("long clicked","pos: " + id);
+		// Log.v("long clicked","pos: " + id);
         locationsDB.delete(id);
         Toast.makeText(getActivity(), "Marker has been deleted", Toast.LENGTH_SHORT).show();
         getLoaderManager().restartLoader(0, null, this);

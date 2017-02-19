@@ -19,26 +19,6 @@ private static String TAG = "DataBaseHelper"; // Tag just for the LogCat window
 private static String DB_PATH = ""; 
 private static String DB_NAME ="Database"; // Database name
 private static int DB_VERSION = 2; // Database Version
-
-//Table AIRPORTS field names
-//public static String Field_2 ="field2";
-//public static String Field_3 ="field3";
-//public static String Field_4 ="field4";
-//public static String Field_6 ="field6";
-//public static String Field_7 ="field7";
-//public static String Field_8 ="field8";
-//public static String Field_9 ="field9";
-//public static String Field_10 ="field10";
-//public static String Field_11 ="field11";
-
-//Table AIRCRAFT field names
-//public static String TYPE = "aircraft";
-//public static String ALC_MGR = "alc_mgr";
-//public static String MANUFACTURER = "manufacturer";
-//public static String GROUP_INDEX = "group_index0";
-//public static String WING_SPAN = "wing_span";
-
-
 private SQLiteDatabase mDataBase; 
 private final Context mContext;
 

@@ -54,7 +54,7 @@ public class SearchResultsActivity extends ListActivity {
     
     private void getAirport(String query) {
     	
- 		TestAdapter mDbHelper = new TestAdapter(getBaseContext());    
+ 		AircraftListAdapter mDbHelper = new AircraftListAdapter(getBaseContext());
         mDbHelper.open();
      	
      	Cursor testdata = mDbHelper.getAirport(sql, new String[] {query});

@@ -18,7 +18,7 @@ class ViewPagerAdapter extends FragmentPagerAdapter {
 
     ViewPagerAdapter(Context ctxt, FragmentManager mgr) {
         super(mgr);
-        this.ctxt=ctxt;
+        this.ctxt = ctxt;
     }
 
     @Override
@@ -35,9 +35,9 @@ class ViewPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
     	switch (position) {
     	case 0:
-    		return Maps.newInstance();
+    		return new Maps();
         case 1:
-            return MarkersList.newInstance();
+            return new MarkersList();
         default:
             throw new IllegalArgumentException("The item position should be less or equal to:" + PAGES);
     	}
