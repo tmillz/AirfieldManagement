@@ -72,17 +72,8 @@
     <last-search-timestamp>1505665287851</last-search-timestamp>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e99f1300-7bff-4349-b740-3202a1be752c" name="Default" comment="Cleanded up code, added firebase login">
+    <list default="true" id="e99f1300-7bff-4349-b740-3202a1be752c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/airfieldManagement/src/main/java/com/tmillz/airfieldmanagement/Forms.java" afterPath="$PROJECT_DIR$/airfieldManagement/src/main/java/com/tmillz/airfieldmanagement/Forms.java" />
-      <change beforePath="$PROJECT_DIR$/airfieldManagement/src/main/java/com/tmillz/airfieldmanagement/MarkersCursorAdapter.java" afterPath="$PROJECT_DIR$/airfieldManagement/src/main/java/com/tmillz/airfieldmanagement/MarkersCursorAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/airfieldManagement/src/main/java/com/tmillz/airfieldmanagement/MarkersList.java" afterPath="$PROJECT_DIR$/airfieldManagement/src/main/java/com/tmillz/airfieldmanagement/MarkersList.java" />
-      <change beforePath="$PROJECT_DIR$/airfieldManagement/src/main/java/com/tmillz/airfieldmanagement/ViewPagerFragment.java" afterPath="$PROJECT_DIR$/airfieldManagement/src/main/java/com/tmillz/airfieldmanagement/ViewPagerFragment.java" />
-      <change beforePath="$PROJECT_DIR$/airfieldManagement/src/main/res/layout/edit_marker.xml" afterPath="$PROJECT_DIR$/airfieldManagement/src/main/res/layout/edit_marker.xml" />
-      <change beforePath="$PROJECT_DIR$/airfieldManagement/src/main/res/layout/forms.xml" afterPath="$PROJECT_DIR$/airfieldManagement/src/main/res/layout/forms.xml" />
-      <change beforePath="$PROJECT_DIR$/airfieldManagement/src/main/res/layout/markers_list.xml" afterPath="$PROJECT_DIR$/airfieldManagement/src/main/res/layout/markers_list.xml" />
-      <change beforePath="$PROJECT_DIR$/airfieldManagement/src/main/res/layout/markers_list_header.xml" afterPath="$PROJECT_DIR$/airfieldManagement/src/main/res/layout/markers_list_header.xml" />
-      <change beforePath="$PROJECT_DIR$/airfieldManagement/src/main/res/layout/view_pager.xml" afterPath="$PROJECT_DIR$/airfieldManagement/src/main/res/layout/view_pager.xml" />
     </list>
     <ignored path="AirfieldManagement.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -148,6 +139,7 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
@@ -3028,7 +3020,14 @@
       <option name="project" value="LOCAL" />
       <updated>1535227514391</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Cleanded up code, added firebase login">
+      <created>1535228077245</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1535228077245</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3135,6 +3134,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Cleanded up code" />
     <MESSAGE value="Cleanded up code, fixed google map" />
     <MESSAGE value="Cleanded up code, added firebase login" />
@@ -3601,7 +3602,7 @@
         <state relative-caret-position="-422">
           <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
