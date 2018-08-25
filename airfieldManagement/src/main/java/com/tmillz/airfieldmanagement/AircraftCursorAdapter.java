@@ -6,7 +6,7 @@ import android.support.v4.widget.ResourceCursorAdapter;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+//Test
 class AircraftCursorAdapter extends ResourceCursorAdapter {
 
 	AircraftCursorAdapter(Context context, int layout, Cursor cursor, int flags) {
