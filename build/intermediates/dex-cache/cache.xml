@@ -3,30 +3,48 @@
 
     <item
         is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/10.2.0/jars/classes.jar"
+        jar="/Users/Terry/.android/build-cache/5a09a9d5931235222b417825342f075953b794ad/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="6da05b7498da036b5b37c3beb861cd2060929dcd">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-maps-10.2.0_75014671ec2bf7d77a6e32aeb03a128e54c2e760/classes.dex" />
+        sha1="3560fc891bbecd8982acbace15ccead59c3fedd1">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3763c1892d1642c3cc3fc9cfae9c7a4431ec59f2/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/jars/classes.jar"
+        jar="/Users/Terry/.android/build-cache/fef2784d5bacfb92e052af0e8540926403aec0ef/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.1.1_6e15053b35086a7eaf3447f3134fa497ed93b000/classes.dex" />
+        sha1="240e5a7c620376184f3168cfdd36315b97b1fe07">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/classes_fa3cc818444c1647dafc874778c55d18a0c15fbd/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.1/jars/classes.jar"
+        jar="/Users/Terry/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.2.2/285cb9c666f0f0f3dd8a1be04e1f457eb7b15113/jackson-annotations-2.2.2.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.1_51b46a59e0044d5e5ca9ca6543f0fde8bf47b566/classes.dex" />
+        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-annotations-2.2.2_c3b9c544991fbff62c3693d2405ba57e2e917c81/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Terry/.android/build-cache/a2e3cff3c3006c71962b8a26ec85bc70b0461f56/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="db939a450ea2a721db84e774bf108e20c44a8a1d">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/classes_93fb35c2c78c42fab53f3ebf92e86c88869a4a56/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Terry/.android/build-cache/c6e9606b6e07f1e123506085cdd06fe41ac70f41/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a3d07dfddc7c3c7547fb953847589d586f1e2077">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/classes_35ca709cef9d83b5d1952619867203817089eb8a/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -34,134 +52,26 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="585f9276c9514155ef10448892d3f449917aeb23">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_ae211f599cdb99cca7af3b4c91e598553a20b6b6/classes.dex" />
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_ae211f599cdb99cca7af3b4c91e598553a20b6b6/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.1/jars/classes.jar"
+        jar="/Users/Terry/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-jvm/2.5.0/c0af904657634f7ab9cc21e75d80250570033321/firebase-client-jvm-2.5.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.1.1_90856f147c80019f9d4cfa702d8da1ae18fc1bfb/classes.dex" />
+        sha1="c0af904657634f7ab9cc21e75d80250570033321">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/firebase-client-jvm-2.5.0_f9e3ac1d9f27766947d764182989f90712845ebb/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.1/jars/classes.jar"
+        jar="/Users/Terry/.android/build-cache/9ffd8ffefd6f305fe8621af6ae7174f4087941a0/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.1.1_37129119ac616e9170fb5e7a88488cc1f644b034/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.1.1_d2aaba961b7e56fca1c45ddef7a070bc6fbb4958/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/10.2.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d08bb32b88df3dbcbe1d498c3c57f020b8c521ec">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-location-10.2.0_c78846dc31ccd279d79fd81f5da94bb0a01f92a9/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/design/25.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="cd7951e04cfb9a8bf008d544a478d9a8d8192d38">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-25.1.1_dce03478a07bafc4b913a857c6f1126626d51d7b/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c9649557905bf7a80fca9e0d54cbcb7662627860">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-25.1.1_14a91167a12628f644a4dce42b54b5ed884da93e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.0"
-        sha1="e0514d027fe8a2fd7ac1c2973955562525149e54">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b2b325600fe7f08928ebb6d5fb7a229d9e3ad7c3/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.0"
-        sha1="3f702b27297e4d5cf5fa37a69a6d91ff0f10dda6">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_ae211f599cdb99cca7af3b4c91e598553a20b6b6/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="bd75f9f0296fe220da6d0ad961831b04541c4452">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-10.2.0_4fa45d91d780fa7a2d2304145a700195c416bbe5/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/transition/25.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="15b049fedbd8e3926bf99d9e45dfc9b2a1043bb9">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-transition-25.1.1_bc1e9f630ffa86b87db0d7791c48aa9eb0981420/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3d13e510077b35fe8e49930a627dd849ad5da0dc">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-10.2.0_a125cd08cb93016b1d5b76a9f4d8c3b1538c4a93/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.1.1_9e37b7f495f36eb81289078c888a6c754c4bf47e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.1.1_85bf47cce33c37be843d7af910b4c4d79ade4faf/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.1.1_53f4a17053b047f53f34e32e743bb3cc6938dd17/classes.dex" />
+        sha1="15857dce424132cb53e37cba16b9d587a6c5c568">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e065e0c83438f6c472cb4422db0d45944d837551/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -169,35 +79,44 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="0e67e3e725972fcc54e7f7571d9381bbce8cc5a8">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b2b325600fe7f08928ebb6d5fb7a229d9e3ad7c3/classes.dex" />
+        sha1="dbebfe08cef2112a3130012f9d16db2d5b9b606a">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_b2b325600fe7f08928ebb6d5fb7a229d9e3ad7c3/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Terry/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.1/support-annotations-25.1.1.jar"
+        jar="/Users/Terry/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-android/2.5.0/7d0473896b3b10b23a2f9812fec4316dff8afdd/firebase-client-android-2.5.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.1_90728a149f0747cae9bb8d5a96bd1c1bedf1d9c2/classes.dex" />
+        sha1="07d0473896b3b10b23a2f9812fec4316dff8afdd">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/firebase-client-android-2.5.0_9be752a04d352ad2d73686f14dd62fab3636ad78/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.2.0/jars/classes.jar"
+        jar="/Users/Terry/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.2/d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b/jackson-core-2.2.2.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="1ac56e5801e986583cbe27f2cce57f626cc7ff93">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-10.2.0_0f5d28ed53c375b48f880421936d7f683c01a88c/classes.dex" />
+        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-core-2.2.2_04a77895446092a9785bff52efe84c6497ec9fb5/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.1/jars/classes.jar"
+        jar="/Users/Terry/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.2.2/3c8f6018eaa72d43b261181e801e6f8676c16ef6/jackson-databind-2.2.2.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
-        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.1.1_1607b68377a5db251af572feabc4c4ad2b532d6a/classes.dex" />
+        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-databind-2.2.2_7c4baccbe1cf0b3757ede88e542d8ac25625776a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Terry/.gradle/caches/modules-2/files-2.1/com.firebase/tubesock/0.0.12/6ec0bbd3e161a73ed672284b587fd32309a86d7a/tubesock-0.0.12.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ec0bbd3e161a73ed672284b587fd32309a86d7a">
+        <dex dex="/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dex/debug/folders/1000/10/tubesock-0.0.12_15a8e5ac3c598415b7b64b4ad40f75306470521c/classes.dex" />
     </item>
 
 </items>

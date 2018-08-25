@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 
 public class Preferences extends PreferenceFragment implements OnSharedPreferenceChangeListener {
 	
@@ -14,10 +15,18 @@ public class Preferences extends PreferenceFragment implements OnSharedPreferenc
 	
 	 @Override
 	 public void onCreate(Bundle savedInstanceState) {
+
+		 SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+		 boolean choose_theme = pref.getBoolean("choose_theme", false);
+		 if(choose_theme){
+			 getActivity().setTheme(R.style.AppTheme_Dark);
+		 } else getActivity().setTheme(R.style.AppTheme);
+
 		 super.onCreate(savedInstanceState);
+
 		 // Load the preferences from an XML resource
 		 addPreferencesFromResource(R.xml.preferences);
-		 }
+	 }
 
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
@@ -45,7 +54,6 @@ public class Preferences extends PreferenceFragment implements OnSharedPreferenc
 	public void onResume() {
 	    super.onResume();
 	    getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-
 	}
 
 	@Override

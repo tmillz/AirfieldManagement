@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
-    
-		    <ListView
-		        android:id="@android:id/list"
-		        android:layout_width="match_parent"
-		        android:layout_height="match_parent"
-		        android:listSelector="@android:color/transparent"
-		        android:clickable="false"
-		        android:focusable="false"
-		        android:dividerHeight="0dip">
-
-		    </ListView>
+    tools:context=".MainActivity">
 		
 		    <ImageView
 		        android:id="@+id/imageView1"
 		        android:layout_width="match_parent"
-		        android:layout_height="200dp" />
+		        android:layout_height="200dp"
+				android:paddingTop="8dp"/>
 		
 		    <TableLayout
 		        android:id="@+id/table1"

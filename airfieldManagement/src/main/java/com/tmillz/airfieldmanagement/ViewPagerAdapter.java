@@ -3,22 +3,20 @@ package com.tmillz.airfieldmanagement;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 
-class ViewPagerAdapter extends FragmentPagerAdapter {
+class ViewPagerAdapter extends FragmentStatePagerAdapter {
 	SparseArray<Fragment> registeredFragments = new SparseArray<>();
 
     private final int PAGES = 2;
 
     private String[] tabTitles = new String[]{"Map", "Markers"};
 
-    private Context ctxt;
 
-    ViewPagerAdapter(Context ctxt, FragmentManager mgr) {
+    ViewPagerAdapter(Context context, FragmentManager mgr) {
         super(mgr);
-        this.ctxt = ctxt;
     }
 
     @Override
@@ -48,9 +46,5 @@ class ViewPagerAdapter extends FragmentPagerAdapter {
         Fragment fragment = (Fragment) super.instantiateItem(container, position);
         registeredFragments.put(position, fragment);
         return fragment;
-    }
-
-    Fragment getRegisteredFragment(int position) {
-        return registeredFragments.get(position);
     }
 }

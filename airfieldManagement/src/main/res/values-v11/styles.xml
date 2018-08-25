@@ -4,8 +4,8 @@
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.
     -->
-    <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light">
-        <item name="android:searchViewStyle"> @drawable/ic_action_search </item>
+    <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="ic_drawer"> @drawable/ic_drawer</item>
         <item name="airplane"> @drawable/ic_action_airplane_mode_on</item>
         <item name="email"> @drawable/ic_action_email</item>
         <item name="important"> @drawable/ic_action_important</item>
@@ -15,13 +15,14 @@
         <item name="warning"> @drawable/ic_action_warning</item>
         <item name="web"> @drawable/ic_action_web_site</item>
         <item name="calc"> @drawable/ic_calculator</item>
-        <item name="android:imageButtonStyle">?android:borderlessButtonStyle</item>
-        <item name="android:windowContentOverlay">@null</item>
+        <item name="highlight">@color/highlight_light</item>
+        <item name="save"> @drawable/ic_save_black_24dp</item>
+        <item name="delete"> @drawable/ic_delete_forever_black_24dp</item>
         <!-- API 11 theme customizations can go here. -->
     </style>
     
-    <style name="AppBaseTheme.Dark" parent="@style/Theme.AppCompat">
-        <item name="android:searchViewStyle"> @drawable/ic_action_search_dark </item>
+    <style name="AppBaseTheme.Dark" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="ic_drawer"> @drawable/ic_drawer_white</item>
         <item name="airplane"> @drawable/ic_action_airplane_mode_on_dark</item>
         <item name="email"> @drawable/ic_action_email_dark</item>
         <item name="important"> @drawable/ic_action_important_dark</item>
@@ -31,8 +32,9 @@
         <item name="warning"> @drawable/ic_action_warning_dark</item>
         <item name="web"> @drawable/ic_action_web_site_dark</item>
         <item name="calc"> @drawable/ic_calculator_dark</item>
-        <item name="android:imageButtonStyle">?android:borderlessButtonStyle</item>
-        <item name="android:windowContentOverlay">@null</item>
+        <item name="save"> @drawable/ic_save_white_24dp</item>
+        <item name="delete"> @drawable/ic_delete_forever_white_24dp</item>
+        <item name="highlight">@color/highlight_dark</item>
         <!-- API 11 theme customizations can go here. -->
     </style>
 

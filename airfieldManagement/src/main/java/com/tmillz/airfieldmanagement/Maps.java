@@ -1,16 +1,17 @@
 package com.tmillz.airfieldmanagement;
 
-import android.Manifest;
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
@@ -22,8 +23,12 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -32,14 +37,29 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-import static android.R.attr.id;
+import java.util.HashMap;
+import java.util.Map;
 
-public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>, OnMapReadyCallback, LocationListener {
-	
+import static android.content.ContentValues.TAG;
+
+public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>, OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
+
 	private GoogleMap mMap;
 	EditText editTitle;
 	private final int TAG_CODE_PERMISSION_LOCATION = 1;
+	private long markerId = 0;
+	LocationRequest locationRequest;
+	GoogleApiClient googleApiClient;
+	Location location;
+	DatabaseReference myRef;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -52,46 +72,67 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 
 		editTitle = (EditText) view.findViewById(R.id.editTitle);
 
-		restartTheLoader();
+		// Firebase Setup
+		FirebaseAuth mAuth = FirebaseAuth.getInstance();
+		FirebaseUser currentUser = mAuth.getCurrentUser();
+		FirebaseDatabase database = FirebaseDatabase.getInstance();
+		//database.setPersistenceEnabled(true);  //causes app to crash!
 
-		if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) ==
-				PackageManager.PERMISSION_GRANTED &&
-				ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) ==
-						PackageManager.PERMISSION_GRANTED) {
-		} else {
-			requestPermissions(new String[] {
-							Manifest.permission.ACCESS_FINE_LOCATION,
-							Manifest.permission.ACCESS_COARSE_LOCATION },
-					TAG_CODE_PERMISSION_LOCATION);
+		if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+
+			myRef = database.getReference("users").child(currentUser.getUid()).child("locations");
+
+			myRef.addChildEventListener(new ChildEventListener() {
+				@Override
+				public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+					LocationsObject locationsObject = dataSnapshot.getValue(LocationsObject.class);
+					Log.d("Tag", dataSnapshot.getValue().toString());
+				}
+
+				@Override
+				public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+				}
+
+				@Override
+				public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+				}
+
+				@Override
+				public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+				}
+
+				@Override
+				public void onCancelled(DatabaseError databaseError) {
+
+				}
+			});
 		}
 
 		return view;
 	}
 
-	@Override
-	public void onLocationChanged(Location location) {
-
-		Log.i("called", "onLocationChanged");
-
-		//when the location changes, update the map by zooming to the location
-		CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(),location.getLongitude()));
-		mMap.moveCamera(center);
-
-		CameraUpdate zoom=CameraUpdateFactory.zoomTo(15);
-		mMap.animateCamera(zoom);
-	}
-	
-	private void drawMarker(LatLng point, String disc){
+	private void drawMarker(LatLng point, String disc, long markerId){
 
     	// Creating an instance of MarkerOptions
     	MarkerOptions markerOptions = new MarkerOptions();
-    		
+
     	// Setting latitude and longitude for the marker
     	markerOptions.position(point).title(disc).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-    		
-    	// Adding marker on the Google Map
-    	mMap.addMarker(markerOptions);
+
+		// Adding marker on the Google Map
+    	Marker marker = mMap.addMarker(markerOptions);
+		marker.setTag(markerId);
     }
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		getLoaderManager().initLoader(0, null, this);
+
+	}
 
 	@Override
 	public void onMapReady(GoogleMap googleMap) {
@@ -103,76 +144,168 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 			@Override
 			public void onMapLongClick(LatLng point) {
 
+				markerId = markerId + 1;
+
 				String disc = editTitle.getText().toString();
 				// Drawing marker on the map
-				drawMarker(point, disc);
+				drawMarker(point, disc, markerId);
 				// Creating an instance of ContentValues
 				ContentValues contentValues = new ContentValues();
 				// Setting latitude in ContentValues
 				contentValues.put(LocationsDB.FIELD_LAT, point.latitude );
 				// Setting longitude in ContentValues
 				contentValues.put(LocationsDB.FIELD_LNG, point.longitude);
-				// Setting zoom in ContentValues
-				contentValues.put(LocationsDB.FIELD_ZOOM, mMap.getCameraPosition().zoom);
+				// Setting Date in ContentValues
+				contentValues.put(LocationsDB.FIELD_DATE, "");
+				// Setting ID'd By in ContentValues
+				contentValues.put(LocationsDB.FIELD_ZOOM, "");
 				// Setting title text
 				contentValues.put(LocationsDB.FIELD_DISC, disc);
-				// Setting color of marker
+				// Setting Notes of marker
 				contentValues.put(LocationsDB.FIELD_COLOR, "" );
 				// Creating an instance of LocationInsertTask
 				LocationInsertTask insertTask = new LocationInsertTask();
 				// Storing the latitude, longitude and zoom level to SQLite database
 				insertTask.execute(contentValues);
+				//Log.v("TAG", contentValues.toString());
 				Toast.makeText(getActivity(), "Marker is added to the Map", Toast.LENGTH_SHORT).show();
 				editTitle.setText("");
+
+				Map<String,Object> values = new HashMap<>();
+				values.put("title", disc);
+				values.put("lat", point.latitude);
+				values.put("lng", point.longitude);
+				values.put("date", "");
+				values.put("id_by", "");
+				values.put("notes", "");
+				myRef.push().setValue(values);
 			}
 		});
 
 		mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
 			@Override
 			public void onInfoWindowClick(Marker marker) {
-				EditMarker editMarker = new EditMarker();
-				Bundle args = new Bundle();
-				args.putLong("id", id);
-				editMarker.setArguments(args);
-
-				FragmentManager fm = getActivity().getSupportFragmentManager();
-				FragmentTransaction ft = fm.beginTransaction();
-				ft.replace(R.id.container, editMarker);
-				ft.addToBackStack(null);
-				ft.commit();
+				long id = (long) marker.getTag();
+				Intent intent = new Intent(getActivity(), EditMarkerActivity.class);
+				intent.putExtra("id", id);
+				startActivity(intent);
 			}
 		});
 
-		if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) ==
+		// Check location permissions, if needed request from user
+		if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) !=
 				PackageManager.PERMISSION_GRANTED &&
-				ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
+				ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) !=
 						PackageManager.PERMISSION_GRANTED) {
-			googleMap.setMyLocationEnabled(true);
-			googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+			requestPermissions(new String[] {
+							android.Manifest.permission.ACCESS_FINE_LOCATION,
+							android.Manifest.permission.ACCESS_COARSE_LOCATION },
+					TAG_CODE_PERMISSION_LOCATION);
+		} else {
+			getLocationServices();
+		}
+
+		if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+
+			myRef.addChildEventListener(new ChildEventListener() {
+				@Override
+				public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+
+					Double lat = (Double) dataSnapshot.child("lat").getValue();
+					Double lng = (Double) dataSnapshot.child("lng").getValue();
+					String title = (String) dataSnapshot.child("title").getValue();
+
+					LatLng newLocation = new LatLng(
+							lat,
+							lng
+					);
+					mMap.addMarker(new MarkerOptions()
+							.position(newLocation)
+							.title(title));
+				}
+
+				@Override
+				public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {
+				}
+
+				@Override
+				public void onChildRemoved(DataSnapshot dataSnapshot) {
+				}
+
+				@Override
+				public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {
+				}
+
+				@Override
+				public void onCancelled(DatabaseError databaseError) {
+				}
+			});
+		}
+	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode,@NonNull String permissions[],@NonNull int[]  grantResults) {
+		switch (requestCode) {
+			case TAG_CODE_PERMISSION_LOCATION: {
+				getLocationServices();
+			}
 		}
 	}
 
 	@Override
 	@SuppressWarnings({"MissingPermission"})
-	public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-		switch (requestCode) {
-			case TAG_CODE_PERMISSION_LOCATION: {
-				if (grantResults.length > 0
-						&& grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-					mMap.setMyLocationEnabled(true);
-					mMap.getUiSettings().setMyLocationButtonEnabled(true);
-				} else {
-					Toast.makeText(getActivity(), "So sorry, location permission denied :(", Toast.LENGTH_LONG).show();
-				}
-				break;
+	public void onConnected(Bundle bundle) {
+
+		locationRequest = new LocationRequest();
+
+		Intent intent = getActivity().getIntent();
+		Uri data = intent.getData();
+
+		if (data != null) {
+			if (data.toString().contains("geo")) {
+				String sLocation = data.toString();
+				String sLL = sLocation.substring(sLocation.lastIndexOf(":")+1);
+				String[] str = sLL.split(",");
+				double lat = Double.parseDouble(str[0]);
+				double lng = Double.parseDouble(str[1]);
+				LatLng ll = new LatLng(lat,lng);
+				Log.d("Tag", sLocation);
+				mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ll, 13));
 			}
+		} else if (location == null) {
+			LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
+		} else {
+			double lat = location.getLatitude();
+			double lng = location.getLongitude();
+			LatLng ll = new LatLng(lat,lng);
+			mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ll, 15));
 		}
+
+	}
+
+	@Override
+	public void onConnectionSuspended(int i) {
+
+	}
+
+	@Override
+	public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+		Log.i(TAG,"onConnectionFailed:"+connectionResult.getErrorCode()+","+connectionResult.getErrorMessage());
+	}
+
+	@Override
+	public void onLocationChanged(Location location) {
+		double lat = location.getLatitude();
+		double lng = location.getLongitude();
+		LatLng ll = new LatLng(lat, lng);
+		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ll, 15));
 	}
 
 	private class LocationInsertTask extends AsyncTask<ContentValues, Void, Void>{
 		@Override
 		protected Void doInBackground(ContentValues... contentValues) {
-			// Setting up values to insert the clicked location into SQLite database
+			// Setting up values to insert locations into SQLite database
             getActivity().getContentResolver().insert(LocationsContentProvider.CONTENT_URI, contentValues[0]);
 			return null;
 		}
@@ -193,12 +326,16 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 		double lng;
 		String disc;
 
+		// clear the map and redraw the markers!
+		mMap.clear();
 		// Number of locations available in the SQLite database table
 		locationCount = arg1.getCount();
 		// Move the current record pointer to the first row of the table
 		arg1.moveToFirst();
 		//Log.v("Cursor Object", DatabaseUtils.dumpCursorToString(arg1));
 		for(int i=0;i<locationCount;i++){
+			// Get the ID
+			markerId = arg1.getInt(arg1.getColumnIndex(LocationsDB.FIELD_ROW_ID));
 			// Get the latitude
 			lat = arg1.getDouble(arg1.getColumnIndex(LocationsDB.FIELD_LAT));
 			// Get the longitude
@@ -208,7 +345,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 			// Creating an instance of LatLng to plot the location in Google Maps
 			LatLng location = new LatLng(lat, lng);
 			// Drawing the marker in the Google Maps
-			drawMarker(location, disc);
+			drawMarker(location, disc, markerId);
 			// Traverse the pointer to the next row
 			arg1.moveToNext();
 		}
@@ -218,13 +355,45 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 	public void onLoaderReset(Loader<Cursor> arg0) {
 
 	}
-	
-	public void restartTheLoader() {
-		getLoaderManager().restartLoader(0, null, this);
+
+	public void getLocationServices() {
+
+		if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) ==
+				PackageManager.PERMISSION_GRANTED &&
+				ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
+						PackageManager.PERMISSION_GRANTED) {
+			mMap.setMyLocationEnabled(true);
+			mMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+			GoogleApiAvailability api = GoogleApiAvailability.getInstance();
+			int status = api.isGooglePlayServicesAvailable(getActivity());
+
+			// Prompt user to turn on GPS if GPS is off
+			if (!((LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE))
+					.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+				// prompt user to enable gps
+				Intent gpsOptionsIntent = new Intent(
+						android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+				startActivity(gpsOptionsIntent);
+			}
+
+			// Showing status
+			if(status!= ConnectionResult.SUCCESS){ // Google Play Services are not available
+				int requestCode = 10;
+				GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
+				apiAvailability.getErrorDialog(getActivity(), status, requestCode).show();
+				// Google Play Services are available
+			}
+
+			googleApiClient = new GoogleApiClient.Builder(getActivity())
+					.addApi(LocationServices.API)
+					.addConnectionCallbacks(this)
+					.addOnConnectionFailedListener(this)
+					.build();
+			googleApiClient.connect();
+
+		} else {
+			Toast.makeText(getActivity(), "So sorry, location permission denied :(", Toast.LENGTH_LONG).show();
+		}
 	}
-
 }
-	
-	
-
-

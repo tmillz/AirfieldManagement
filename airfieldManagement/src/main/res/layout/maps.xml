@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     tools:context=".MainActivity" >
-    
+
     <fragment
         android:id="@+id/map"
         android:layout_width="match_parent"
@@ -28,6 +28,7 @@
 	        android:paddingLeft="8dp"
 	        android:background="@drawable/edit_title_background"
 	        android:hint="Enter title &amp; long press map"
+			android:textColorHint="#808080"
 			android:textColor="#000000"/>
 	    
 	    </LinearLayout>

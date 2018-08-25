@@ -2,6 +2,7 @@ package com.tmillz.airfieldmanagement;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -34,13 +35,13 @@ public DataBaseHelper(Context context) {
     this.mContext = context;
 }   
 
-public void createDataBase() throws IOException {
+public void createDataBase() { //throws IOException {
     //If database not exists copy it from the assets
 
     boolean mDataBaseExist = checkDataBase();
     if(!mDataBaseExist) {
-        this.getReadableDatabase();
-        this.close();
+        //getReadableDatabase();
+        //close();
         try {
             //Copy the database from assests
             copyDataBase();
@@ -73,23 +74,20 @@ public void createDataBase() throws IOException {
     }
 
     //Open the database, so we can query it
-    public boolean openDataBase() throws SQLException {
+    public void open() {
         String mPath = DB_PATH + DB_NAME;
         mDataBase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.CREATE_IF_NECESSARY);
-        return mDataBase != null;
+        //getReadableDatabase();
     }
 
-    @Override
-    public synchronized void close() {
-        if(mDataBase != null)
-            mDataBase.close();
-        super.close();
-    }
+    //@Override
+    //public void close() {
+    //    mDataBase.close();
+    //}
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -104,4 +102,23 @@ public void createDataBase() throws IOException {
 	        }
 	    }
 	}
+
+    public Cursor getData(String sql, String[] query) {
+        try {
+            Cursor mCur = mDataBase.rawQuery(sql, query);
+
+            if (mCur!=null) {
+                mCur.moveToNext();
+            }
+            return mCur;
+        }
+        catch (SQLException mSQLException) {
+            Log.e(TAG, "getTestData >>"+ mSQLException.toString());
+            throw mSQLException;
+        }
+    }
+
+    public Cursor getAllAircraft(){
+        return mDataBase.query("aircraft", null, null, null, null, null, null);
+    }
 }

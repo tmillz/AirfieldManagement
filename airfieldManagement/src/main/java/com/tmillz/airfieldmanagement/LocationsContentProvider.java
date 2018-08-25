@@ -9,41 +9,44 @@ import android.net.Uri;
 
 import java.sql.SQLException;
 
-/** A custom Content Provider to do the database operations */
+// A custom Content Provider to do the database operations
 public class LocationsContentProvider extends ContentProvider{
-	
-	protected static final String TAG = "DataAdapter";
 
     public static final String PROVIDER_NAME = "com.tmillz.airfieldmanagement.locations";
 
-    /** A uri to do operations on locations table. A content provider is identified by its uri */
+    //A uri to do operations on locations table. A content provider is identified by its uri //
     public static final Uri CONTENT_URI = Uri.parse("content://" + PROVIDER_NAME + "/locations" );
+    public static final Uri CONTENT_URI_SELECT = Uri.parse("content://" + PROVIDER_NAME + "/locations.select" );
 
-    /** Constant to identify the requested operation */
-    private static final int LOCATIONS = 1; 
+    //Constant to identify the requested operation //
+    private static final int LOCATIONS = 1;
+    private static final int SELECT = 2;
 
     private static final UriMatcher uriMatcher ;
 
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(PROVIDER_NAME, "locations", LOCATIONS);       
+        uriMatcher.addURI(PROVIDER_NAME, "locations", LOCATIONS);
+        uriMatcher.addURI(PROVIDER_NAME, "locations.select", SELECT);
     }
 
-    /** This content provider does the database operations by this object */
+    Cursor cursor;
+
+    //This content provider does the database operations by this object
     LocationsDB mLocationsDB;
 
-    /** A callback method which is invoked when the content provider is starting up */
+    //A callback method which is invoked when the content provider is starting up
     @Override
     public boolean onCreate() {
         mLocationsDB = new LocationsDB(getContext());
         return true;
     }
 
-    /** A callback method which is invoked when insert operation is requested on this content provider */
+    //A callback method which is invoked when insert operation is requested on this content provider
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         long rowID = mLocationsDB.insert(values);
-        Uri _uri=null;
+        Uri _uri = null;
         if(rowID>0){
             _uri = ContentUris.withAppendedId(CONTENT_URI, rowID);
         }else {     
@@ -53,31 +56,41 @@ public class LocationsContentProvider extends ContentProvider{
                 e.printStackTrace();
             }
         }
-        return _uri;    
+        getContext().getContentResolver().notifyChange(uri, null);
+        return _uri;
     }
 
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        return 0;
-    }
-
-    /** A callback method which is invoked when delete operation is requested on this content provider */
-    @Override
-    public int delete(Uri uri, String selection, String[] selectionArgs) {
-        int cnt = 0;        
-        cnt = mLocationsDB.del();
+        int cnt;
+        cnt = mLocationsDB.update(values, selection);
+        getContext().getContentResolver().notifyChange(uri, null);
         return cnt;
     }
 
-    /** A callback method which is invoked by default content uri */
+    //A callback method which is invoked when delete operation is requested on this content provider
     @Override
-    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) { 
+    public int delete(Uri uri, String selection, String[] selectionArgs) {
+        int cnt;
+        cnt = mLocationsDB.deleteId(selectionArgs[0]);
+        getContext().getContentResolver().notifyChange(uri, null);
+        return cnt;
+    }
+
+    //A callback method which is invoked by default content uri
+    @Override
+    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+
+        Cursor cursor;
 
         if(uriMatcher.match(uri)==LOCATIONS){
-            return mLocationsDB.getAllLocations();             
+            cursor = mLocationsDB.getAllLocations();
+        } else {
+            cursor = mLocationsDB.select(selection);
         }
-        this.getContext().getContentResolver().notifyChange(null, null);
-        return null;
+
+        cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        return cursor;
     }
 
     @Override

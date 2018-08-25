@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:font="http://schemas.android.com/apk/res/com.tmillz.airfieldmanagement"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_gravity="top"
-    font:typeface="RobotoCondensed-Regular.ttf"
     tools:context=".MainActivity">
 
     <ScrollView

@@ -6,19 +6,16 @@ import android.support.v4.widget.ResourceCursorAdapter;
 import android.view.View;
 import android.widget.TextView;
 
-public class AirportCursorAdapter extends ResourceCursorAdapter {
-	
-	public String latlong;
+class AirportCursorAdapter extends ResourceCursorAdapter {
 
-    public AirportCursorAdapter(Context context, int layout, Cursor c, int flags) {
+
+    AirportCursorAdapter(Context context, int layout, Cursor c, int flags) {
         super(context, layout, c, flags);
     }
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-    	
-    	latlong = cursor.getString(cursor.getColumnIndex("field7")) + "," + cursor.getString(cursor.getColumnIndex("field8"));
-    	
+
         TextView txtQuery = (TextView) view.findViewById(R.id.txtQuery);
         txtQuery.setText(cursor.getString(cursor.getColumnIndex("field2")));
         

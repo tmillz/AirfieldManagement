@@ -1,36 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
     package="com.tmillz.airfieldmanagement"
-    android:versionCode="11"
-    android:versionName="2.0" >
+    android:versionCode="22"
+    android:versionName="2.2" >
  
     <permission
           android:name="com.tmillz.airfieldmanagement.permission.MAPS_RECEIVE"
           android:protectionLevel="signature"/>
-    
+
     <uses-permission android:name="com.tmillz.airfieldmanagement.permission.MAPS_RECEIVE"/>
-    
     <uses-permission android:name="android.permission.INTERNET"/>
   	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-  	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-  	<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+  	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+  	<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
   	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-	<uses-permission android:name="com.google.android.apps.photos.permission.GOOGLE_PHOTOS"/>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" tools:node="remove" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS" tools:node="remove"/>
 
     <uses-feature android:name="android.hardware.location" android:required="false" />
-    <uses-feature android:name="android.hardware.location.network" android:required="false" />
-    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+    <uses-feature android:name="android.hardware.location.network" android:required="false"/>
+    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
     <uses-feature android:name="android.hardware.telephony" android:required="false" />
     <uses-feature android:name="android.hardware.wifi" android:required="false" />
 
 
     <uses-sdk
-        android:minSdkVersion="19"
+        android:minSdkVersion="15"
         android:targetSdkVersion="25" />
     
     <supports-screens
@@ -46,14 +44,33 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        tools:replace="android:icon,android:theme">
+        android:hardwareAccelerated="true">
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+                   android:value="@string/facebook_app_id"/>
+
+        <activity android:name="com.facebook.FacebookActivity"
+                  android:configChanges=
+                      "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+                  android:label="@string/app_name" />
+
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name="com.tmillz.airfieldmanagement.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-    		android:hardwareAccelerated="true"
     		android:windowSoftInputMode="adjustPan"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:hardwareAccelerated="true">
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".SearchResultsActivity"/>
@@ -65,39 +82,57 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="http" android:host="maps.google.com" />
                 <data android:scheme="geo" />
             </intent-filter>
         </activity>
         
         <!-- Search results activity -->
         <activity android:name=".SearchResultsActivity"
-            android:parentActivityName="com.tmillz.airfieldmanagement.MainActivity">
+            android:parentActivityName=".MainActivity">
              <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
              <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-             
         </activity>
         
-        <activity 
-            android:name="com.tmillz.airfieldmanagement.ShowSettings">
+        <activity
+            android:name=".ShowSettings">
+        </activity>
+
+        <activity
+            android:name=".AircraftSpecsActivity">
+        </activity>
+
+        <activity
+            android:name=".EditMarkerActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:hardwareAccelerated="true">
+        </activity>
+
+        <activity
+            android:name=".LoginActivity">
         </activity>
         
 		<provider 
             android:name="LocationsContentProvider"
             android:authorities="com.tmillz.airfieldmanagement.locations"
-            android:exported="false" />
+            android:exported="false"/>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
 		
 		<meta-data
     		android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/map_api_key_debug"/>
-			<!--Debug Key-->
-            <!--Old Key android:value="AIzaSyAFXrcHfpMCSUbLa-kcAUHCdQRn4A3HsGE"/-->
-			<!--Old Release Key android:value="AIzaSyAJEyd8RQUng497P19uLRmVYnSUrdoWhto"/> -->
-            <!--New Release Key android:value="AIzaSyCH_PdftxrygmKLQVQOdQJjPDPJgKuOpqg"/>-->
 		<meta-data
             android:name="com.google.android.gms.version"
 			android:value="@integer/google_play_services_version"/>

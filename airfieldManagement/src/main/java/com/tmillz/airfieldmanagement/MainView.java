@@ -3,10 +3,9 @@ package com.tmillz.airfieldmanagement;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.content.FileProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,25 +24,21 @@ public class MainView extends Fragment {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
+    File pdfFile = null;
  
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.regulations, null);
         Context context = getActivity();
-        // get the listview
+
         expListView = (ExpandableListView) v.findViewById(R.id.lvExp);
  
-        // preparing list data
         prepareListData();
  
         listAdapter = new ExpandableListAdapter(context, listDataHeader, listDataChild);
  
-        // setting list adapter
         expListView.setAdapter(listAdapter);
-        
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Regulations");
-        
-        // Listview on child click listener
+
         expListView.setOnChildClickListener(new OnChildClickListener() {
         	
         	String child;
@@ -54,241 +49,65 @@ public class MainView extends Fragment {
                     int groupPosition, int childPosition, long id) {
             	
             	child = listDataHeader.get(groupPosition) + ":" + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition);
-            	File pdfFile;
-            	Toast.makeText(context, "opening " + child, Toast.LENGTH_SHORT).show();
-            	
-                if (child.equalsIgnoreCase("AFIs:AFI 13-204v3")) {
-                	 pdfFile = new File(context.getExternalFilesDir(null), "afi13_204v3.pdf" );
-                	 if(pdfFile.exists()) {
-                         Uri path = Uri.fromFile(pdfFile); 
-                         Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                         pdfIntent.setDataAndType(path, "application/pdf");
-                         pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-                         try {
-                             startActivity(pdfIntent);
-                         }
-                         catch(ActivityNotFoundException e) {
-                             Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show(); 
-                         }
-                     }
-                }
-                if (child.equalsIgnoreCase("AFIs:AFI 13-213")) {
-               	 pdfFile = new File(context.getExternalFilesDir(null), "afi13_213.pdf" );
-               	 if(pdfFile.exists()) {
-                        Uri path = Uri.fromFile(pdfFile); 
-                        Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                        pdfIntent.setDataAndType(path, "application/pdf");
-                        pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
+                    if (child.equalsIgnoreCase("AFIs:AFI 13-204v3")) {
+                        pdfFile = new File(context.getExternalFilesDir(null), "afi13_204v3.pdf");
+                    }
+                    if (child.equalsIgnoreCase("AFIs:AFI 13-213")) {
+                        pdfFile = new File(context.getExternalFilesDir(null), "afi13_213.pdf");
+                    }
+                    if (child.equalsIgnoreCase("AFIs:AFI 13-202")) {
+                        pdfFile = new File(context.getExternalFilesDir(null), "afi13_202.pdf");
+                    }
+                    if (child.equalsIgnoreCase("AFIs:AFJMAN 11-213")) {
+                        pdfFile = new File(context.getExternalFilesDir(null), "afjman11_213.pdf");
+                    }
+                    if (child.equalsIgnoreCase("AFIs:AFI 11-218")) {
+                        pdfFile = new File(context.getExternalFilesDir(null), "afi11_218.pdf");
+                    }
+                    if (child.equalsIgnoreCase("AFIs:AFI 13-202")) {
+                        pdfFile = new File(context.getExternalFilesDir(null), "afi13_202.pdf");
+                    }
+                    if (child.equalsIgnoreCase("AFIs:AFI 10-1001")) {
+                        pdfFile = new File(context.getExternalFilesDir(null), "afi10_1001.pdf");
+                    }
+                    if (child.equalsIgnoreCase("AFIs:AFI 10-1002")) {
+                        pdfFile = new File(context.getExternalFilesDir(null), "afi10_1002.pdf");
+                    }
+                    if (child.equalsIgnoreCase("AFIs:AFI 32-1042")) {
+                        pdfFile = new File(context.getExternalFilesDir(null), "afi32_1042.pdf");
+                    }
+                    if (child.equalsIgnoreCase("AFIs:AFI 36-2201")) {
+                        pdfFile = new File(context.getExternalFilesDir(null), "afi36_2201.pdf");
+                    }
+                    if (child.equalsIgnoreCase("UFCs:UFC 3-260-01")) {
+                        pdfFile = new File(context.getExternalFilesDir(null), "ufc_3_260_01.pdf");
+                    }
+                    if (child.equalsIgnoreCase("UFCs:UFC 3-535-01")) {
+                        pdfFile = new File(context.getExternalFilesDir(null), "ufc_3_535_01.pdf");
+                    }
+                    if (child.equalsIgnoreCase("ETLs:ETL 04-2")) {
+                        pdfFile = new File(context.getExternalFilesDir(null), "etl_04_2.pdf");
+                    }
+                    if (child.equalsIgnoreCase("FAA:JO 7110.10")) {
+                        pdfFile = new File(context.getExternalFilesDir(null), "JO_7110_10.pdf");
+                    }
+                    if(pdfFile != null) {
+                        Intent pdfIntent = new Intent(Intent.ACTION_VIEW, FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", pdfFile));
+                        pdfIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                         try {
                             startActivity(pdfIntent);
                         }
                         catch(ActivityNotFoundException e) {
-                            Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show(); 
+                            Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show();
                         }
                     }
-                }
-                if (child.equalsIgnoreCase("AFIs:AFI 13-202")) {
-                  	 pdfFile = new File(context.getExternalFilesDir(null), "afi13_202.pdf" );
-                  	 if(pdfFile.exists()) {
-                           Uri path = Uri.fromFile(pdfFile); 
-                           Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                           pdfIntent.setDataAndType(path, "application/pdf");
-                           pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                           try {
-                               startActivity(pdfIntent);
-                           }
-                           catch(ActivityNotFoundException e) {
-                               Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show(); 
-                           }
-                     }
-                }
-                if (child.equalsIgnoreCase("AFIs:AFJMAN 11-213")) {
-                 	 pdfFile = new File(context.getExternalFilesDir(null), "afjman11_213.pdf" );
-                 	 if(pdfFile.exists()) {
-                          Uri path = Uri.fromFile(pdfFile); 
-                          Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                          pdfIntent.setDataAndType(path, "application/pdf");
-                          pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                          try {
-                              startActivity(pdfIntent);
-                          }
-                          catch(ActivityNotFoundException e) {
-                              Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show(); 
-                          }
-                     }
-                }
-                if (child.equalsIgnoreCase("AFIs:AFI 11-218")) {
-                 	 pdfFile = new File(context.getExternalFilesDir(null), "afi11_218.pdf" );
-                 	 if(pdfFile.exists()) {
-                          Uri path = Uri.fromFile(pdfFile); 
-                          Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                          pdfIntent.setDataAndType(path, "application/pdf");
-                          pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                          try {
-                              startActivity(pdfIntent);
-                          }
-                          catch(ActivityNotFoundException e) {
-                              Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show(); 
-                          }
-                      }
-                }
-                if (child.equalsIgnoreCase("AFIs:AFI 13-202")) {
-                 	 pdfFile = new File(context.getExternalFilesDir(null), "afi13_202.pdf" );
-                 	 if(pdfFile.exists()) {
-                          Uri path = Uri.fromFile(pdfFile); 
-                          Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                          pdfIntent.setDataAndType(path, "application/pdf");
-                          pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                          try {
-                              startActivity(pdfIntent);
-                          }
-                          catch(ActivityNotFoundException e) {
-                              Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show(); 
-                          }
-                     }
-                }
-                if (child.equalsIgnoreCase("AFIs:AFI 10-1001")) {
-                 	 pdfFile = new File(context.getExternalFilesDir(null), "afi10_1001.pdf" );
-                 	 if(pdfFile.exists()) {
-                          Uri path = Uri.fromFile(pdfFile); 
-                          Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                          pdfIntent.setDataAndType(path, "application/pdf");
-                          pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                          try {
-                              startActivity(pdfIntent);
-                          }
-                          catch(ActivityNotFoundException e) {
-                              Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show(); 
-                          }
-                     }
-                }
-                if (child.equalsIgnoreCase("AFIs:AFI 10-1002")) {
-                 	 pdfFile = new File(context.getExternalFilesDir(null), "afi10_1002.pdf" );
-                 	 if(pdfFile.exists()) {
-                          Uri path = Uri.fromFile(pdfFile); 
-                          Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                          pdfIntent.setDataAndType(path, "application/pdf");
-                          pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                          try {
-                              startActivity(pdfIntent);
-                          }
-                          catch(ActivityNotFoundException e) {
-                              Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show(); 
-                          }
-                     }
-                }
-
-                if (child.equalsIgnoreCase("AFIs:AFI 32-1042")) {
-                 	 pdfFile = new File(context.getExternalFilesDir(null), "afi32_1042.pdf" );
-                 	 if(pdfFile.exists()) {
-                          Uri path = Uri.fromFile(pdfFile); 
-                          Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                          pdfIntent.setDataAndType(path, "application/pdf");
-                          pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                          try {
-                              startActivity(pdfIntent);
-                          }
-                          catch(ActivityNotFoundException e) {
-                              Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show(); 
-                          }
-                      }
-                }
-
-                if (child.equalsIgnoreCase("AFIs:AFI 36-2201")) {
-                 	 pdfFile = new File(context.getExternalFilesDir(null), "afi36_2201.pdf" );
-                 	 if(pdfFile.exists()) {
-                          Uri path = Uri.fromFile(pdfFile); 
-                          Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                          pdfIntent.setDataAndType(path, "application/pdf");
-                          pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                          try {
-                              startActivity(pdfIntent);
-                          }
-                          catch(ActivityNotFoundException e) {
-                              Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show(); 
-                          }
-                      }
-                 }
-                if (child.equalsIgnoreCase("UFCs:UFC 3-260-01")) {
-               	 pdfFile = new File(context.getExternalFilesDir(null), "ufc_3_260_01.pdf" );
-               	 if(pdfFile.exists()) {
-                        Uri path = Uri.fromFile(pdfFile); 
-                        Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                        pdfIntent.setDataAndType(path, "application/pdf");
-                        pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                        try {
-                            startActivity(pdfIntent);
-                        }
-                        catch(ActivityNotFoundException e) {
-                            Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show(); 
-                        }
-                    }
-                 }
-                if (child.equalsIgnoreCase("UFCs:UFC 3-535-01")) {
-                  	 pdfFile = new File(context.getExternalFilesDir(null), "ufc_3_535_01.pdf" );
-                  	 if(pdfFile.exists()) {
-                           Uri path = Uri.fromFile(pdfFile); 
-                           Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                           pdfIntent.setDataAndType(path, "application/pdf");
-                           pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                           try {
-                               startActivity(pdfIntent);
-                           }
-                           catch(ActivityNotFoundException e) {
-                               Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show(); 
-                           }
-                     }
-                }
-                if (child.equalsIgnoreCase("ETLs:ETL 04-2")) {
-                  	 pdfFile = new File(context.getExternalFilesDir(null), "etl_04_2.pdf" );
-                  	 if(pdfFile.exists()) {
-                           Uri path = Uri.fromFile(pdfFile); 
-                           Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                           pdfIntent.setDataAndType(path, "application/pdf");
-                           pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                           try {
-                               startActivity(pdfIntent);
-                           }
-                           catch(ActivityNotFoundException e) {
-                               Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show(); 
-                           }
-                     }
-                }
-                if (child.equalsIgnoreCase("FAA:JO 7110.10")) {
-                 	 pdfFile = new File(context.getExternalFilesDir(null), "fss.pdf" );
-                 	 if(pdfFile.exists()) {
-                          Uri path = Uri.fromFile(pdfFile); 
-                          Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                          pdfIntent.setDataAndType(path, "application/pdf");
-                          pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                          try {
-                              startActivity(pdfIntent);
-                          }
-                          catch(ActivityNotFoundException e) {
-                              Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show(); 
-                          }
-                     }
-                }
                 return false;
             }
         });
         return v;
     }
-    
+
     @Override
 	public void onActivityCreated(Bundle savedInstanceState){
 		super.onActivityCreated(savedInstanceState);
