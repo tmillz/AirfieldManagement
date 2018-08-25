@@ -72,7 +72,9 @@
     <last-search-timestamp>1505665287851</last-search-timestamp>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e99f1300-7bff-4349-b740-3202a1be752c" name="Default" comment="Cleanded up code, added firebase login" />
+    <list default="true" id="e99f1300-7bff-4349-b740-3202a1be752c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="AirfieldManagement.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -3128,7 +3130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1535237480033</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Cleanded up code, added firebase login3">
+      <created>1535239028665</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1535239028666</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3266,7 +3275,8 @@
     <MESSAGE value="Cleanded up code" />
     <MESSAGE value="Cleanded up code, fixed google map" />
     <MESSAGE value="Cleanded up code, added firebase login" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleanded up code, added firebase login" />
+    <MESSAGE value="Cleanded up code, added firebase login3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanded up code, added firebase login3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
