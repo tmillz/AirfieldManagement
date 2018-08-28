@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:padding="8dp"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<TextView
+		android:id="@+id/txtQuery"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"/>
+
+	<TextView
+		android:id="@+id/txtQuery2"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"/>
+
+	<TextView
+		android:id="@+id/txtQuery3"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"/>
+
+	<TextView
+		android:id="@+id/txtQuery4"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"/>
+
+	<TextView
+		android:id="@+id/txtQuery6"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"/>
+
+	<TextView
+		android:id="@+id/txtQuery7"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"/>
+
+	<TextView
+		android:id="@+id/txtQuery8"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Sorry, No Results Found"/>
+
+</LinearLayout>

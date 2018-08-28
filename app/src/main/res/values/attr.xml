@@ -1,0 +1,19 @@
+<resources>
+  <declare-styleable name="AppTheme">
+    <attr name="ic_drawer" format="reference" />
+    <attr name="airplane" format="reference" />
+    <attr name="email" format="reference" />
+    <attr name="important" format="reference" />
+    <attr name="map" format="reference" />
+    <attr name="paste" format="reference" />
+    <attr name="search" format="reference" />
+    <attr name="warning" format="reference" />
+    <attr name="web" format="reference" />
+    <attr name="calc" format="reference" />
+    <attr name="highlight" format="reference" />
+    <attr name="save" format="reference" />
+    <attr name="delete" format="reference" />
+  </declare-styleable>
+  <item name="visible" type="id"/>
+  <item name="masked" type="id"/>
+</resources>

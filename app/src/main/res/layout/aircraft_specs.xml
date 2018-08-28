@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+		
+		    <ImageView
+		        android:id="@+id/imageView1"
+		        android:layout_width="match_parent"
+		        android:layout_height="200dp"
+				android:paddingTop="8dp"/>
+		
+		    <TableLayout
+		        android:id="@+id/table1"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:shrinkColumns=",1">
+		
+		        <TableRow
+		            android:id="@+id/tableRow1"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="8dp"
+		            android:paddingTop="8dp" >
+		
+		            <TextView
+		                android:id="@+id/wingSpan"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Wingspan:" />
+		
+		            <TextView
+		                android:id="@+id/length"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Length:" />
+		
+		        </TableRow>
+		
+		        <TableRow
+		            android:id="@+id/tableRow2"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content" 
+		            android:paddingLeft="8dp"
+		            android:paddingTop="8dp">
+		
+		            <TextView
+		                android:id="@+id/height"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Height:" />
+		
+		            <TextView
+		                android:id="@+id/vertClearance"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Vertical Clearance:" />
+		
+		        </TableRow>
+		
+		        <TableRow
+		            android:id="@+id/tableRow3"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="8dp"
+		            android:paddingTop="8dp" >
+		
+		            <TextView
+		                android:id="@+id/maxWeight"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Max T/O Weight: " />
+		
+		            <TextView
+		                android:id="@+id/basic_empty_wt"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Basic Empty Wt.: " />
+		
+		        </TableRow>
+		
+		        <TableRow
+		            android:id="@+id/tableRow4"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="8dp"
+		            android:paddingTop="8dp" >
+		            
+		            <TextView
+		                android:id="@+id/turn_radius"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Turning Radius" />
+		
+		            <TextView
+		                android:id="@+id/turn_diam"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="180 deg Trn Diam:" />
+		
+		        </TableRow>
+		        
+		        <TableRow
+		            android:id="@+id/tableRow5"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="8dp"
+		            android:paddingRight="8dp">
+		            
+		            <TextView
+		                android:id="@+id/acn"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:gravity="center"
+		                android:text="ACN" />
+		
+		        </TableRow>
+		        
+		        <TableRow
+		            android:id="@+id/tableRow6"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="8dp"
+		            android:paddingRight="8dp">
+		            
+		            <TextView
+		                android:id="@+id/rigidPavementSub"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:gravity="center"
+		                android:text="Rigid Pavement Subgrade" />
+		
+		        </TableRow>
+		        
+		        <TableRow
+		            android:id="@+id/tableRow7"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="8dp"
+		            android:paddingRight="8dp">
+		            
+		            <TextView
+		                android:id="@+id/blank"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="" />
+		
+		            <TextView
+		                android:id="@+id/high"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="High" />
+		            
+		            <TextView
+		                android:id="@+id/medium"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Med" />
+		
+		            <TextView
+		                android:id="@+id/low"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Low" />
+		            
+		            <TextView
+		                android:id="@+id/ultraLow"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Ultra low" />
+		
+		        </TableRow>
+		        
+		        <TableRow
+		            android:id="@+id/tableRow8"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="8dp"
+		            android:paddingRight="8dp">
+		            
+		            <TextView
+		                android:id="@+id/lWeight"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Weight" />
+		
+		            <TextView
+		                android:id="@+id/lrigidA"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="A" />
+		            
+		            <TextView
+		                android:id="@+id/lrigidB"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="B" />
+		
+		            <TextView
+		                android:id="@+id/lrigidC"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="C" />
+		            
+		            <TextView
+		                android:id="@+id/lrigidD"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="D" />
+		
+		        </TableRow>
+		        
+		        <TableRow
+		            android:id="@+id/tableRow9"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="8dp"
+		            android:paddingRight="8dp">
+		            
+		            <TextView
+		                android:id="@+id/acnMaxWeight"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Weight" />
+		
+		            <TextView
+		                android:id="@+id/rigidMaxA"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="A" />
+		            
+		            <TextView
+		                android:id="@+id/rigidMaxB"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="B" />
+		
+		            <TextView
+		                android:id="@+id/rigidMaxC"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="C" />
+		            
+		            <TextView
+		                android:id="@+id/rigidMaxD"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="D" />
+		
+		        </TableRow>
+		        
+		        <TableRow
+		            android:id="@+id/tableRow10"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="8dp"
+		            android:paddingRight="8dp">
+		            
+		            <TextView
+		                android:id="@+id/acnMinWeight"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Weight" />
+		
+		            <TextView
+		                android:id="@+id/rigidMinA"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="A" />
+		            
+		            <TextView
+		                android:id="@+id/rigidMinB"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="B" />
+		
+		            <TextView
+		                android:id="@+id/rigidMinC"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="C" />
+		            
+		            <TextView
+		                android:id="@+id/rigidMinD"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="D" />
+		
+		        </TableRow>
+		        
+		        <TableRow
+		            android:id="@+id/tableRow11"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="8dp"
+		            android:paddingRight="8dp">
+		            
+		            <TextView
+		                android:id="@+id/flexPavementSub"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:gravity="center"
+		                android:text="Flexible Pavement Subgrade" />
+		
+		        </TableRow>
+		        
+		        <TableRow
+		            android:id="@+id/tableRow12"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="8dp"
+		            android:paddingRight="8dp">
+		            
+		            <TextView
+		                android:id="@+id/fBlank"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="" />
+		
+		            <TextView
+		                android:id="@+id/fHigh"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="High" />
+		            
+		            <TextView
+		                android:id="@+id/fMedium"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Med" />
+		
+		            <TextView
+		                android:id="@+id/fLow"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Low" />
+		            
+		            <TextView
+		                android:id="@+id/fUltraLow"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Ultra low" />
+		
+		        </TableRow>
+		        
+		        <TableRow
+		            android:id="@+id/tableRow13"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="8dp"
+		            android:paddingRight="8dp">
+		            
+		            <TextView
+		                android:id="@+id/fLacnMaxWeight"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Weight" />
+		
+		            <TextView
+		                android:id="@+id/flexA"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="A" />
+		            
+		            <TextView
+		                android:id="@+id/flexB"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="B" />
+		
+		            <TextView
+		                android:id="@+id/flexC"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="C" />
+		            
+		            <TextView
+		                android:id="@+id/flexD"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="D" />
+		
+		        </TableRow>
+		        
+		        <TableRow
+		            android:id="@+id/tableRow14"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="8dp"
+		            android:paddingRight="8dp">
+		            
+		            <TextView
+		                android:id="@+id/flexMaxWeight"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Weight" />
+		
+		            <TextView
+		                android:id="@+id/flexMaxA"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="A" />
+		            
+		            <TextView
+		                android:id="@+id/flexMaxB"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="B" />
+		
+		            <TextView
+		                android:id="@+id/flexMaxC"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="C" />
+		            
+		            <TextView
+		                android:id="@+id/flexMaxD"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="D" />
+		
+		        </TableRow>
+		        
+		        <TableRow
+		            android:id="@+id/tableRow15"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="8dp"
+		            android:paddingRight="8dp">
+		            
+		            <TextView
+		                android:id="@+id/flexMinWeight"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="Weight" />
+		
+		            <TextView
+		                android:id="@+id/flexMinA"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="A" />
+		            
+		            <TextView
+		                android:id="@+id/flexMinB"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="B" />
+		
+		            <TextView
+		                android:id="@+id/flexMinC"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="C" />
+		            
+		            <TextView
+		                android:id="@+id/flexMinD"
+		                android:layout_width="0dp"
+		                android:layout_height="wrap_content"
+		                android:layout_weight="1"
+		                android:text="D" />
+		
+		        </TableRow>
+		        
+		    </TableLayout> 
+
+</LinearLayout>
