@@ -1,4 +1,0 @@
-#Sun Aug 26 08:08:46 EDT 2018
-base.0=/Users/Terry/AndroidstudioProjects/AirfieldManagement/airfieldManagement/build/intermediates/transforms/dexMerger/debug/3
-path.0=classes.dex
-renamed.0=classes.dex
