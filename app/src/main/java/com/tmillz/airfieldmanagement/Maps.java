@@ -50,7 +50,9 @@ import java.util.Map;
 
 import static android.content.ContentValues.TAG;
 
-public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>, OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
+public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>,
+		OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks,
+		GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
 	private GoogleMap mMap;
 	EditText editTitle;
@@ -62,7 +64,8 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 	DatabaseReference myRef;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+							 Bundle savedInstanceState){
 
 		View view = inflater.inflate(R.layout.maps, container, false);
 
@@ -76,11 +79,11 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 		FirebaseAuth mAuth = FirebaseAuth.getInstance();
 		FirebaseUser currentUser = mAuth.getCurrentUser();
 		FirebaseDatabase database = FirebaseDatabase.getInstance();
-		//database.setPersistenceEnabled(true);  //causes app to crash!
+		//database.setPersistenceEnabled(true);  //causes app to crash
 
 		if (FirebaseAuth.getInstance().getCurrentUser() != null) {
 
-			myRef = database.getReference("users").child(currentUser.getUid()).child("locations");
+			myRef = database.getReference("locations").child(currentUser.getUid());
 
 			myRef.addChildEventListener(new ChildEventListener() {
 				@Override
@@ -120,7 +123,8 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
     	MarkerOptions markerOptions = new MarkerOptions();
 
     	// Setting latitude and longitude for the marker
-    	markerOptions.position(point).title(disc).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+    	markerOptions.position(point).title(disc).icon(
+    			BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 
 		// Adding marker on the Google Map
     	Marker marker = mMap.addMarker(markerOptions);
@@ -168,7 +172,8 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 				// Storing the latitude, longitude and zoom level to SQLite database
 				insertTask.execute(contentValues);
 				//Log.v("TAG", contentValues.toString());
-				Toast.makeText(getActivity(), "Marker is added to the Map", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), "Marker is added to the Map",
+						Toast.LENGTH_SHORT).show();
 				editTitle.setText("");
 
 				Map<String,Object> values = new HashMap<>();
@@ -178,6 +183,9 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 				values.put("date", "");
 				values.put("id_by", "");
 				values.put("notes", "");
+				values.put ("dateClosed","");
+				values.put ("img", "");
+				values.put ("type", "fod.png");
 				myRef.push().setValue(values);
 			}
 		});
@@ -193,9 +201,11 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 		});
 
 		// Check location permissions, if needed request from user
-		if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) !=
+		if (ContextCompat.checkSelfPermission(getActivity(),
+				android.Manifest.permission.ACCESS_FINE_LOCATION) !=
 				PackageManager.PERMISSION_GRANTED &&
-				ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) !=
+				ContextCompat.checkSelfPermission(getActivity(),
+						android.Manifest.permission.ACCESS_COARSE_LOCATION) !=
 						PackageManager.PERMISSION_GRANTED) {
 
 			requestPermissions(new String[] {
@@ -245,7 +255,8 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 	}
 
 	@Override
-	public void onRequestPermissionsResult(int requestCode,@NonNull String permissions[],@NonNull int[]  grantResults) {
+	public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
+										   @NonNull int[]  grantResults) {
 		switch (requestCode) {
 			case TAG_CODE_PERMISSION_LOCATION: {
 				getLocationServices();
@@ -274,7 +285,8 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 				mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ll, 13));
 			}
 		} else if (location == null) {
-			LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
+			LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient,
+					locationRequest, this);
 		} else {
 			double lat = location.getLatitude();
 			double lng = location.getLongitude();
@@ -291,7 +303,8 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 
 	@Override
 	public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-		Log.i(TAG,"onConnectionFailed:"+connectionResult.getErrorCode()+","+connectionResult.getErrorMessage());
+		Log.i(TAG,"onConnectionFailed:"+connectionResult.getErrorCode()+","
+				+connectionResult.getErrorMessage());
 	}
 
 	@Override
@@ -306,7 +319,8 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 		@Override
 		protected Void doInBackground(ContentValues... contentValues) {
 			// Setting up values to insert locations into SQLite database
-            getActivity().getContentResolver().insert(LocationsContentProvider.CONTENT_URI, contentValues[0]);
+            getActivity().getContentResolver().insert(LocationsContentProvider.CONTENT_URI,
+					contentValues[0]);
 			return null;
 		}
 	}
@@ -316,7 +330,8 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 		// Uri to the content provider LocationsContentProvider
 		Uri uri = LocationsContentProvider.CONTENT_URI;
 		// Fetches all the rows from locations table
-        return new CursorLoader(getActivity(), uri, null, null, null, null);
+        return new CursorLoader(getActivity(), uri, null, null, null,
+				null);
 	}
 
 	@Override
@@ -326,7 +341,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 		double lng;
 		String disc;
 
-		// clear the map and redraw the markers!
+		// clear the map and redraw the markers
 		mMap.clear();
 		// Number of locations available in the SQLite database table
 		locationCount = arg1.getCount();
@@ -358,9 +373,11 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 
 	public void getLocationServices() {
 
-		if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) ==
+		if (ContextCompat.checkSelfPermission(getActivity(),
+				android.Manifest.permission.ACCESS_FINE_LOCATION) ==
 				PackageManager.PERMISSION_GRANTED &&
-				ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
+				ContextCompat.checkSelfPermission(getActivity(),
+						android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
 						PackageManager.PERMISSION_GRANTED) {
 			mMap.setMyLocationEnabled(true);
 			mMap.getUiSettings().setMyLocationButtonEnabled(true);
@@ -393,7 +410,8 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 			googleApiClient.connect();
 
 		} else {
-			Toast.makeText(getActivity(), "So sorry, location permission denied :(", Toast.LENGTH_LONG).show();
+			Toast.makeText(getActivity(), "Sorry, location permission denied :(",
+					Toast.LENGTH_LONG).show();
 		}
 	}
 }

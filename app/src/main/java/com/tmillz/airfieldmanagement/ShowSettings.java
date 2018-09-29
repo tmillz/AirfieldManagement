@@ -29,8 +29,8 @@ public class ShowSettings extends AppCompatActivity {
 		actionBar.setTitle("Settings");
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
-		//actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary)));
-		getFragmentManager().beginTransaction().replace(R.id.content_frame, new Preferences()).commit();
+		getFragmentManager().beginTransaction().replace(R.id.content_frame,
+				new Preferences()).commit();
 	}
 
 	@Override

@@ -27,7 +27,8 @@ public class Calculators extends Fragment {
 	BigDecimal scaled;
 	BigDecimal value;
 
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+							 Bundle savedInstanceState){
 		View view = inflater.inflate(R.layout.calculators, container, false);
 		button1 = (Button) view.findViewById(R.id.button1);
 		button2 = (Button) view.findViewById(R.id.button2);
@@ -40,10 +41,12 @@ public class Calculators extends Fragment {
 		public void onClick(View v) {
 
 			if (editText1.getText().toString().equals("")) {
-				Toast.makeText(getContext(), "Please enter a value", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getContext(), "Please enter a value",
+						Toast.LENGTH_SHORT).show();
 				return;
 			}
-			ts =  new BigDecimal (editText1.getText().toString()).subtract(new BigDecimal("1000")).toString();
+			ts =  new BigDecimal (editText1.getText().toString()).subtract(new BigDecimal(
+					"1000")).toString();
 			value = new BigDecimal (ts);
 			MathContext mc = new MathContext(4, RoundingMode.FLOOR);
 			scaled = value.divide(new BigDecimal ("7"), mc);
@@ -59,7 +62,8 @@ public class Calculators extends Fragment {
 	                        context, "Please enter a value", Toast.LENGTH_SHORT).show();
 					return;
 				}
-				ts =  new BigDecimal (editText3.getText().toString()).subtract(new BigDecimal("200")).toString();
+				ts =  new BigDecimal (editText3.getText().toString()).subtract(new BigDecimal(
+						"200")).toString();
 				value = new BigDecimal (ts);
 				MathContext mc = new MathContext(4, RoundingMode.FLOOR);
 				scaled = value.divide(new BigDecimal ("50"), mc);

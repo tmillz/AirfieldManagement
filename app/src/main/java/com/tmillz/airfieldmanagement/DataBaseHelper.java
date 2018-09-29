@@ -35,13 +35,10 @@ public DataBaseHelper(Context context) {
     this.mContext = context;
 }   
 
-public void createDataBase() { //throws IOException {
-    //If database not exists copy it from the assets
+public void createDataBase() {
 
     boolean mDataBaseExist = checkDataBase();
     if(!mDataBaseExist) {
-        //getReadableDatabase();
-        //close();
         try {
             //Copy the database from assests
             copyDataBase();
@@ -52,7 +49,7 @@ public void createDataBase() { //throws IOException {
         }
     }
 }
-    //Check that the database exists here: /data/data/your package/databases/Da Name
+    //Check that the database exists at /data/data/com.tmillz.airfieldmanagement/databases/Database
     private boolean checkDataBase() {
         File dbFile = new File(DB_PATH + DB_NAME);
         return dbFile.exists();
@@ -76,14 +73,9 @@ public void createDataBase() { //throws IOException {
     //Open the database, so we can query it
     public void open() {
         String mPath = DB_PATH + DB_NAME;
-        mDataBase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.CREATE_IF_NECESSARY);
-        //getReadableDatabase();
+        mDataBase = SQLiteDatabase.openDatabase(mPath, null,
+                SQLiteDatabase.CREATE_IF_NECESSARY);
     }
-
-    //@Override
-    //public void close() {
-    //    mDataBase.close();
-    //}
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
@@ -92,7 +84,6 @@ public void createDataBase() { //throws IOException {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		// TODO Auto-generated method stub
 		if(newVersion>oldVersion){
 	        this.mContext.deleteDatabase(DB_NAME);
 	        try {
@@ -119,6 +110,7 @@ public void createDataBase() { //throws IOException {
     }
 
     public Cursor getAllAircraft(){
-        return mDataBase.query("aircraft", null, null, null, null, null, null);
+        return mDataBase.query("aircraft", null, null, null,
+                null, null, null);
     }
 }

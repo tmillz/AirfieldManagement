@@ -6,7 +6,7 @@ import android.support.v4.widget.ResourceCursorAdapter;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-//Test
+
 class AircraftCursorAdapter extends ResourceCursorAdapter {
 
 	AircraftCursorAdapter(Context context, int layout, Cursor cursor, int flags) {
@@ -21,7 +21,9 @@ class AircraftCursorAdapter extends ResourceCursorAdapter {
 
 		String picID = arg1.getString(arg1.getColumnIndex("pic"));
 		
-		int id = context.getResources().getIdentifier("com.tmillz.airfieldmanagement:drawable/" + picID, null, null);
+		int id = context.getResources().getIdentifier(
+				"com.tmillz.airfieldmanagement:drawable/" + picID, null,
+				null);
 		
 		ImageView pic = (ImageView) view.findViewById(R.id.imageView1);
 		pic.setImageResource(id);
@@ -36,19 +38,24 @@ class AircraftCursorAdapter extends ResourceCursorAdapter {
 		height.setText("Height: " + arg1.getString(arg1.getColumnIndex("height")) + ft);
 		
 		TextView vert_clr = (TextView) view.findViewById(R.id.vertClearance);
-		vert_clr.setText("Vertical Clearance: " + arg1.getString(arg1.getColumnIndex("Vert_clr")) + ft);
+		vert_clr.setText("Vertical Clearance: " + arg1.getString(arg1.getColumnIndex(
+				"Vert_clr")) + ft);
 		
 		TextView max_to_wt = (TextView) view.findViewById(R.id.maxWeight);
-		max_to_wt.setText("Max T/O Weight: " + arg1.getString(arg1.getColumnIndex("max_to_wt")) + k);
+		max_to_wt.setText("Max T/O Weight: " + arg1.getString(arg1.getColumnIndex(
+				"max_to_wt")) + k);
 		
 		TextView basic_empty_wt = (TextView) view.findViewById(R.id.basic_empty_wt);
-		basic_empty_wt.setText("Basic Empty Wt.: " + arg1.getString(arg1.getColumnIndex("basic_empty_wt")) + k);
+		basic_empty_wt.setText("Basic Empty Wt.: " + arg1.getString(arg1.getColumnIndex(
+				"basic_empty_wt")) + k);
 		
 		TextView turn_radius = (TextView) view.findViewById(R.id.turn_radius);
-		turn_radius.setText("Turning Radius: " + arg1.getString(arg1.getColumnIndex("turn_radius")) + ft);
+		turn_radius.setText("Turning Radius: " + arg1.getString(arg1.getColumnIndex(
+				"turn_radius")) + ft);
 		
 		TextView turn_diam = (TextView) view.findViewById(R.id.turn_diam);
-		turn_diam.setText("180" + "\u00b0" + " Turn Diam: " + arg1.getString(arg1.getColumnIndex("turn_diameter")) + ft);
+		turn_diam.setText("180" + "\u00b0" + " Turn Diam: " + arg1.getString(arg1.getColumnIndex(
+				"turn_diameter")) + ft);
 		
 		TextView acn_max_wt = (TextView) view.findViewById(R.id.acnMaxWeight);
 		acn_max_wt.setText(arg1.getString(arg1.getColumnIndex("acn_max_weight")) + k);

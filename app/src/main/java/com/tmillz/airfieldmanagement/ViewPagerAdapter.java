@@ -35,9 +35,10 @@ class ViewPagerAdapter extends FragmentStatePagerAdapter {
     	case 0:
     		return new Maps();
         case 1:
-            return new MarkersList();
+            return new MarkersListRecycler();
         default:
-            throw new IllegalArgumentException("The item position should be less or equal to:" + PAGES);
+            throw new IllegalArgumentException("The item position should be less or equal to:"
+                    + PAGES);
     	}
     }
 

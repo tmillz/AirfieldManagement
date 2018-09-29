@@ -27,7 +27,8 @@ public class MainView extends Fragment {
     File pdfFile = null;
  
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.regulations, null);
         Context context = getActivity();
 
@@ -48,58 +49,82 @@ public class MainView extends Fragment {
             public boolean onChildClick(ExpandableListView parent, View v,
                     int groupPosition, int childPosition, long id) {
             	
-            	child = listDataHeader.get(groupPosition) + ":" + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition);
+            	child = listDataHeader.get(groupPosition) + ":" +
+                        listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition);
 
+            	// Needs Refactor to Clean Code
                     if (child.equalsIgnoreCase("AFIs:AFI 13-204v3")) {
-                        pdfFile = new File(context.getExternalFilesDir(null), "afi13_204v3.pdf");
+                        pdfFile = new File(context.getExternalFilesDir(null),
+                                "afi13_204v3.pdf");
                     }
                     if (child.equalsIgnoreCase("AFIs:AFI 13-213")) {
-                        pdfFile = new File(context.getExternalFilesDir(null), "afi13_213.pdf");
+                        pdfFile = new File(context.getExternalFilesDir(null),
+                                "afi13_213.pdf");
                     }
                     if (child.equalsIgnoreCase("AFIs:AFI 13-202")) {
-                        pdfFile = new File(context.getExternalFilesDir(null), "afi13_202.pdf");
+                        pdfFile = new File(context.getExternalFilesDir(null),
+                                "afi13_202.pdf");
                     }
                     if (child.equalsIgnoreCase("AFIs:AFJMAN 11-213")) {
-                        pdfFile = new File(context.getExternalFilesDir(null), "afjman11_213.pdf");
+                        pdfFile = new File(context.getExternalFilesDir(null),
+                                "afjman11_213.pdf");
                     }
                     if (child.equalsIgnoreCase("AFIs:AFI 11-218")) {
-                        pdfFile = new File(context.getExternalFilesDir(null), "afi11_218.pdf");
+                        pdfFile = new File(context.getExternalFilesDir(null),
+                                "afi11_218.pdf");
                     }
                     if (child.equalsIgnoreCase("AFIs:AFI 13-202")) {
-                        pdfFile = new File(context.getExternalFilesDir(null), "afi13_202.pdf");
+                        pdfFile = new File(context.getExternalFilesDir(null),
+                                "afi13_202.pdf");
                     }
                     if (child.equalsIgnoreCase("AFIs:AFI 10-1001")) {
-                        pdfFile = new File(context.getExternalFilesDir(null), "afi10_1001.pdf");
+                        pdfFile = new File(context.getExternalFilesDir(null),
+                                "afi10_1001.pdf");
                     }
                     if (child.equalsIgnoreCase("AFIs:AFI 10-1002")) {
-                        pdfFile = new File(context.getExternalFilesDir(null), "afi10_1002.pdf");
+                        pdfFile = new File(context.getExternalFilesDir(null),
+                                "afi10_1002.pdf");
                     }
                     if (child.equalsIgnoreCase("AFIs:AFI 32-1042")) {
-                        pdfFile = new File(context.getExternalFilesDir(null), "afi32_1042.pdf");
+                        pdfFile = new File(context.getExternalFilesDir(null),
+                                "afi32_1042.pdf");
                     }
                     if (child.equalsIgnoreCase("AFIs:AFI 36-2201")) {
-                        pdfFile = new File(context.getExternalFilesDir(null), "afi36_2201.pdf");
+                        pdfFile = new File(context.getExternalFilesDir(null),
+                                "afi36_2201.pdf");
                     }
                     if (child.equalsIgnoreCase("UFCs:UFC 3-260-01")) {
-                        pdfFile = new File(context.getExternalFilesDir(null), "ufc_3_260_01.pdf");
+                        pdfFile = new File(context.getExternalFilesDir(null),
+                                "ufc_3_260_01.pdf");
                     }
                     if (child.equalsIgnoreCase("UFCs:UFC 3-535-01")) {
-                        pdfFile = new File(context.getExternalFilesDir(null), "ufc_3_535_01.pdf");
+                        pdfFile = new File(context.getExternalFilesDir(null),
+                                "ufc_3_535_01.pdf");
+                    }
+                    if (child.equalsIgnoreCase("UFCs:UFC 3-260-04")) {
+                        pdfFile = new File(context.getExternalFilesDir(null),
+                                "ufc_3_260_04.pdf");
                     }
                     if (child.equalsIgnoreCase("ETLs:ETL 04-2")) {
-                        pdfFile = new File(context.getExternalFilesDir(null), "etl_04_2.pdf");
+                        pdfFile = new File(context.getExternalFilesDir(null),
+                                "etl_04_2.pdf");
                     }
                     if (child.equalsIgnoreCase("FAA:JO 7110.10")) {
-                        pdfFile = new File(context.getExternalFilesDir(null), "JO_7110_10.pdf");
+                        pdfFile = new File(context.getExternalFilesDir(null),
+                                "JO_7110_10.pdf");
                     }
                     if(pdfFile != null) {
-                        Intent pdfIntent = new Intent(Intent.ACTION_VIEW, FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", pdfFile));
+                        Intent pdfIntent = new Intent(Intent.ACTION_VIEW,
+                                FileProvider.getUriForFile(context,
+                                        context.getApplicationContext().getPackageName() +
+                                                ".provider", pdfFile));
                         pdfIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                         try {
                             startActivity(pdfIntent);
                         }
                         catch(ActivityNotFoundException e) {
-                            Toast.makeText(context, "No Application available to view pdf", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "No Application available to view pdf",
+                                    Toast.LENGTH_LONG).show();
                         }
                     }
                 return false;
@@ -138,6 +163,7 @@ public class MainView extends Fragment {
         List<String> ufc = new ArrayList<>();
         ufc.add("UFC 3-260-01");
         ufc.add("UFC 3-535-01");
+        ufc.add("UFC 3-260-04");
  
         List<String> etl = new ArrayList<>();
         etl.add("ETL 04-2");

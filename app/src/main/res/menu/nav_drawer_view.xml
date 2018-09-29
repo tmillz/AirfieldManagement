@@ -56,5 +56,10 @@
             android:icon="@drawable/ic_action_email"
             android:title="Allow Google Drive"
             android:visible="false" />
+        <item
+            android:id="@+id/nav_markers_list_rec"
+            android:icon="@drawable/ic_action_email"
+            android:title="Markers List"
+            android:visible="true" />
     </group>
 </menu>

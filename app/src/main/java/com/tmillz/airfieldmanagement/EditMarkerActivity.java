@@ -39,7 +39,8 @@ import java.util.Calendar;
 import java.util.Locale;
 
 
-public class EditMarkerActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class EditMarkerActivity extends AppCompatActivity implements
+        LoaderManager.LoaderCallbacks<Cursor> {
 
     long id;
     String rowId;
@@ -79,7 +80,6 @@ public class EditMarkerActivity extends AppCompatActivity implements LoaderManag
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Edit Marker");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary)));
 
         editDate = (TextView) findViewById(R.id.date);
         calendar = Calendar.getInstance();
@@ -112,7 +112,8 @@ public class EditMarkerActivity extends AppCompatActivity implements LoaderManag
             @Override
             public void onClick(View view) {
 
-            if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)==
+            if (ContextCompat.checkSelfPermission(getApplicationContext(),
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)==
                     PackageManager.PERMISSION_GRANTED) {
 
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
@@ -138,11 +139,12 @@ public class EditMarkerActivity extends AppCompatActivity implements LoaderManag
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case 123: {
-                // If request is cancelled, the result arrays are empty.
+                // If request is cancelled the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
@@ -158,8 +160,8 @@ public class EditMarkerActivity extends AppCompatActivity implements LoaderManag
 
                     // permission was denied disable the
                     // functionality that depends on this permission.
-                    AlertDialog alertdialog = new AlertDialog.Builder(EditMarkerActivity.this).create();
-                    //alertdialog.setTitle("Attention");
+                    AlertDialog alertdialog = new AlertDialog.Builder(
+                            EditMarkerActivity.this).create();
                     alertdialog.setMessage("Permission needed to choose picture");
                     alertdialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
                             new DialogInterface.OnClickListener() {
@@ -171,9 +173,6 @@ public class EditMarkerActivity extends AppCompatActivity implements LoaderManag
                 }
                 return;
             }
-
-            // other 'case' lines to check for other
-            // permissions this app might request
         }
     }
 
@@ -191,7 +190,8 @@ public class EditMarkerActivity extends AppCompatActivity implements LoaderManag
                 InputStream imageStream = getContentResolver().openInputStream(selectedImageUri);
 
                 int takeFlags = data.getFlags();
-                takeFlags &= (Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                takeFlags &= (Intent.FLAG_GRANT_READ_URI_PERMISSION |
+                        Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                 // Check for the freshest data
                 getContentResolver().takePersistableUriPermission(selectedImageUri, takeFlags);
 
@@ -215,7 +215,8 @@ public class EditMarkerActivity extends AppCompatActivity implements LoaderManag
         @Override
         protected Void doInBackground(ContentValues... contentValues) {
             String selection = rowId;
-            getContentResolver().update(LocationsContentProvider.CONTENT_URI, contentValues[0], selection, null);
+            getContentResolver().update(LocationsContentProvider.CONTENT_URI, contentValues[0],
+                    selection, null);
 
             return null;
         }
@@ -253,7 +254,8 @@ public class EditMarkerActivity extends AppCompatActivity implements LoaderManag
                 // Storing the changes to SQLite database
                 updateTask.execute(contentValues);
 
-                AlertDialog alertdialog = new AlertDialog.Builder(EditMarkerActivity.this).create();
+                AlertDialog alertdialog = new AlertDialog.Builder(
+                        EditMarkerActivity.this).create();
                 alertdialog.setMessage("Your marker has been updated");
                 alertdialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
                         new DialogInterface.OnClickListener() {
@@ -271,7 +273,8 @@ public class EditMarkerActivity extends AppCompatActivity implements LoaderManag
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         Uri uri = LocationsContentProvider.CONTENT_URI_SELECT;
-        return new CursorLoader(this, uri, null, rowId, null, null);
+        return new CursorLoader(this, uri, null, rowId, null,
+                null);
     }
 
     @Override
@@ -281,10 +284,12 @@ public class EditMarkerActivity extends AppCompatActivity implements LoaderManag
         editMarker.setText(arg1.getString(arg1.getColumnIndex(LocationsDB.FIELD_DISC)));
 
         editLat = (TextView) findViewById(R.id.editLat);
-        editLat.setText(Double.toString(arg1.getDouble(arg1.getColumnIndex(LocationsDB.FIELD_LAT))));
+        editLat.setText(Double.toString(arg1.getDouble(arg1.getColumnIndex(
+                LocationsDB.FIELD_LAT))));
 
         editLng = (TextView) findViewById(R.id.editLng);
-        editLng.setText(Double.toString(arg1.getDouble(arg1.getColumnIndex(LocationsDB.FIELD_LNG))));
+        editLng.setText(Double.toString(arg1.getDouble(arg1.getColumnIndex(
+                LocationsDB.FIELD_LNG))));
 
         editDate = (TextView) findViewById(R.id.date);
         editDate.setText(arg1.getString(arg1.getColumnIndex(LocationsDB.FIELD_DATE)));
@@ -310,7 +315,8 @@ public class EditMarkerActivity extends AppCompatActivity implements LoaderManag
                 Log.e("TAG", "woops");
                 // permission was denied disable the
                 // functionality that depends on this permission.
-                AlertDialog alertdialog = new AlertDialog.Builder(EditMarkerActivity.this).create();
+                AlertDialog alertdialog = new AlertDialog.Builder(
+                        EditMarkerActivity.this).create();
                 alertdialog.setMessage("Please reselect the picture to grant permission");
                 alertdialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
                         new DialogInterface.OnClickListener() {

@@ -6,7 +6,6 @@ import android.support.annotation.Keep;
  * Created by Terrance Miller on 8/4/17.
  */
 
-
 @Keep
 public class LocationsObject {
 

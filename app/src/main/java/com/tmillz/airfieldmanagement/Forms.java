@@ -19,23 +19,30 @@ public class Forms extends Fragment {
 	Button workorder;
 	Button flightPlan;
 
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+							 Bundle savedInstanceState){
 		View view =inflater.inflate(R.layout.forms, container, false);
 		workorder = (Button) view.findViewById(R.id.button1);
 		flightPlan = (Button) view.findViewById(R.id.button2);
 
 		workorder.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
-				File pdfFile = new File(getContext().getExternalFilesDir(null), "af332.pdf" );
+				File pdfFile = new File(getContext().getExternalFilesDir(null),
+						"af332.pdf" );
 				if(pdfFile.exists()) {
-					Intent pdfIntent = new Intent(Intent.ACTION_VIEW, FileProvider.getUriForFile(getActivity(), getActivity().getApplicationContext().getPackageName() + ".provider", pdfFile));
+					Intent pdfIntent = new Intent(Intent.ACTION_VIEW,
+							FileProvider.getUriForFile(getActivity(),
+									getActivity().getApplicationContext().getPackageName()
+											+ ".provider", pdfFile));
 					pdfIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
 					try {
 						startActivity(pdfIntent);
 					}
 					catch(ActivityNotFoundException e) {
-						Toast.makeText(getContext(), "No Application available to view pdf", Toast.LENGTH_LONG).show();
+						Toast.makeText(getContext(),
+								"No Application available to view pdf",
+								Toast.LENGTH_LONG).show();
 					}
 				}
 			}
@@ -43,18 +50,24 @@ public class Forms extends Fragment {
 
 		flightPlan.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
-			File pdfFile = new File(getContext().getExternalFilesDir(null), "dd0175.pdf" );
-			if(pdfFile.exists()) {
-				Intent pdfIntent = new Intent(Intent.ACTION_VIEW, FileProvider.getUriForFile(getActivity(), getActivity().getApplicationContext().getPackageName() + ".provider", pdfFile));
-				pdfIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+				File pdfFile = new File(getContext().getExternalFilesDir(null),
+						"dd0175.pdf" );
+				if(pdfFile.exists()) {
+					Intent pdfIntent = new Intent(Intent.ACTION_VIEW,
+							FileProvider.getUriForFile(getActivity(),
+									getActivity().getApplicationContext().getPackageName()
+											+ ".provider", pdfFile));
+					pdfIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
-				try {
-					startActivity(pdfIntent);
+					try {
+						startActivity(pdfIntent);
+					}
+					catch(ActivityNotFoundException e) {
+						Toast.makeText(getContext(),
+								"No Application available to view pdf",
+								Toast.LENGTH_LONG).show();
+					}
 				}
-				catch(ActivityNotFoundException e) {
-					Toast.makeText(getContext(), "No Application available to view pdf", Toast.LENGTH_LONG).show();
-				}
-			}
 			}
 		});
 

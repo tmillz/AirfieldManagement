@@ -55,7 +55,8 @@ public class LocationsDB extends SQLiteOpenHelper {
     }
 
 
-    // This is a callback method, invoked when the method getReadableDatabase() / getWritableDatabase() is called
+    // This is a callback method, invoked when the method getReadableDatabase()
+    // getWritableDatabase() is called
     // provided the database does not exists
 
     @Override
@@ -75,19 +76,19 @@ public class LocationsDB extends SQLiteOpenHelper {
 
     }
 
-    //Inserts a new location to the table locations
+    // Inserts a new location to the table locations
     public long insert(ContentValues values){
         long rowID = mDB.insert(DATABASE_TABLE, null, values);
         return rowID;
     }   
 
-    //Deletes all locations from the table
+    // Deletes all locations from the table
     public int del(){
         int cnt = mDB.delete(DATABASE_TABLE, null , null);
         return cnt;
     }
     
-    //Delete record based on row _id
+    // Delete record based on row _id
     public int deleteId(String rowId) {
         String whereClause = FIELD_ROW_ID + "=?";
         String[] whereArgs = new String[] { rowId };
@@ -95,14 +96,16 @@ public class LocationsDB extends SQLiteOpenHelper {
         return cnt;
     }
     
-    //Select record based on row _id
+    // Select record based on row _id
     public Cursor select(String rowId) {
-    	Cursor getrow = mDB.query(DATABASE_TABLE, null, FIELD_ROW_ID + "=" + rowId, null, null, null, null);
+    	Cursor getrow = mDB.query(DATABASE_TABLE, null,
+                FIELD_ROW_ID + "=" + rowId, null, null,
+                null, null);
         getrow.moveToFirst();
     	return getrow;
     }
     
-    //Update record based on row _id
+    // Update record based on row _id
     public int update(ContentValues values, String selection){
         String whereClause = FIELD_ROW_ID + "=?";
         String[] whereArgs = new String[] { selection };
@@ -112,7 +115,10 @@ public class LocationsDB extends SQLiteOpenHelper {
       
     // Returns all the locations from the table
     public Cursor getAllLocations(){
-        return mDB.query(DATABASE_TABLE, new String[] { FIELD_ROW_ID,  FIELD_LAT, FIELD_LNG, FIELD_ZOOM, FIELD_DISC, FIELD_COLOR, FIELD_PIC, FIELD_DATE } , null, null, null, null, null, null);
+        return mDB.query(DATABASE_TABLE, new String[] { FIELD_ROW_ID,  FIELD_LAT, FIELD_LNG,
+                FIELD_ZOOM, FIELD_DISC, FIELD_COLOR, FIELD_PIC, FIELD_DATE } ,
+                null, null, null, null, null,
+                null);
     }
 
 
@@ -122,13 +128,15 @@ public class LocationsDB extends SQLiteOpenHelper {
     	if (newVersion > oldVersion) {
     		
     		try {
-                mDB.execSQL("ALTER TABLE locations" + " ADD COLUMN pic STRING DEFAULT null"); // VERSION 4 MOD
+    		    // Version 4 MOD
+                mDB.execSQL("ALTER TABLE locations" + " ADD COLUMN pic STRING DEFAULT null");
             } catch (SQLException e) {
                 Log.i("ADD COLUMN pic", "pic already exists");
             }
 
             try {
-                mDB.execSQL("ALTER TABLE locations" + " ADD COLUMN date STRING DEFAULT null"); // VERSION 5 MOD
+    		    // Version 5 MOD
+                mDB.execSQL("ALTER TABLE locations" + " ADD COLUMN date STRING DEFAULT null");
             } catch (SQLException e) {
                 Log.i("ADD COLUMN date", "date already exists");
             }

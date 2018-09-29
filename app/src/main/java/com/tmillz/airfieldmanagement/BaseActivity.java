@@ -87,9 +87,12 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
-        profileImage = (ImageView) mNavigationView.getHeaderView(0).findViewById(R.id.profile_image);
-        TextView userName = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.username);
-        TextView userEmail = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.email);
+        profileImage = (ImageView) mNavigationView.getHeaderView(
+                0).findViewById(R.id.profile_image);
+        TextView userName = (TextView) mNavigationView.getHeaderView(
+                0).findViewById(R.id.username);
+        TextView userEmail = (TextView) mNavigationView.getHeaderView(
+                0).findViewById(R.id.email);
 
 
         mNavigationView.setNavigationItemSelectedListener(
@@ -113,7 +116,8 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
                                 setTitle("Calculators");
                                 break;
                             case R.id.nav_notams:
-                                a = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.notams.faa.gov"));
+                                a = new Intent(Intent.ACTION_VIEW, Uri.parse(
+                                        "https://www.notams.faa.gov"));
                                 startActivity(a);
                                 break;
                             case R.id.nav_bowmonk:
@@ -133,26 +137,32 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
                                 setTitle("Forms");
                                 break;
                             case R.id.nav_rate:
-                                a = new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=com.tmillz.airfieldmanagement"));
+                                a = new Intent(Intent.ACTION_VIEW, Uri.parse(
+                                        "http://play.google.com/store/apps/details?id=" +
+                                                "com.tmillz.airfieldmanagement"));
                                 startActivity(a);
                                 break;
                             case R.id.nav_email:
                                 a = new Intent(Intent.ACTION_SEND);
                                 a.setType("message/rfc822");
-                                a.putExtra(Intent.EXTRA_EMAIL, new String[] {"terrymil1981@gmail.com"});
-                                a.putExtra(Intent.EXTRA_SUBJECT, "Airfield Management App Android");
+                                a.putExtra(Intent.EXTRA_EMAIL, new String[]
+                                        {"terrymil1981@gmail.com"});
+                                a.putExtra(Intent.EXTRA_SUBJECT,
+                                        "Airfield Management App Android");
                                 a.putExtra(Intent.EXTRA_TEXT, "Android");
                                 startActivity(Intent.createChooser(a, "Send Email"));
                                 break;
                             case R.id.action_settings:
-                                startActivity(new Intent(getApplicationContext(), ShowSettings.class));
+                                startActivity(new Intent(getApplicationContext(),
+                                        ShowSettings.class));
                                 break;
                             case R.id.nav_login:
                                 a = new Intent(getApplication(), LoginActivity.class);
                                 startActivity(a);
                                 break;
                             case R.id.nav_logout:
-                                Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(status -> {
+                                Auth.GoogleSignInApi.signOut(mGoogleApiClient)
+                                        .setResultCallback(status -> {
                                     FirebaseAuth.getInstance().signOut();
                                 });
                                 break;
@@ -173,7 +183,8 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
             @Override
             public void onDrawerOpened(View drawerView) {
                 //Checks if user is logged in with Facebook
-                if(Profile.getCurrentProfile() != null && AccessToken.getCurrentAccessToken() != null){
+                if(Profile.getCurrentProfile() != null && AccessToken.getCurrentAccessToken()
+                        != null){
                     //The user is logged in with facebook
                     new GraphRequest(
                             AccessToken.getCurrentAccessToken(),
@@ -184,11 +195,16 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
                                 public void onCompleted(GraphResponse response) {
                             /* handle the result */
                                     String userId = (String) Profile.getCurrentProfile().getId();
-                                    Glide.with(getApplicationContext()).load("https://graph.facebook.com/" + userId + "/picture?width=200&height=150").into(profileImage);
+                                    Glide.with(getApplicationContext()).load(
+                                            "https://graph.facebook.com/" + userId
+                                                    + "/picture?width=200&height=150")
+                                            .into(profileImage);
                                     userName.setText(Profile.getCurrentProfile().getName());
                                     userEmail.setText("logged in with Facebook");
-                                    mNavigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
-                                    mNavigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
+                                    mNavigationView.getMenu().findItem(R.id.nav_login)
+                                            .setVisible(false);
+                                    mNavigationView.getMenu().findItem(R.id.nav_logout)
+                                            .setVisible(true);
                                 }
                             }
                     ).executeAsync();
@@ -198,7 +214,8 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
                 else if (FirebaseAuth.getInstance().getCurrentUser() != null) {
                     FirebaseAuth mAuth = FirebaseAuth.getInstance();
                     FirebaseUser currentUser = mAuth.getCurrentUser();
-                    Glide.with(getApplicationContext()).load(currentUser.getPhotoUrl()).into(profileImage);
+                    Glide.with(getApplicationContext()).load(currentUser.getPhotoUrl())
+                            .into(profileImage);
                     userName.setText(currentUser.getDisplayName());
                     userEmail.setText(currentUser.getEmail());
                     mNavigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
@@ -211,7 +228,8 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
                     userEmail.setText("");
                     userName.setOnClickListener(new View.OnClickListener(){
                         public void onClick(View v){
-                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                            Intent intent = new Intent(getApplicationContext(),
+                                    LoginActivity.class);
                             startActivity(intent);
                         }
                     });
@@ -221,8 +239,10 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
             public void onDrawerClosed(View drawerView) {}
             @Override
             public void onDrawerStateChanged(int newState) {
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                InputMethodManager inputMethodManager = (InputMethodManager)
+                        getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        0);
             }
         });
 
@@ -259,7 +279,8 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
                 break;
             case R.id.privacy:
                 Intent a;
-                a = new Intent(Intent.ACTION_VIEW, Uri.parse("https://sites.google.com/view/tmillz/airfield-manager"));
+                a = new Intent(Intent.ACTION_VIEW, Uri.parse(
+                        "https://sites.google.com/view/tmillz/airfield-manager"));
                 startActivity(a);
                 return true;
         }
@@ -277,7 +298,8 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
 	}
 
     @Override
-    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+    protected void onActivityResult(final int requestCode, final int resultCode,
+                                    final Intent data) {
         switch (requestCode) {
             case RESOLVE_CONNECTION_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
@@ -302,17 +324,18 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         if (connectionResult.hasResolution()) {
             try {
-                connectionResult.startResolutionForResult(this, RESOLVE_CONNECTION_REQUEST_CODE);
+                connectionResult.startResolutionForResult(this,
+                        RESOLVE_CONNECTION_REQUEST_CODE);
             } catch (IntentSender.SendIntentException e) {
                 // Unable to resolve, message user appropriately
             }
         } else {
-            GooglePlayServicesUtil.getErrorDialog(connectionResult.getErrorCode(), this, 0).show();
+            GooglePlayServicesUtil.getErrorDialog(connectionResult.getErrorCode(),
+                    this, 0).show();
         }
     }
 
     private void signIn() {
         mGoogleApiClient.connect();
     }
-
 }

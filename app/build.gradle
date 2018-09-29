@@ -4,6 +4,10 @@ android {
     compileSdkVersion 26
     buildToolsVersion '27.0.3'
 
+    dataBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "com.tmillz.airfieldmanagement"
         minSdkVersion 15
@@ -15,12 +19,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
             buildConfigField 'String', 'MAP_API_KEY_RELEASE', Map_API_Key_Release
-            resValue 'string', 'map_api_key_release', Map_API_Key_Release
+            resValue 'string', 'map_api_key', Map_API_Key_Release
         }
 
         debug {
             buildConfigField 'String', 'MAP_API_KEY_DEBUG', Map_API_Key_Debug
-            resValue 'string', 'map_api_key_debug', Map_API_Key_Debug
+            resValue 'string', 'map_api_key', Map_API_Key_Debug
         }
     }
 
@@ -41,18 +45,18 @@ android {
 }
 
 dependencies {
-    compile 'com.google.android.gms:play-services-maps:11.0.4'
-    compile 'com.google.android.gms:play-services-location:11.0.4'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.google.android.gms:play-services-auth:11.0.4'
-    compile 'com.google.android.gms:play-services-drive:11.0.4'
-    compile 'com.google.firebase:firebase-core:11.0.4'
-    compile 'com.google.firebase:firebase-auth:11.0.4'
-    compile 'com.google.firebase:firebase-database:11.0.4'
-    compile 'com.facebook.android:facebook-android-sdk:4.26.0'
-    compile 'de.hdodenhof:circleimageview:1.2.1'
-    compile 'com.github.bumptech.glide:glide:4.1.1'
+    implementation 'com.google.android.gms:play-services-maps:11.0.4'
+    implementation 'com.google.android.gms:play-services-location:11.0.4'
+    implementation 'com.android.support:appcompat-v7:26+'
+    implementation 'com.android.support:design:26+'
+    implementation 'com.google.android.gms:play-services-auth:11.0.4'
+    implementation 'com.google.android.gms:play-services-drive:11.0.4'
+    implementation 'com.google.firebase:firebase-core:11.0.4'
+    implementation 'com.google.firebase:firebase-auth:11.0.4'
+    implementation 'com.google.firebase:firebase-database:11.0.4'
+    implementation 'com.facebook.android:facebook-android-sdk:4.26.0'
+    implementation 'de.hdodenhof:circleimageview:1.2.1'
+    implementation 'com.github.bumptech.glide:glide:4.1.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.1.1'
 }
 

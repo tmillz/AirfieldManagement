@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
     package="com.tmillz.airfieldmanagement"
-    android:versionCode="22"
-    android:versionName="2.2" >
+    android:versionCode="23"
+    android:versionName="2.3" >
  
     <permission
           android:name="com.tmillz.airfieldmanagement.permission.MAPS_RECEIVE"
@@ -132,7 +132,7 @@
 		
 		<meta-data
     		android:name="com.google.android.maps.v2.API_KEY"
-            android:value="@string/map_api_key_debug"/>
+            android:value="@string/map_api_key"/>
 		<meta-data
             android:name="com.google.android.gms.version"
 			android:value="@integer/google_play_services_version"/>

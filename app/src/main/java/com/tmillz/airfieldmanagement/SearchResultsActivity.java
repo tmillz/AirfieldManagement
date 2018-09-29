@@ -40,7 +40,6 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_list_toolbar);
 
-        //txtQuery = (TextView) findViewById(R.id.txtQuery);
         listView = (ListView) findViewById(android.R.id.list);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.airport_toolbar);
@@ -48,7 +47,6 @@ public class SearchResultsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Airports");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary)));
 
         listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
@@ -104,10 +102,11 @@ public class SearchResultsActivity extends AppCompatActivity {
                 //txtQuery.setText("Sorry, No Results Found");
             } else {
                 testdata.moveToFirst();
-                latlong = testdata.getString(testdata.getColumnIndex("field7")) + "," + testdata.getString(testdata.getColumnIndex("field8"));
-                //Log.v("Cursor Object", DatabaseUtils.dumpCursorToString(testdata));
+                latlong = testdata.getString(testdata.getColumnIndex("field7")) + ","
+                        + testdata.getString(testdata.getColumnIndex("field8"));
                 listView = (ListView) findViewById(android.R.id.list);
-                AirportCursorAdapter adapter = new AirportCursorAdapter(this, R.layout.activity_search_results, testdata, 0);
+                AirportCursorAdapter adapter = new AirportCursorAdapter(
+                        this, R.layout.activity_search_results, testdata, 0);
                 listView.setAdapter(adapter);
             }
         }

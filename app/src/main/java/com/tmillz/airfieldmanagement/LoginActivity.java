@@ -38,10 +38,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-/**
- * Created by Terrance Miller on 7/19/17.
- */
-
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks
         , GoogleApiClient.OnConnectionFailedListener, OnCompleteListener<AuthResult> {
 
@@ -118,20 +114,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 user_name = (TextView) findViewById(R.id.user_name);
                 password = (TextView) findViewById(R.id.password);
 
-                mAuth.signInWithEmailAndPassword(user_name.getText().toString(), password.getText().toString());
-
-                //Test to add data to firebase on button click
-                /*FirebaseDatabase database = FirebaseDatabase.getInstance();
-                FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-                DatabaseReference myRef = database.getReference("users").child(currentUser.getUid()).child("locations");
-                Map<String,Object> values = new HashMap<>();
-                values.put("title", "test");
-                values.put("lat", "38.744318059551546");
-                values.put("lng", "-27.06905722618103");
-                values.put("date", "25 Jul 17");
-                values.put("id_by", "TM");
-                values.put("notes", "test");
-                myRef.push().setValue(values);*/
+                mAuth.signInWithEmailAndPassword(user_name.getText().toString(),
+                        password.getText().toString());
             }
         });
 
@@ -140,7 +124,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             public void onClick(View v) {
                 user_name = (TextView) findViewById(R.id.user_name);
                 password = (TextView) findViewById(R.id.password);
-                mAuth.createUserWithEmailAndPassword(user_name.getText().toString(), password.getText().toString())
+                mAuth.createUserWithEmailAndPassword(user_name.getText().toString(),
+                        password.getText().toString())
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -160,7 +145,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                 // ...
                             }
                         });
-
             }
         });
 
@@ -208,7 +192,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         currentUser = mAuth.getCurrentUser();
         //updateUI(currentUser);
         if (currentUser != null) {
-            Toast.makeText(LoginActivity.this, "Signed in as " + currentUser.getDisplayName(),
+            Toast.makeText(LoginActivity.this, "Signed in as "
+                            + currentUser.getDisplayName(),
                     Toast.LENGTH_SHORT).show();
             mAuth = FirebaseAuth.getInstance();
         }
@@ -245,14 +230,16 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             //updateUI(user);
-                            Toast.makeText(LoginActivity.this, "Signed in as " + user.getDisplayName(),
+                            Toast.makeText(LoginActivity.this, "Signed in as "
+                                            + user.getDisplayName(),
                                     Toast.LENGTH_SHORT).show();
                             finish();
 
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginActivity.this,
+                                    "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
@@ -323,12 +310,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginActivity.this,"Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
 
-                        // ...
                     }
                 });
     }

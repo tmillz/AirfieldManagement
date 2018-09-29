@@ -10,27 +10,22 @@ import android.widget.TextView;
 
 public class QuickRefrences extends Fragment {
 
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+							 Bundle savedInstanceState){
 		View view =inflater.inflate(R.layout.quickrefrences, container, false);
 
-		TextView textView1 = (TextView) view.findViewById(R.id.textView1);
+		TextView textView1 = view.findViewById(R.id.textView1);
 		textView1.setMovementMethod(LinkMovementMethod.getInstance());
 		
-		TextView textView2 = (TextView) view.findViewById(R.id.textView2);
+		TextView textView2 = view.findViewById(R.id.textView2);
 		textView2.setMovementMethod(LinkMovementMethod.getInstance());
 		
-		TextView textView3 = (TextView) view.findViewById(R.id.textView3);
+		TextView textView3 = view.findViewById(R.id.textView3);
 		textView3.setMovementMethod(LinkMovementMethod.getInstance());
 		
-		TextView textView4 = (TextView) view.findViewById(R.id.textView4);
+		TextView textView4 = view.findViewById(R.id.textView4);
 		textView4.setMovementMethod(LinkMovementMethod.getInstance());
 		
 		return view;
 	}
-	
-	//@Override
-	//public void onActivityCreated(Bundle savedInstanceState){
-	//	super.onActivityCreated(savedInstanceState);
-	//
-	//}
 }
