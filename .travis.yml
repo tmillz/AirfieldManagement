@@ -9,6 +9,8 @@ android:
   - extra-google-m2repository
   - extra-android-m2repository
   - addon-google_apis-google-26
+before_install:
+        - yes | sdkmanager "platforms;android-27"
 env:
   matrix:
   - secure: i91vVEtfCoGVhgsynIpZuUD83IvkOri+l+Tl8XXowjDfa2eKcdNXeK4Gtp/iwR1dko+MPRxh+gieCEX2/z0LDcsawLlyD1YjO2ccaH6RO/Xqubfzmt/lei+eeRbRVrA95eBSl5Jg6OuG8WlfEmoaP/QeUCxAZBFTQt5UA8K/3ImmRNsVwmp3sFuu66UF/dZHfYVSuDEUNe1u1C8VdVhNUtYL8tt2mUTclBf77uidEem8Qfl48gJuGb8u2UU7L8g732TDjPZ2ZFT1VdU1CnMxwsbh3ke3Va6yduUeuZSsnGVdyNu7JTEN99OLf8/sPwSQOwws6FRqdvCn/a6dWKT7Zg2ZdKeARQ4Ud5WIRmiVGLmgGCrW759IEbMrBZtYXfoaXcZRrCDXvyVT1kBu5OBPB3eAZIBhYelUaLYO9GeDEhZT+u37iqE4Zez/gxivo1F/QpdsSDTVTnCFnwTwIXq6B3JH0Wg6m5UDhfZV9OB9kSbCXomje17xjmc2DubFJb2hTtLS8M4vJx7s0TgWeJvASyHCW2eVEj9CN17+SK/xMDJaJvnZphr22GhNeXAgA9lzTp2XGu+YW5MzB2nM0qvkaOFcWe7eizXEvIVGl7hPGHmVIYJ6tgiEE04DUhcInbbDvNdXgbPOU/wqr3OoX+1tXz00C2K4opKyx+fAgPnzr2w=
