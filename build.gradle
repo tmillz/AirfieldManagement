@@ -2,11 +2,6 @@
 buildscript {
     repositories {
         jcenter()
-
-        def Map_API_Key_Release = hasProperty('Map_API_Key_Release') ? Map_API_Key_Release :
-                System.getenv('Map_API_Key_Release')
-        def Map_API_Key_Debug = hasProperty('Map_API_Key_Debug') ? Map_API_Key_Debug :
-                System.getenv('Map_API_Key_Debug')
         google()
     }
     dependencies {
