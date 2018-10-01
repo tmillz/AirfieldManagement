@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/tmillz/airfield_manager_android.svg?branch=master)](https://travis-ci.com/tmillz/airfield_manager_android)
 # airfield_manager_android
 Source code for Airfield Manager on Android
 
