@@ -42,24 +42,8 @@
             android:icon="@drawable/ic_action_email"
             android:title="Email Developer" />
         <item
-            android:id="@+id/nav_login"
+            android:id="@+id/regs_list"
             android:icon="@drawable/ic_action_email"
-            android:title="Sign In"
-            android:visible="true"/>
-        <item
-            android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_action_email"
-            android:title="Sign Out"
-            android:visible="false"/>
-        <item
-            android:id="@+id/nav_login2"
-            android:icon="@drawable/ic_action_email"
-            android:title="Allow Google Drive"
-            android:visible="false" />
-        <item
-            android:id="@+id/nav_markers_list_rec"
-            android:icon="@drawable/ic_action_email"
-            android:title="Markers List"
-            android:visible="true" />
+            android:title="Regulations" />
     </group>
 </menu>

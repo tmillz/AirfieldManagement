@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -27,8 +26,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -42,19 +39,16 @@ import java.util.Locale;
 public class EditMarkerActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
-    long id;
-    String rowId;
-    ImageButton imageButton;
+    static String rowId;
+    private ImageButton imageButton;
     private static final int SELECT_PICTURE = 1;
-    TextView editMarker;
-    TextView editLat;
-    TextView editLng;
-    TextView editDate;
-    TextView editNotes;
-    TextView editIdBy;
-    Uri selectedImageUri;
-    String selectedImageString;
-    Calendar calendar;
+    private TextView editMarker;
+    private TextView editLat;
+    private TextView editLng;
+    private TextView editDate;
+    private TextView editNotes;
+    private TextView editIdBy;
+    private Calendar calendar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,63 +65,54 @@ public class EditMarkerActivity extends AppCompatActivity implements
 
         Intent intent = getIntent();
         Bundle args = intent.getExtras();
-        id = args.getLong("id");
-        rowId = String.valueOf(id);
+        if (args != null) {
+            long id = args.getLong("id");
+            rowId = String.valueOf(id);
+        }
 
         getSupportLoaderManager().initLoader(0, null, this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Edit Marker");
+        getSupportActionBar().setTitle(R.string.edit_marker);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        editDate = (TextView) findViewById(R.id.date);
+        editDate = findViewById(R.id.date);
         calendar = Calendar.getInstance();
 
-        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            calendar.set(Calendar.YEAR, year);
-            calendar.set(Calendar.MONTH, month);
-            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabel();
-            }
+        final DatePickerDialog.OnDateSetListener date = (view, year, month, dayOfMonth) -> {
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        updateLabel();
         };
 
-        editDate.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-            // TODO Auto-generated method stub
-            new DatePickerDialog(EditMarkerActivity.this, date, calendar
-                    .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
+        editDate.setOnClickListener(v -> {
+        // TODO Auto-generated method stub
+        new DatePickerDialog(EditMarkerActivity.this, date, calendar
+                .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)).show();
         });
 
-        imageButton = (ImageButton) findViewById(R.id.imageButton);
+        imageButton = findViewById(R.id.imageButton);
 
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        imageButton.setOnClickListener(view -> {
 
-            if (ContextCompat.checkSelfPermission(getApplicationContext(),
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE)==
-                    PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(getApplicationContext(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)==
+                PackageManager.PERMISSION_GRANTED) {
 
-                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-                intent.setType("image/*");
-                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-                intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-                startActivityForResult(intent, SELECT_PICTURE);
+            Intent intent1 = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+            intent1.setType("image/*");
+            intent1.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent1.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+            intent1.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            startActivityForResult(intent1, SELECT_PICTURE);
 
-            } else {
-                requestPermissions(new String[] { android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-                }, 123);
-            }
-            }
+        } else {
+            requestPermissions(new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE
+            }, 123);
+        }
         });
     }
 
@@ -164,14 +149,9 @@ public class EditMarkerActivity extends AppCompatActivity implements
                             EditMarkerActivity.this).create();
                     alertdialog.setMessage("Permission needed to choose picture");
                     alertdialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
+                            (dialog, which) -> dialog.dismiss());
                     alertdialog.show();
                 }
-                return;
             }
         }
     }
@@ -258,11 +238,7 @@ public class EditMarkerActivity extends AppCompatActivity implements
                         EditMarkerActivity.this).create();
                 alertdialog.setMessage("Your marker has been updated");
                 alertdialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
+                        (dialog, which) -> dialog.dismiss());
                 alertdialog.show();
 
                 break;
@@ -280,31 +256,31 @@ public class EditMarkerActivity extends AppCompatActivity implements
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor arg1) {
 
-        editMarker = (TextView) findViewById(R.id.editTitle);
+        editMarker = findViewById(R.id.editTitle);
         editMarker.setText(arg1.getString(arg1.getColumnIndex(LocationsDB.FIELD_DISC)));
 
-        editLat = (TextView) findViewById(R.id.editLat);
+        editLat = findViewById(R.id.editLat);
         editLat.setText(Double.toString(arg1.getDouble(arg1.getColumnIndex(
                 LocationsDB.FIELD_LAT))));
 
-        editLng = (TextView) findViewById(R.id.editLng);
+        editLng = findViewById(R.id.editLng);
         editLng.setText(Double.toString(arg1.getDouble(arg1.getColumnIndex(
                 LocationsDB.FIELD_LNG))));
 
-        editDate = (TextView) findViewById(R.id.date);
+        editDate = findViewById(R.id.date);
         editDate.setText(arg1.getString(arg1.getColumnIndex(LocationsDB.FIELD_DATE)));
 
-        editIdBy = (TextView) findViewById(R.id.idBy);
+        editIdBy = findViewById(R.id.idBy);
         editIdBy.setText(arg1.getString(arg1.getColumnIndex(LocationsDB.FIELD_ZOOM)));
 
-        editNotes = (TextView) findViewById(R.id.editNotes);
+        editNotes = findViewById(R.id.editNotes);
         editNotes.setText(arg1.getString(arg1.getColumnIndex(LocationsDB.FIELD_COLOR)));
 
-        imageButton = (ImageButton) findViewById(R.id.imageButton);
-        selectedImageString = arg1.getString(arg1.getColumnIndex(LocationsDB.FIELD_PIC));
+        imageButton = findViewById(R.id.imageButton);
+        String selectedImageString = arg1.getString(arg1.getColumnIndex(LocationsDB.FIELD_PIC));
 
         if (selectedImageString != null) {
-            selectedImageUri = Uri.parse(selectedImageString);
+            Uri selectedImageUri = Uri.parse(selectedImageString);
             try {
 
                 InputStream imageStream = getContentResolver().openInputStream(selectedImageUri);
@@ -319,11 +295,7 @@ public class EditMarkerActivity extends AppCompatActivity implements
                         EditMarkerActivity.this).create();
                 alertdialog.setMessage("Please reselect the picture to grant permission");
                 alertdialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
+                        (dialog, which) -> dialog.dismiss());
                 alertdialog.show();
             }
         }

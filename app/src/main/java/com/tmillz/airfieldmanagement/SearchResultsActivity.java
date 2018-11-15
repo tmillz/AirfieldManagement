@@ -11,22 +11,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import java.util.Objects;
 
 public class SearchResultsActivity extends AppCompatActivity {
 
-    private TextView txtQuery;
+    // private TextView txtQuery;
     private ListView listView;
     public  String latlong;
     DataBaseHelper mDbHelper;
     Cursor testdata;
-    
-    private String sql = "SELECT * FROM airports WHERE LOWER(field6)LIKE ?";
- 
+
     @Override
 	public void onCreate(Bundle savedInstanceState) {
 
@@ -40,20 +36,18 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_list_toolbar);
 
-        listView = (ListView) findViewById(android.R.id.list);
+        listView = findViewById(android.R.id.list);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.airport_toolbar);
+        Toolbar toolbar = findViewById(R.id.airport_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Airports");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.airports);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        listView.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                Uri location = Uri.parse("geo:"+ latlong);
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
-	        	startActivity(mapIntent);
-            }
+        listView.setOnItemClickListener((arg0, arg1, arg2, arg3) -> {
+            Uri location = Uri.parse("geo:"+ latlong);
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
+            startActivity(mapIntent);
         });
 
         mDbHelper = new DataBaseHelper(getBaseContext());
@@ -94,6 +88,7 @@ public class SearchResultsActivity extends AppCompatActivity {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
 
+            String sql = "SELECT * FROM airports WHERE LOWER(field6)LIKE ?";
             testdata = mDbHelper.getData(sql, new String[] {query});
             startManagingCursor(testdata);
 
@@ -104,7 +99,7 @@ public class SearchResultsActivity extends AppCompatActivity {
                 testdata.moveToFirst();
                 latlong = testdata.getString(testdata.getColumnIndex("field7")) + ","
                         + testdata.getString(testdata.getColumnIndex("field8"));
-                listView = (ListView) findViewById(android.R.id.list);
+                listView = findViewById(android.R.id.list);
                 AirportCursorAdapter adapter = new AirportCursorAdapter(
                         this, R.layout.activity_search_results, testdata, 0);
                 listView.setAdapter(adapter);

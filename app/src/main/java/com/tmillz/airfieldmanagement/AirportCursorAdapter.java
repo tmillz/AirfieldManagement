@@ -16,26 +16,30 @@ class AirportCursorAdapter extends ResourceCursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
 
-        TextView txtQuery = (TextView) view.findViewById(R.id.txtQuery);
+        TextView txtQuery = view.findViewById(R.id.txtQuery);
         txtQuery.setText(cursor.getString(cursor.getColumnIndex("field2")));
         
-        TextView txtQuery2 = (TextView) view.findViewById(R.id.txtQuery2);
+        TextView txtQuery2 = view.findViewById(R.id.txtQuery2);
         txtQuery2.setText(cursor.getString(cursor.getColumnIndex("field3")));
         
-        TextView txtQuery3 = (TextView) view.findViewById(R.id.txtQuery3);
+        TextView txtQuery3 = view.findViewById(R.id.txtQuery3);
         txtQuery3.setText(cursor.getString(cursor.getColumnIndex("field4")));
         
-        TextView txtQuery4 = (TextView) view.findViewById(R.id.txtQuery4);
-        txtQuery4.setText("Lat/Lng (\u00b0dd): " + cursor.getString(cursor.getColumnIndex(
-                "field7")) + " " + cursor.getString(cursor.getColumnIndex("field8")));
+        TextView txtQuery4 = view.findViewById(R.id.txtQuery4);
+        txtQuery4.setText(context.getString(R.string.lat_lng,
+               cursor.getString(cursor.getColumnIndex("field7")),
+                cursor.getString(cursor.getColumnIndex("field8"))));
         
-        TextView txtQuery6 = (TextView) view.findViewById(R.id.txtQuery6);
-        txtQuery6.setText("Alt (ft): " + cursor.getString(cursor.getColumnIndex("field9")));
+        TextView txtQuery6 = view.findViewById(R.id.txtQuery6);
+        txtQuery6.setText(context.getString(R.string.alt,
+                cursor.getString(cursor.getColumnIndex("field9"))));
         
-        TextView txtQuery7 = (TextView) view.findViewById(R.id.txtQuery7);
-        txtQuery7.setText("UTC: " + cursor.getString(cursor.getColumnIndex("field10")));
+        TextView txtQuery7 = view.findViewById(R.id.txtQuery7);
+        txtQuery7.setText(context.getString(R.string.utc,
+                cursor.getString(cursor.getColumnIndex("field10"))));
 
-        TextView txtQuery8 = (TextView) view.findViewById(R.id.txtQuery8);
-        txtQuery8.setText("DST Zone: " + cursor.getString(cursor.getColumnIndex("field11")));
+        TextView txtQuery8 = view.findViewById(R.id.txtQuery8);
+        txtQuery8.setText(context.getString(R.string.dst,
+                cursor.getString(cursor.getColumnIndex("field11"))));
     }
 }

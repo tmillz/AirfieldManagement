@@ -10,8 +10,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.google.android.gms.maps.MapView;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -59,21 +57,6 @@ public class MainActivity extends BaseActivity {
 	        // Something pretty serious went wrong
 	        e.printStackTrace();
 	    }
-
-		// Fixing Later Map loading Delay
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					MapView mv = new MapView(getApplicationContext());
-					mv.onCreate(null);
-					mv.onPause();
-					mv.onDestroy();
-				}catch (Exception ignored){
-
-				}
-			}
-		}).start();
 
 		super.onCreate(savedInstanceState);
 	}

@@ -15,106 +15,117 @@ class AircraftCursorAdapter extends ResourceCursorAdapter {
 
 	@Override
 	public void bindView(View view, Context context, Cursor arg1) {
-		
-		String ft = "ft";
-		String k = "K Lbs";
 
 		String picID = arg1.getString(arg1.getColumnIndex("pic"));
+
+		String test = "test";
 		
 		int id = context.getResources().getIdentifier(
 				"com.tmillz.airfieldmanagement:drawable/" + picID, null,
 				null);
 		
-		ImageView pic = (ImageView) view.findViewById(R.id.imageView1);
+		ImageView pic = view.findViewById(R.id.imageView1);
 		pic.setImageResource(id);
 		
-		TextView wingSpan = (TextView) view.findViewById(R.id.wingSpan);
-		wingSpan.setText("Wingspan: " + arg1.getString(arg1.getColumnIndex("wing_span")) + ft);
+		TextView wingSpan = view.findViewById(R.id.wingSpan);
+		// wingSpan.setText(context.getString(R.string.ft,
+		// 		arg1.getString(arg1.getColumnIndex("wing_span"))));
+		//String ftString = context.getString(R.string.ft);
+		wingSpan.setText(context.getString(R.string.ft,
+				arg1.getString(arg1.getColumnIndex("wing_span"))));
 		
-		TextView length = (TextView) view.findViewById(R.id.length);
-		length.setText("Length: " + arg1.getString(arg1.getColumnIndex("length")) + ft);
+		TextView length = view.findViewById(R.id.length);
+		length.setText(context.getString(R.string.ft,
+				arg1.getString(arg1.getColumnIndex("length"))));
 		
-		TextView height = (TextView) view.findViewById(R.id.height);
-		height.setText("Height: " + arg1.getString(arg1.getColumnIndex("height")) + ft);
+		TextView height = view.findViewById(R.id.height);
+		height.setText(context.getString(R.string.ft,
+				arg1.getString(arg1.getColumnIndex("height"))));
 		
-		TextView vert_clr = (TextView) view.findViewById(R.id.vertClearance);
-		vert_clr.setText("Vertical Clearance: " + arg1.getString(arg1.getColumnIndex(
-				"Vert_clr")) + ft);
+		TextView vert_clr = view.findViewById(R.id.vertClearance);
+		vert_clr.setText(context.getString(R.string.vertical_clearance,
+				arg1.getString(arg1.getColumnIndex("Vert_clr"))));
 		
-		TextView max_to_wt = (TextView) view.findViewById(R.id.maxWeight);
-		max_to_wt.setText("Max T/O Weight: " + arg1.getString(arg1.getColumnIndex(
-				"max_to_wt")) + k);
+		TextView max_to_wt = view.findViewById(R.id.maxWeight);
+		max_to_wt.setText(context.getString(R.string.max_to_weight,
+				arg1.getString(arg1.getColumnIndex("max_to_wt"))));
 		
-		TextView basic_empty_wt = (TextView) view.findViewById(R.id.basic_empty_wt);
-		basic_empty_wt.setText("Basic Empty Wt.: " + arg1.getString(arg1.getColumnIndex(
-				"basic_empty_wt")) + k);
+		TextView basic_empty_wt = view.findViewById(R.id.basic_empty_wt);
+		basic_empty_wt.setText(context.getString(R.string.basic_empty_wt,
+				arg1.getString(arg1.getColumnIndex("basic_empty_wt"))));
 		
-		TextView turn_radius = (TextView) view.findViewById(R.id.turn_radius);
-		turn_radius.setText("Turning Radius: " + arg1.getString(arg1.getColumnIndex(
-				"turn_radius")) + ft);
+		TextView turn_radius = view.findViewById(R.id.turn_radius);
+		turn_radius.setText(context.getString(R.string.turning_radius,
+				arg1.getString(arg1.getColumnIndex("turn_radius"))));
 		
-		TextView turn_diam = (TextView) view.findViewById(R.id.turn_diam);
-		turn_diam.setText("180" + "\u00b0" + " Turn Diam: " + arg1.getString(arg1.getColumnIndex(
-				"turn_diameter")) + ft);
+		TextView turn_diam = view.findViewById(R.id.turn_diam);
+		turn_diam.setText(context.getString(R.string.one_eighty_degree_turn,
+				arg1.getString(arg1.getColumnIndex(
+						"turn_diameter"))));
 		
-		TextView acn_max_wt = (TextView) view.findViewById(R.id.acnMaxWeight);
-		acn_max_wt.setText(arg1.getString(arg1.getColumnIndex("acn_max_weight")) + k);
+		TextView acn_max_wt = view.findViewById(R.id.acnMaxWeight);
+		acn_max_wt.setText(context.getString(R.string.k,
+				arg1.getString(arg1.getColumnIndex("acn_max_weight"))));
 		
-		TextView max_rigid_a = (TextView) view.findViewById(R.id.rigidMaxA);
+		TextView max_rigid_a = view.findViewById(R.id.rigidMaxA);
 		max_rigid_a.setText(arg1.getString(arg1.getColumnIndex("max_rigid_a")));
 		
-		TextView max_rigid_b = (TextView) view.findViewById(R.id.rigidMaxB);
+		TextView max_rigid_b = view.findViewById(R.id.rigidMaxB);
 		max_rigid_b.setText(arg1.getString(arg1.getColumnIndex("max_rigid_b")));
 		
-		TextView max_rigid_c = (TextView) view.findViewById(R.id.rigidMaxC);
+		TextView max_rigid_c = view.findViewById(R.id.rigidMaxC);
 		max_rigid_c.setText(arg1.getString(arg1.getColumnIndex("max_rigid_c")));
 		
-		TextView max_rigid_d = (TextView) view.findViewById(R.id.rigidMaxD);
+		TextView max_rigid_d = view.findViewById(R.id.rigidMaxD);
 		max_rigid_d.setText(arg1.getString(arg1.getColumnIndex("max_rigid_d")));
 		
-		TextView acn_wt_min = (TextView) view.findViewById(R.id.acnMinWeight);
-		acn_wt_min.setText(arg1.getString(arg1.getColumnIndex("acn_weight_min")) + k);
+		TextView acn_wt_min = view.findViewById(R.id.acnMinWeight);
+		acn_wt_min.setText(context.getString(R.string.k,
+				arg1.getString(arg1.getColumnIndex("acn_weight_min"))));
 		
-		TextView rigid_a = (TextView) view.findViewById(R.id.rigidMinA);
+		TextView rigid_a = view.findViewById(R.id.rigidMinA);
 		rigid_a.setText(arg1.getString(arg1.getColumnIndex("rigid_a")));
 		
-		TextView rigid_b = (TextView) view.findViewById(R.id.rigidMinB);
+		TextView rigid_b = view.findViewById(R.id.rigidMinB);
 		rigid_b.setText(arg1.getString(arg1.getColumnIndex("rigid_b")));
 		
-		TextView rigid_c = (TextView) view.findViewById(R.id.rigidMinC);
+		TextView rigid_c = view.findViewById(R.id.rigidMinC);
 		rigid_c.setText(arg1.getString(arg1.getColumnIndex("rigid_c")));
 		
-		TextView rigid_d = (TextView) view.findViewById(R.id.rigidMinD);
+		TextView rigid_d = view.findViewById(R.id.rigidMinD);
 		rigid_d.setText(arg1.getString(arg1.getColumnIndex("rigid_d")));
-		
-		TextView flexMaxWeight = (TextView) view.findViewById(R.id.flexMaxWeight);
-		flexMaxWeight.setText(arg1.getString(arg1.getColumnIndex("acn_max_weight")) + k);
-		
-		TextView max_flex_a = (TextView) view.findViewById(R.id.flexMaxA);
+
+		// Need to double check the Column indext
+		TextView flexMaxWeight = view.findViewById(R.id.flexMaxWeight);
+		flexMaxWeight.setText(context.getString(R.string.k,
+				arg1.getString(arg1.getColumnIndex("acn_max_weight"))));
+
+		TextView max_flex_a = view.findViewById(R.id.flexMaxA);
 		max_flex_a.setText(arg1.getString(arg1.getColumnIndex("max_flex_a")));
 		
-		TextView max_flex_b = (TextView) view.findViewById(R.id.flexMaxB);
+		TextView max_flex_b = view.findViewById(R.id.flexMaxB);
 		max_flex_b.setText(arg1.getString(arg1.getColumnIndex("max_flex_b")));
 		
-		TextView max_flex_c = (TextView) view.findViewById(R.id.flexMaxC);
+		TextView max_flex_c = view.findViewById(R.id.flexMaxC);
 		max_flex_c.setText(arg1.getString(arg1.getColumnIndex("max_flex_c")));
 		
-		TextView max_flex_d = (TextView) view.findViewById(R.id.flexMaxD);
+		TextView max_flex_d = view.findViewById(R.id.flexMaxD);
 		max_flex_d.setText(arg1.getString(arg1.getColumnIndex("max_flex_d")));
 		
-		TextView flexMinWeight = (TextView) view.findViewById(R.id.flexMinWeight);
-		flexMinWeight.setText(arg1.getString(arg1.getColumnIndex("acn_weight_min")) + k);
+		TextView flexMinWeight = view.findViewById(R.id.flexMinWeight);
+		flexMinWeight.setText(context.getString(R.string.k,
+				arg1.getString(arg1.getColumnIndex("acn_weight_min"))));
 		
-		TextView flex_a = (TextView) view.findViewById(R.id.flexMinA);
+		TextView flex_a = view.findViewById(R.id.flexMinA);
 		flex_a.setText(arg1.getString(arg1.getColumnIndex("flex_a")));
 		
-		TextView flex_b = (TextView) view.findViewById(R.id.flexMinB);
+		TextView flex_b = view.findViewById(R.id.flexMinB);
 		flex_b.setText(arg1.getString(arg1.getColumnIndex("flex_b")));
 		
-		TextView flex_c = (TextView) view.findViewById(R.id.flexMinC);
+		TextView flex_c = view.findViewById(R.id.flexMinC);
 		flex_c.setText(arg1.getString(arg1.getColumnIndex("flex_c")));
 		
-		TextView flex_d = (TextView) view.findViewById(R.id.flexMinD);
+		TextView flex_d = view.findViewById(R.id.flexMinD);
 		flex_d.setText(arg1.getString(arg1.getColumnIndex("flex_d")));
 	}
 }

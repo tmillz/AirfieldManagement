@@ -1,7 +1,6 @@
 package com.tmillz.airfieldmanagement;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -36,16 +35,11 @@ public class Preferences extends PreferenceFragment implements OnSharedPreferenc
 			final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 			builder.setTitle("Apply Theme Now?");
 			builder.setMessage("You must restart the App to apply the theme now");
-			builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					Intent i = new Intent(getActivity(), MainActivity.class);
-		            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		            startActivity(i);
-				}
-		    
-			 });
+			builder.setPositiveButton("OK", (dialog, which) -> {
+                Intent i = new Intent(getActivity(), MainActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            });
 		builder.show();
 		}
 	}

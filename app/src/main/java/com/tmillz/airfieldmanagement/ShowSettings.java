@@ -23,10 +23,10 @@ public class ShowSettings extends AppCompatActivity {
 
 		setContentView(R.layout.pref_with_actionbar);
 
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 		ActionBar actionBar = getSupportActionBar();
-		actionBar.setTitle("Settings");
+		actionBar.setTitle(R.string.settings);
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
 		getFragmentManager().beginTransaction().replace(R.id.content_frame,

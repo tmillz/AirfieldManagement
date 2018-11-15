@@ -51,20 +51,17 @@ public class MarkersRecCursorAdapter extends
             viewForeground = itemView.findViewById(R.id.view_foreground);
 
             // working click for marker item
-            itemView.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View view){
-                    RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder)view.getTag();
-                    long id = viewHolder.getItemId();
-                    Log.e("Yay!", String.valueOf(id));
-                    Intent intent = new Intent(view.getContext(), EditMarkerActivity.class);
-                    intent.putExtra("id", id);
-                    view.getContext().startActivity(intent);
-                }
+            itemView.setOnClickListener(view -> {
+                RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder)view.getTag();
+                long id = viewHolder.getItemId();
+                Log.e("Yay!", String.valueOf(id));
+                Intent intent = new Intent(view.getContext(), EditMarkerActivity.class);
+                intent.putExtra("id", id);
+                view.getContext().startActivity(intent);
             });
         }
 
-        public void bindCursor(Cursor cursor) {
+        private void bindCursor(Cursor cursor) {
             title.setText(cursor.getString(cursor.getColumnIndexOrThrow(
                     LocationsDB.FIELD_DISC
             )));

@@ -23,7 +23,8 @@ public class MainView extends Fragment {
 	ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+    HashMap<String, ArrayList<RegsList>> listDataChild;
+
     File pdfFile = null;
  
     @Override
@@ -32,10 +33,10 @@ public class MainView extends Fragment {
         View v = inflater.inflate(R.layout.regulations, null);
         Context context = getActivity();
 
-        expListView = (ExpandableListView) v.findViewById(R.id.lvExp);
+        expListView = v.findViewById(R.id.lvExp);
  
         prepareListData();
- 
+
         listAdapter = new ExpandableListAdapter(context, listDataHeader, listDataChild);
  
         expListView.setAdapter(listAdapter);
@@ -48,71 +49,12 @@ public class MainView extends Fragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                     int groupPosition, int childPosition, long id) {
-            	
-            	child = listDataHeader.get(groupPosition) + ":" +
-                        listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition);
 
-            	// Needs Refactor to Clean Code
-                    if (child.equalsIgnoreCase("AFIs:AFI 13-204v3")) {
-                        pdfFile = new File(context.getExternalFilesDir(null),
-                                "afi13_204v3.pdf");
-                    }
-                    if (child.equalsIgnoreCase("AFIs:AFI 13-213")) {
-                        pdfFile = new File(context.getExternalFilesDir(null),
-                                "afi13_213.pdf");
-                    }
-                    if (child.equalsIgnoreCase("AFIs:AFI 13-202")) {
-                        pdfFile = new File(context.getExternalFilesDir(null),
-                                "afi13_202.pdf");
-                    }
-                    if (child.equalsIgnoreCase("AFIs:AFJMAN 11-213")) {
-                        pdfFile = new File(context.getExternalFilesDir(null),
-                                "afjman11_213.pdf");
-                    }
-                    if (child.equalsIgnoreCase("AFIs:AFI 11-218")) {
-                        pdfFile = new File(context.getExternalFilesDir(null),
-                                "afi11_218.pdf");
-                    }
-                    if (child.equalsIgnoreCase("AFIs:AFI 13-202")) {
-                        pdfFile = new File(context.getExternalFilesDir(null),
-                                "afi13_202.pdf");
-                    }
-                    if (child.equalsIgnoreCase("AFIs:AFI 10-1001")) {
-                        pdfFile = new File(context.getExternalFilesDir(null),
-                                "afi10_1001.pdf");
-                    }
-                    if (child.equalsIgnoreCase("AFIs:AFI 10-1002")) {
-                        pdfFile = new File(context.getExternalFilesDir(null),
-                                "afi10_1002.pdf");
-                    }
-                    if (child.equalsIgnoreCase("AFIs:AFI 32-1042")) {
-                        pdfFile = new File(context.getExternalFilesDir(null),
-                                "afi32_1042.pdf");
-                    }
-                    if (child.equalsIgnoreCase("AFIs:AFI 36-2201")) {
-                        pdfFile = new File(context.getExternalFilesDir(null),
-                                "afi36_2201.pdf");
-                    }
-                    if (child.equalsIgnoreCase("UFCs:UFC 3-260-01")) {
-                        pdfFile = new File(context.getExternalFilesDir(null),
-                                "ufc_3_260_01.pdf");
-                    }
-                    if (child.equalsIgnoreCase("UFCs:UFC 3-535-01")) {
-                        pdfFile = new File(context.getExternalFilesDir(null),
-                                "ufc_3_535_01.pdf");
-                    }
-                    if (child.equalsIgnoreCase("UFCs:UFC 3-260-04")) {
-                        pdfFile = new File(context.getExternalFilesDir(null),
-                                "ufc_3_260_04.pdf");
-                    }
-                    if (child.equalsIgnoreCase("ETLs:ETL 04-2")) {
-                        pdfFile = new File(context.getExternalFilesDir(null),
-                                "etl_04_2.pdf");
-                    }
-                    if (child.equalsIgnoreCase("FAA:JO 7110.10")) {
-                        pdfFile = new File(context.getExternalFilesDir(null),
-                                "JO_7110_10.pdf");
-                    }
+                child = listDataChild.get(listDataHeader.get(groupPosition))
+                        .get(childPosition).file;
+
+            	pdfFile = new File(context.getExternalFilesDir(null), child);
+
                     if(pdfFile != null) {
                         Intent pdfIntent = new Intent(Intent.ACTION_VIEW,
                                 FileProvider.getUriForFile(context,
@@ -143,39 +85,91 @@ public class MainView extends Fragment {
         listDataChild = new HashMap<>();
  
         // Adding child data
-        listDataHeader.add("AFIs");
-        listDataHeader.add("UFCs");
-        listDataHeader.add("ETLs");
-        listDataHeader.add("FAA");
+        listDataHeader.add("AFIs: Air Force Instructions");
+        listDataHeader.add("UFCs: Unified Facility Criteria");
+        listDataHeader.add("ETLs: Engineering Technical Letters");
+        listDataHeader.add("FAA: Federal Aviation Administration");
+        listDataHeader.add("MAJCOM Supplements");
  
         // Adding child data
-        List<String> afi = new ArrayList<>();
-        afi.add("AFI 13-204v3");
-        afi.add("AFI 13-213");
-        afi.add("AFI 13-202");
-        afi.add("AFJMAN 11-213");
-        afi.add("AFI 11-218");
-        afi.add("AFI 10-1001");
-        afi.add("AFI 10-1002");
-        afi.add("AFI 32-1042");
-        afi.add("AFI 36-2201");
- 
-        List<String> ufc = new ArrayList<>();
-        ufc.add("UFC 3-260-01");
-        ufc.add("UFC 3-535-01");
-        ufc.add("UFC 3-260-04");
- 
-        List<String> etl = new ArrayList<>();
-        etl.add("ETL 04-2");
-        
-        List<String> faa = new ArrayList<>();
-        faa.add("JO 7110.10");
+        ArrayList<RegsList> afi = new ArrayList<>();
+        afi.add(new RegsList("AFI 13-204v3 Airfield Operations", "afi13_204v3.pdf"));
+        afi.add(new RegsList("AFI 13-204v2 Airfield Operations Standardization and Evaluations"
+                ,"afi13-204v2.pdf"));
+        afi.add(new RegsList("AFI 13-204v1 Airfield Operations Career Field Development",
+                "afi13-204v1.pdf"));
+        afi.add(new RegsList("AFI 13-213 Airfield Driving","afi13-213.pdf"));
+        afi.add(new RegsList("AFI 11-208IP Department of Defense Notice to Airment System",
+                "afi11-208_ip.pdf"));
+        afi.add(new RegsList("AFI 11-218 Aircraft Operations and Movement on the Ground",
+                "afi11_218.pdf"));
+        afi.add(new RegsList("AFI 13-217 Drop Zone and Landing Zone Operations",
+                "afi13-217.pdf"));
+        afi.add(new RegsList("AFI 10-1001 Civil Aircraft Landing Permits",
+                "afi10-1001.pdf"));
+        afi.add(new RegsList(
+                "AFI 10-1801 Foreign Governmental Aircraft Landings at USAF Installations",
+                "afi10-1801.pdf"));
+        afi.add(new RegsList("AFMAN 32-1084 Facility Requirements","afman32-1084.pdf"));
+        afi.add(new RegsList(
+                "AFPAM 91-212 Bird/Aircraft Strike Hazard (BASH) Reduction Program",
+                "afpam91-212.pdf"));
+        afi.add(new RegsList("AFI 32-1041 Pavement Evaluation Program", "afi32-1041.pdf"));
+        afi.add(new RegsList(
+                "AFI 32-1043 Managing, Operating, and Maintaining Aircraft Arresting Systems",
+                "afi32-1043.pdf"));
 
-        listDataChild.put(listDataHeader.get(0), afi); // Header, Child data
+        ArrayList<RegsList> ufc = new ArrayList<>();
+        ufc.add(new RegsList("test","ufc_3_260_01.pdf"));
+        ufc.add(new RegsList("test","ufc_3_535_01.pdf"));
+        ufc.add(new RegsList("test","ufc_3_260_04.pdf"));
+ 
+        ArrayList<RegsList> etl = new ArrayList<>();
+        etl.add(new RegsList("test","etl_04_2.pdf"));
+        
+        ArrayList<RegsList> faa = new ArrayList<>();
+        faa.add(new RegsList("test","jo_7110.10.pdf"));
+
+        ArrayList<RegsList> majcom = new ArrayList<>();
+        majcom.add(new RegsList("test","AFI 13-204v1 ACCSUP"));
+        majcom.add(new RegsList("test","AFI 13-204v1 AFMCSUP"));
+        majcom.add(new RegsList("test","AFI 13-204v1 AFSPCSUP"));
+        majcom.add(new RegsList("test","AFI 13-204v1 PACAFSUP"));
+        majcom.add(new RegsList("test","AFI 13-204v1 USAFESUP"));
+        majcom.add(new RegsList("test","AFI 13-204v2 ACCSUP"));
+        majcom.add(new RegsList("test","AFI 13-204v2 AFMCSUP"));
+        majcom.add(new RegsList("test","AFI 13-204v2 USAFESUP"));
+        majcom.add(new RegsList("test","AFI 13-204v3 ACCSUP"));
+        majcom.add(new RegsList("test","AFI 13-204v3 AETCSUP"));
+        majcom.add(new RegsList("test","AFI 13-204v3 AFMCSUP"));
+        majcom.add(new RegsList("test","AFI 13-204v3 AFSOCSUP"));
+        majcom.add(new RegsList("test","AFI 13-204v3 AMCSUP"));
+        majcom.add(new RegsList("test","AFI 13-204v3 PACAFSUP"));
+        majcom.add(new RegsList("test","AFI 13-204v3 USAFESUP"));
+
+        listDataChild.put(listDataHeader.get(0), afi);
         listDataChild.put(listDataHeader.get(1), ufc);
         listDataChild.put(listDataHeader.get(2), etl);
         listDataChild.put(listDataHeader.get(3), faa);
+        listDataChild.put(listDataHeader.get(4), majcom);
+
     }
+
+    class RegsList{
+        String reg;
+        String file;
+
+        RegsList(String reg, String file)
+        {
+            this.reg = reg;
+            this.file = file;
+
+        }
+        //getters and setters here
+    }
+
+
+
 }
     
 

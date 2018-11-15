@@ -32,22 +32,28 @@ public class AircraftSpecsActivity extends AppCompatActivity {
         mDbHelper.open();
         setContentView(R.layout.activity_list_toolbar);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.airport_toolbar);
+        Toolbar toolbar = findViewById(R.id.airport_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Aircraft Specs");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        listView = (ListView) findViewById(android.R.id.list);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(R.string.aircraft_specs);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        listView = findViewById(android.R.id.list);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        id = bundle.getLong("id");
-        String rowId = String.valueOf(id);
-        String sql = "SELECT * FROM aircraft WHERE _id=?";
-        aircraftData = mDbHelper.getData(sql, new String[] {rowId});
-        aircraftData.moveToFirst();
-        AircraftCursorAdapter adapter = new AircraftCursorAdapter(
-                this, R.layout.aircraft_specs, aircraftData, 0 );
-                listView.setAdapter(adapter);
+        if (bundle != null) {
+            id = bundle.getLong("id");
+            String rowId = String.valueOf(id);
+            String sql = "SELECT * FROM aircraft WHERE _id=?";
+            aircraftData = mDbHelper.getData(sql, new String[] {rowId});
+            aircraftData.moveToFirst();
+            AircraftCursorAdapter adapter = new AircraftCursorAdapter(
+                    this, R.layout.aircraft_specs, aircraftData, 0 );
+            listView.setAdapter(adapter);
+        }
+
     }
 
     @Override

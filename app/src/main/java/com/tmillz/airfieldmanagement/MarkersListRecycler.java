@@ -21,7 +21,7 @@ public class MarkersListRecycler extends Fragment implements LoaderManager.Loade
     private final static int LOADER_ID = 0;
     private RecyclerView mRecyclerView;
     MarkersRecCursorAdapter adapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    RecyclerView.LayoutManager mLayoutManager;
     //final ColorDrawable background = new ColorDrawable(Color.RED);
 
     @Override

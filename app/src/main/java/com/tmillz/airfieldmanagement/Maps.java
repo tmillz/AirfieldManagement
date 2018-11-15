@@ -37,16 +37,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static android.content.ContentValues.TAG;
 
@@ -61,7 +51,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 	LocationRequest locationRequest;
 	GoogleApiClient googleApiClient;
 	Location location;
-	DatabaseReference myRef;
+	// DatabaseReference myRef;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,12 +66,13 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 		editTitle = (EditText) view.findViewById(R.id.editTitle);
 
 		// Firebase Setup
-		FirebaseAuth mAuth = FirebaseAuth.getInstance();
-		FirebaseUser currentUser = mAuth.getCurrentUser();
-		FirebaseDatabase database = FirebaseDatabase.getInstance();
+		// FirebaseAuth mAuth = FirebaseAuth.getInstance();
+		// FirebaseUser currentUser = mAuth.getCurrentUser();
+		// FirebaseDatabase database = FirebaseDatabase.getInstance();
 		//database.setPersistenceEnabled(true);  //causes app to crash
 
-		if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+		// firebase
+		/* if (FirebaseAuth.getInstance().getCurrentUser() != null) {
 
 			myRef = database.getReference("locations").child(currentUser.getUid());
 
@@ -112,7 +103,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 
 				}
 			});
-		}
+		}*/
 
 		return view;
 	}
@@ -144,61 +135,56 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 		mMap = googleMap;
 		mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
-		mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
-			@Override
-			public void onMapLongClick(LatLng point) {
+		mMap.setOnMapLongClickListener(point -> {
 
-				markerId = markerId + 1;
+            markerId = markerId + 1;
 
-				String disc = editTitle.getText().toString();
-				// Drawing marker on the map
-				drawMarker(point, disc, markerId);
-				// Creating an instance of ContentValues
-				ContentValues contentValues = new ContentValues();
-				// Setting latitude in ContentValues
-				contentValues.put(LocationsDB.FIELD_LAT, point.latitude );
-				// Setting longitude in ContentValues
-				contentValues.put(LocationsDB.FIELD_LNG, point.longitude);
-				// Setting Date in ContentValues
-				contentValues.put(LocationsDB.FIELD_DATE, "");
-				// Setting ID'd By in ContentValues
-				contentValues.put(LocationsDB.FIELD_ZOOM, "");
-				// Setting title text
-				contentValues.put(LocationsDB.FIELD_DISC, disc);
-				// Setting Notes of marker
-				contentValues.put(LocationsDB.FIELD_COLOR, "" );
-				// Creating an instance of LocationInsertTask
-				LocationInsertTask insertTask = new LocationInsertTask();
-				// Storing the latitude, longitude and zoom level to SQLite database
-				insertTask.execute(contentValues);
-				//Log.v("TAG", contentValues.toString());
-				Toast.makeText(getActivity(), "Marker is added to the Map",
-						Toast.LENGTH_SHORT).show();
-				editTitle.setText("");
+            String disc = editTitle.getText().toString();
+            // Drawing marker on the map
+            drawMarker(point, disc, markerId);
+            // Creating an instance of ContentValues
+            ContentValues contentValues = new ContentValues();
+            // Setting latitude in ContentValues
+            contentValues.put(LocationsDB.FIELD_LAT, point.latitude );
+            // Setting longitude in ContentValues
+            contentValues.put(LocationsDB.FIELD_LNG, point.longitude);
+            // Setting Date in ContentValues
+            contentValues.put(LocationsDB.FIELD_DATE, "");
+            // Setting ID'd By in ContentValues
+            contentValues.put(LocationsDB.FIELD_ZOOM, "");
+            // Setting title text
+            contentValues.put(LocationsDB.FIELD_DISC, disc);
+            // Setting Notes of marker
+            contentValues.put(LocationsDB.FIELD_COLOR, "" );
+            // Creating an instance of LocationInsertTask
+            LocationInsertTask insertTask = new LocationInsertTask();
+            // Storing the latitude, longitude and zoom level to SQLite database
+            insertTask.execute(contentValues);
+            //Log.v("TAG", contentValues.toString());
+            Toast.makeText(getActivity(), "Marker is added to the Map",
+                    Toast.LENGTH_SHORT).show();
+            editTitle.setText("");
 
-				Map<String,Object> values = new HashMap<>();
-				values.put("title", disc);
-				values.put("lat", point.latitude);
-				values.put("lng", point.longitude);
-				values.put("date", "");
-				values.put("id_by", "");
-				values.put("notes", "");
-				values.put ("dateClosed","");
-				values.put ("img", "");
-				values.put ("type", "fod.png");
-				myRef.push().setValue(values);
-			}
-		});
+            // firebase
+            //Map<String,Object> values = new HashMap<>();
+            //values.put("title", disc);
+            //values.put("lat", point.latitude);
+            //values.put("lng", point.longitude);
+            //values.put("date", "");
+            //values.put("id_by", "");
+            //values.put("notes", "");
+            //values.put ("dateClosed","");
+            //values.put ("img", "");
+            //values.put ("type", "fod.png");
+            //myRef.push().setValue(values);
+        });
 
-		mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-			@Override
-			public void onInfoWindowClick(Marker marker) {
-				long id = (long) marker.getTag();
-				Intent intent = new Intent(getActivity(), EditMarkerActivity.class);
-				intent.putExtra("id", id);
-				startActivity(intent);
-			}
-		});
+		mMap.setOnInfoWindowClickListener(marker -> {
+            long id = (long) marker.getTag();
+            Intent intent = new Intent(getActivity(), EditMarkerActivity.class);
+            intent.putExtra("id", id);
+            startActivity(intent);
+        });
 
 		// Check location permissions, if needed request from user
 		if (ContextCompat.checkSelfPermission(getActivity(),
@@ -216,7 +202,8 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 			getLocationServices();
 		}
 
-		if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+		// firebase
+		/*if (FirebaseAuth.getInstance().getCurrentUser() != null) {
 
 			myRef.addChildEventListener(new ChildEventListener() {
 				@Override
@@ -251,7 +238,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 				public void onCancelled(DatabaseError databaseError) {
 				}
 			});
-		}
+		}*/
 	}
 
 	@Override

@@ -32,10 +32,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.Profile;
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -45,16 +43,18 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class BaseActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks
         , GoogleApiClient.OnConnectionFailedListener {
-	
-    private DrawerLayout mDrawerLayout;
+
+    DrawerLayout mDrawerLayout;
     GoogleApiClient mGoogleApiClient;
-    private static final String TAG = "MainActivity";
-    private int mTitleRes;
-    private NavigationView mNavigationView;
+    // static final String TAG = "MainActivity";
+    int mTitleRes;
+    NavigationView mNavigationView;
     FragmentManager fragmentManager;
     private static final int RC_SIGN_IN = 1;
-    private static final int RESOLVE_CONNECTION_REQUEST_CODE = 2;
+    static final int RESOLVE_CONNECTION_REQUEST_CODE = 2;
     private ImageView profileImage;
+    private TextView userName;
+    private TextView userEmail;
 
     public BaseActivity(int titleRes){
 		mTitleRes = titleRes;
@@ -65,9 +65,10 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -79,6 +80,7 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
             actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
             setTheme(R.style.AppTheme);
         }
+
         actionBar.setHomeButtonEnabled(true);
         setTitle(mTitleRes);
         
@@ -86,155 +88,90 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
-        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
-        profileImage = (ImageView) mNavigationView.getHeaderView(
+        mNavigationView = findViewById(R.id.nav_view);
+        profileImage = mNavigationView.getHeaderView(
                 0).findViewById(R.id.profile_image);
-        TextView userName = (TextView) mNavigationView.getHeaderView(
+        userName = mNavigationView.getHeaderView(
                 0).findViewById(R.id.username);
-        TextView userEmail = (TextView) mNavigationView.getHeaderView(
+        userEmail = mNavigationView.getHeaderView(
                 0).findViewById(R.id.email);
 
 
         mNavigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem item) {
-                        Intent a;
-                        switch(item.getItemId()){
-                            case android.R.id.home:
-                                break;
-                            case R.id.nav_regulations:
-                                switchContent(new MainView());
-                                setTitle("Regulations");
-                                break;
-                            case R.id.nav_aircraft:
-                                switchContent(new AircraftList());
-                                setTitle("Aircraft");
-                                break;
-                            case R.id.nav_calculators:
-                                switchContent(new Calculators());
-                                setTitle("Calculators");
-                                break;
-                            case R.id.nav_notams:
-                                a = new Intent(Intent.ACTION_VIEW, Uri.parse(
-                                        "https://www.notams.faa.gov"));
-                                startActivity(a);
-                                break;
-                            case R.id.nav_bowmonk:
-                                switchContent(new Bowmonk());
-                                setTitle("Bowmonk Converter");
-                                break;
-                            case R.id.nav_links:
-                                switchContent(new QuickRefrences());
-                                setTitle("Links");
-                                break;
-                            case R.id.nav_map:
-                                switchContent(new ViewPagerFragment());
-                                setTitle("Map");
-                                break;
-                            case R.id.nav_forms:
-                                switchContent(new Forms());
-                                setTitle("Forms");
-                                break;
-                            case R.id.nav_rate:
-                                a = new Intent(Intent.ACTION_VIEW, Uri.parse(
-                                        "http://play.google.com/store/apps/details?id=" +
-                                                "com.tmillz.airfieldmanagement"));
-                                startActivity(a);
-                                break;
-                            case R.id.nav_email:
-                                a = new Intent(Intent.ACTION_SEND);
-                                a.setType("message/rfc822");
-                                a.putExtra(Intent.EXTRA_EMAIL, new String[]
-                                        {"terrymil1981@gmail.com"});
-                                a.putExtra(Intent.EXTRA_SUBJECT,
-                                        "Airfield Management App Android");
-                                a.putExtra(Intent.EXTRA_TEXT, "Android");
-                                startActivity(Intent.createChooser(a, "Send Email"));
-                                break;
-                            case R.id.action_settings:
-                                startActivity(new Intent(getApplicationContext(),
-                                        ShowSettings.class));
-                                break;
-                            case R.id.nav_login:
-                                a = new Intent(getApplication(), LoginActivity.class);
-                                startActivity(a);
-                                break;
-                            case R.id.nav_logout:
-                                Auth.GoogleSignInApi.signOut(mGoogleApiClient)
-                                        .setResultCallback(status -> {
-                                    FirebaseAuth.getInstance().signOut();
-                                });
-                                break;
-                            case R.id.nav_login2:
-                                signIn();
-                                break;
-                        }
-                        mDrawerLayout.closeDrawers();
-                        return true;
+                item -> {
+                    Intent a;
+                    switch(item.getItemId()){
+                        case android.R.id.home:
+                            break;
+                        case R.id.nav_regulations:
+                            switchContent(new MainView());
+                            setTitle(R.string.regulations);
+                            break;
+                        case R.id.nav_aircraft:
+                            switchContent(new AircraftList());
+                            setTitle(R.string.aircraft);
+                            break;
+                        case R.id.nav_calculators:
+                            switchContent(new Calculators());
+                            setTitle(R.string.calculators);
+                            break;
+                        case R.id.nav_notams:
+                            a = new Intent(Intent.ACTION_VIEW, Uri.parse(
+                                    "https://www.notams.faa.gov"));
+                            startActivity(a);
+                            break;
+                        case R.id.nav_bowmonk:
+                            switchContent(new Bowmonk());
+                            setTitle(R.string.bowmonk_converter);
+                            break;
+                        case R.id.nav_links:
+                            switchContent(new QuickRefrences());
+                            setTitle("Links");
+                            break;
+                        case R.id.nav_map:
+                            switchContent(new ViewPagerFragment());
+                            setTitle(R.string.map);
+                            break;
+                        case R.id.nav_forms:
+                            switchContent(new Forms());
+                            setTitle(R.string.forms);
+                            break;
+                        case R.id.nav_rate:
+                            a = new Intent(Intent.ACTION_VIEW, Uri.parse(
+                                    "http://play.google.com/store/apps/details?id=" +
+                                            "com.tmillz.airfieldmanagement"));
+                            startActivity(a);
+                            break;
+                        case R.id.nav_email:
+                            a = new Intent(Intent.ACTION_SEND);
+                            a.setType("message/rfc822");
+                            a.putExtra(Intent.EXTRA_EMAIL, new String[]
+                                    {"terrymil1981@gmail.com"});
+                            a.putExtra(Intent.EXTRA_SUBJECT,
+                                    "Airfield Management App Android");
+                            a.putExtra(Intent.EXTRA_TEXT, "Android");
+                            startActivity(Intent.createChooser(a, "Send Email"));
+                            break;
+                        case R.id.action_settings:
+                            startActivity(new Intent(getApplicationContext(),
+                                    ShowSettings.class));
+                            break;
+                        case R.id.regs_list:
+                            switchContent(new RegsListFragment());
+                            setTitle("Regs List");
+                            break;
                     }
+                    mDrawerLayout.closeDrawers();
+                    return true;
                 });
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
 
         mDrawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {}
             @Override
-            public void onDrawerOpened(View drawerView) {
-                //Checks if user is logged in with Facebook
-                if(Profile.getCurrentProfile() != null && AccessToken.getCurrentAccessToken()
-                        != null){
-                    //The user is logged in with facebook
-                    new GraphRequest(
-                            AccessToken.getCurrentAccessToken(),
-                            "/{user-id}/picture",
-                            null,
-                            HttpMethod.GET,
-                            new GraphRequest.Callback() {
-                                public void onCompleted(GraphResponse response) {
-                            /* handle the result */
-                                    String userId = (String) Profile.getCurrentProfile().getId();
-                                    Glide.with(getApplicationContext()).load(
-                                            "https://graph.facebook.com/" + userId
-                                                    + "/picture?width=200&height=150")
-                                            .into(profileImage);
-                                    userName.setText(Profile.getCurrentProfile().getName());
-                                    userEmail.setText("logged in with Facebook");
-                                    mNavigationView.getMenu().findItem(R.id.nav_login)
-                                            .setVisible(false);
-                                    mNavigationView.getMenu().findItem(R.id.nav_logout)
-                                            .setVisible(true);
-                                }
-                            }
-                    ).executeAsync();
-                }
-
-                //Checks if user is logged in with Google
-                else if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-                    FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                    FirebaseUser currentUser = mAuth.getCurrentUser();
-                    Glide.with(getApplicationContext()).load(currentUser.getPhotoUrl())
-                            .into(profileImage);
-                    userName.setText(currentUser.getDisplayName());
-                    userEmail.setText(currentUser.getEmail());
-                    mNavigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
-                    mNavigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
-                }
-
-                else {
-                    profileImage.setImageResource(R.drawable.profile_pic);
-                    userName.setText("Sign In");
-                    userEmail.setText("");
-                    userName.setOnClickListener(new View.OnClickListener(){
-                        public void onClick(View v){
-                            Intent intent = new Intent(getApplicationContext(),
-                                    LoginActivity.class);
-                            startActivity(intent);
-                        }
-                    });
-                }
-            }
+            public void onDrawerOpened(View drawerView) {}
             @Override
             public void onDrawerClosed(View drawerView) {}
             @Override
@@ -259,9 +196,17 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
         if (data != null) {
             if (data.toString().contains("geo")) {
                 switchContent(new ViewPagerFragment());
-                setTitle("Map");
+                setTitle(R.string.map);
             }
         }
+
+        userName.setOnClickListener(v -> {
+            Intent intent1 = new Intent(getApplicationContext(),
+                    LoginActivity.class);
+            startActivityForResult(intent1, RC_SIGN_IN);
+        });
+
+        this.refreshNavHeader();
 	}
 
     public void switchContent(Fragment fragment){
@@ -293,6 +238,7 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
         inflater.inflate(R.menu.activity_main, menu);
 		SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
 		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        assert searchManager != null;
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         return super.onCreateOptionsMenu(menu);
 	}
@@ -300,12 +246,15 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode,
                                     final Intent data) {
-        switch (requestCode) {
-            case RESOLVE_CONNECTION_REQUEST_CODE:
-                if (resultCode == RESULT_OK) {
-                    mGoogleApiClient.connect();
-                }
-                break;
+
+        if (requestCode == 1 ) {
+            if(resultCode == Activity.RESULT_OK){
+                this.refreshNavHeader();
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                Toast.makeText(getApplicationContext(), "Sign in Canceled",
+                        Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -335,7 +284,45 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
         }
     }
 
-    private void signIn() {
-        mGoogleApiClient.connect();
+    private void refreshNavHeader(){
+        //Checks if user is logged in with Facebook
+        if(Profile.getCurrentProfile() != null && AccessToken.getCurrentAccessToken()
+                != null){
+            //The user is logged in with facebook
+             new GraphRequest(
+                    AccessToken.getCurrentAccessToken(),
+                    "/{user-id}/picture",
+                    null,
+                    HttpMethod.GET,
+                     response -> {
+                         /* handle the result */
+                         String userId = Profile.getCurrentProfile().getId();
+                         Glide.with(getApplicationContext()).load(
+                                 "https://graph.facebook.com/" + userId
+                                         + "/picture?width=200&height=150")
+                                 .into(profileImage);
+                         userName.setText(Profile.getCurrentProfile().getName());
+                         userEmail.setText(R.string.fb_logged_in);
+                     }
+             ).executeAsync();
+        }
+
+        //Checks if user is logged in with Google
+        else if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            if (currentUser.getPhotoUrl() != null) {
+                Glide.with(getApplicationContext()).load(currentUser.getPhotoUrl())
+                        .into(profileImage);
+            }
+            userName.setText(currentUser.getDisplayName());
+            userEmail.setText(R.string.gg_signed_in);
+        }
+
+        else {
+            profileImage.setImageResource(R.drawable.profile_pic);
+            userName.setText(R.string.sign_in);
+            userEmail.setText("");
+        }
     }
 }

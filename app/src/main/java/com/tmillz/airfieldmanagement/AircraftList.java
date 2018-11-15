@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class AircraftList extends Fragment {
@@ -20,7 +19,7 @@ public class AircraftList extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState){
 		View view = inflater.inflate(R.layout.activity_listview, container, false);
-		listView = (ListView) view.findViewById(android.R.id.list);
+		listView = view.findViewById(android.R.id.list);
 
 		mDbHelper = new DataBaseHelper(getActivity());
 		mDbHelper.open();
@@ -33,15 +32,11 @@ public class AircraftList extends Fragment {
 				getActivity(), R.layout.aircraft_list, aircraftData, 0 );
 		listView.setAdapter(adapter);
 
-		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View view,
-					int pos, long id) {
-				Intent intent = new Intent(getActivity(), AircraftSpecsActivity.class);
-				intent.putExtra("id", id);
-				startActivity(intent);
-			}
-		});
+		listView.setOnItemClickListener((arg0, view1, pos, id) -> {
+            Intent intent = new Intent(getActivity(), AircraftSpecsActivity.class);
+            intent.putExtra("id", id);
+            startActivity(intent);
+        });
 		return view;
 	}
 }
