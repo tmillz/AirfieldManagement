@@ -1,18 +1,20 @@
 <resources>
   <declare-styleable name="AppTheme">
-    <attr name="ic_drawer" format="reference" />
-    <attr name="airplane" format="reference" />
-    <attr name="email" format="reference" />
-    <attr name="important" format="reference" />
-    <attr name="map" format="reference" />
-    <attr name="paste" format="reference" />
-    <attr name="search" format="reference" />
-    <attr name="warning" format="reference" />
-    <attr name="web" format="reference" />
-    <attr name="calc" format="reference" />
+    <attr name="ic_menu" format="reference"/>
+    <attr name="ic_library_books" format="reference"/>
+    <attr name="ic_arrow_back" format="reference"/>
+    <attr name="ic_md_jet" format="reference" />
+    <attr name="ic_warning" format="reference"/>
+    <attr name="ic_link" format="reference"/>
+    <attr name="ic_map" format="reference"/>
+    <attr name="ic_star" format="reference" />
+    <attr name="ic_email" format="reference" />
+    <attr name="ic_search" format="reference" />
+    <attr name="ic_md_calculator" format="reference" />
     <attr name="highlight" format="reference" />
-    <attr name="save" format="reference" />
-    <attr name="delete" format="reference" />
+    <attr name="ic_save" format="reference" />
+    <attr name="ic_delete" format="reference" />
+    <attr name="arrow_right" format="reference" />
   </declare-styleable>
   <item name="visible" type="id"/>
   <item name="masked" type="id"/>

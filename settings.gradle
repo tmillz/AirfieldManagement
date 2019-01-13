@@ -1,1 +1,3 @@
 include ':app'
+include ':Google Play License Library'
+include ':Google Play Downloader Library'

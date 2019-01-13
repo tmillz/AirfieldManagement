@@ -19,9 +19,8 @@ public class SearchResultsActivity extends AppCompatActivity {
 
     // private TextView txtQuery;
     private ListView listView;
-    public  String latlong;
-    DataBaseHelper mDbHelper;
-    Cursor testdata;
+    private String latlong;
+    private DataBaseHelper mDbHelper;
 
     @Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -89,7 +88,7 @@ public class SearchResultsActivity extends AppCompatActivity {
             String query = intent.getStringExtra(SearchManager.QUERY);
 
             String sql = "SELECT * FROM airports WHERE LOWER(field6)LIKE ?";
-            testdata = mDbHelper.getData(sql, new String[] {query});
+            Cursor testdata = mDbHelper.getData(sql, new String[]{query});
             startManagingCursor(testdata);
 
             if (!testdata.moveToFirst()){
@@ -101,7 +100,7 @@ public class SearchResultsActivity extends AppCompatActivity {
                         + testdata.getString(testdata.getColumnIndex("field8"));
                 listView = findViewById(android.R.id.list);
                 AirportCursorAdapter adapter = new AirportCursorAdapter(
-                        this, R.layout.activity_search_results, testdata, 0);
+                        this, testdata);
                 listView.setAdapter(adapter);
             }
         }

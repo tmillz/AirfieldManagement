@@ -14,12 +14,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class DataBaseHelper extends SQLiteOpenHelper {
-private static String TAG = "DataBaseHelper"; // Tag just for the LogCat window
+class DataBaseHelper extends SQLiteOpenHelper {
+private static final String TAG = "DataBaseHelper"; // Tag just for the LogCat window
 
 private static String DB_PATH = ""; 
-private static String DB_NAME ="Database"; // Database name
-private static int DB_VERSION = 2; // Database Version
+private static final String DB_NAME ="Database"; // Database name
+private static final int DB_VERSION = 2; // Database Version
 private SQLiteDatabase mDataBase; 
 private final Context mContext;
 

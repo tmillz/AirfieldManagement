@@ -3,47 +3,43 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_regulations"
-            android:icon="@drawable/ic_action_paste"
+            android:icon="?attr/ic_library_books"
             android:title="Regulations"/>
         <item
             android:id="@+id/nav_aircraft"
-            android:icon="@drawable/ic_action_airplane_mode_on"
+            android:icon="?attr/ic_md_jet"
             android:title="Aircraft" />
         <item
             android:id="@+id/nav_calculators"
-            android:icon="@drawable/ic_calculator"
+            android:icon="?attr/ic_md_calculator"
             android:title="Calculator" />
         <item
             android:id="@+id/nav_notams"
-            android:icon="@drawable/ic_action_warning"
+            android:icon="?attr/ic_warning"
             android:title="NOTAMs" />
         <item
             android:id="@+id/nav_bowmonk"
-            android:icon="@drawable/ic_calculator"
+            android:icon="?attr/ic_md_calculator"
             android:title="BowMonk Converter" />
         <item
             android:id="@+id/nav_links"
-            android:icon="@drawable/ic_action_web_site"
+            android:icon="?attr/ic_link"
             android:title="Links" />
         <item
             android:id="@+id/nav_map"
-            android:icon="@drawable/ic_action_map"
+            android:icon="?attr/ic_map"
             android:title="Map" />
         <item
             android:id="@+id/nav_forms"
-            android:icon="@drawable/ic_action_paste"
+            android:icon="?attr/ic_library_books"
             android:title="Forms" />
         <item
             android:id="@+id/nav_rate"
-            android:icon="@drawable/ic_action_important"
+            android:icon="?attr/ic_star"
             android:title="Rate App" />
         <item
             android:id="@+id/nav_email"
-            android:icon="@drawable/ic_action_email"
+            android:icon="?attr/ic_email"
             android:title="Email Developer" />
-        <item
-            android:id="@+id/regs_list"
-            android:icon="@drawable/ic_action_email"
-            android:title="Regulations" />
     </group>
 </menu>

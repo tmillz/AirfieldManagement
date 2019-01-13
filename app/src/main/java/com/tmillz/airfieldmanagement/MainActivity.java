@@ -15,6 +15,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Objects;
 
 public class MainActivity extends BaseActivity {
 
@@ -69,7 +70,7 @@ public class MainActivity extends BaseActivity {
 	    } catch (IOException e) {
 	        Log.e("tag", "Failed to get asset file list.", e);
 	    }
-	    for(String filename : files) {
+	    for(String filename : Objects.requireNonNull(files)) {
 	        InputStream in;
 	        OutputStream out;
 	        try {

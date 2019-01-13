@@ -12,11 +12,6 @@ import android.widget.ListView;
 
 public class AircraftSpecsActivity extends AppCompatActivity {
 
-    long id;
-    DataBaseHelper mDbHelper;
-    Cursor aircraftData;
-    ListView listView;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -28,7 +23,7 @@ public class AircraftSpecsActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        mDbHelper = new DataBaseHelper(this);
+        DataBaseHelper mDbHelper = new DataBaseHelper(this);
         mDbHelper.open();
         setContentView(R.layout.activity_list_toolbar);
 
@@ -40,17 +35,17 @@ public class AircraftSpecsActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        listView = findViewById(android.R.id.list);
+        ListView listView = findViewById(android.R.id.list);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
-            id = bundle.getLong("id");
+            long id = bundle.getLong("id");
             String rowId = String.valueOf(id);
             String sql = "SELECT * FROM aircraft WHERE _id=?";
-            aircraftData = mDbHelper.getData(sql, new String[] {rowId});
+            Cursor aircraftData = mDbHelper.getData(sql, new String[]{rowId});
             aircraftData.moveToFirst();
             AircraftCursorAdapter adapter = new AircraftCursorAdapter(
-                    this, R.layout.aircraft_specs, aircraftData, 0 );
+                    this, aircraftData);
             listView.setAdapter(adapter);
         }
 

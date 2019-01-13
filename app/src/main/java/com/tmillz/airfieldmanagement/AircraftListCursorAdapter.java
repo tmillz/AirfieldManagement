@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 class AircraftListCursorAdapter extends ResourceCursorAdapter {
 
-    AircraftListCursorAdapter(Context context, int layout, Cursor cursor, int flags) {
-        super(context, layout, cursor, flags);
+    AircraftListCursorAdapter(Context context, Cursor cursor) {
+        super(context, R.layout.aircraft_list, cursor, 0);
     }
 
     @Override
@@ -20,11 +20,13 @@ class AircraftListCursorAdapter extends ResourceCursorAdapter {
         title.setText(description);
 
         TextView wingSpan = view.findViewById(R.id.wing_span);
-        String wing_span = "wingspan = " + arg1.getString(arg1.getColumnIndex("wing_span"));
+        String wing_span = "wingspan = " + arg1.getString(arg1.getColumnIndex(
+                "wing_span")) + " ft";
         wingSpan.setText(wing_span);
 
         TextView length = view.findViewById(R.id.length);
-        String acft_length = "length = " + arg1.getString(arg1.getColumnIndex("length"));
+        String acft_length = "length = " + arg1.getString(arg1.getColumnIndex(
+                "length")) + " ft";
         length.setText(acft_length);
     }
 }

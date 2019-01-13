@@ -31,15 +31,17 @@ import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 
 public class EditMarkerActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
-    static String rowId;
+    private static String rowId;
     private ImageButton imageButton;
     private static final int SELECT_PICTURE = 1;
     private TextView editMarker;
@@ -74,7 +76,7 @@ public class EditMarkerActivity extends AppCompatActivity implements
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.edit_marker);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.edit_marker);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         editDate = findViewById(R.id.date);
@@ -167,7 +169,8 @@ public class EditMarkerActivity extends AppCompatActivity implements
             }
             try{
                 Uri selectedImageUri = data.getData();
-                InputStream imageStream = getContentResolver().openInputStream(selectedImageUri);
+                InputStream imageStream = getContentResolver().openInputStream(
+                        Objects.requireNonNull(selectedImageUri));
 
                 int takeFlags = data.getFlags();
                 takeFlags &= (Intent.FLAG_GRANT_READ_URI_PERMISSION |
@@ -181,7 +184,7 @@ public class EditMarkerActivity extends AppCompatActivity implements
                 String imageUri = selectedImageUri.toString();
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(LocationsDB.FIELD_PIC, imageUri);
-                LocationUpdateTask updateTask = new LocationUpdateTask();
+                LocationUpdateTask updateTask = new LocationUpdateTask(this);
                 updateTask.execute(contentValues);
                 getSupportLoaderManager().restartLoader(0, null, this);
 
@@ -191,11 +194,19 @@ public class EditMarkerActivity extends AppCompatActivity implements
         }
     }
 
-    private class LocationUpdateTask extends AsyncTask<ContentValues, Void, Void> {
+    private static class LocationUpdateTask extends AsyncTask<ContentValues, Void, Void> {
+
+        private final WeakReference<EditMarkerActivity> activityReference;
+
+        LocationUpdateTask(EditMarkerActivity context) {
+            activityReference = new WeakReference<>(context);
+        }
+
         @Override
         protected Void doInBackground(ContentValues... contentValues) {
             String selection = rowId;
-            getContentResolver().update(LocationsContentProvider.CONTENT_URI, contentValues[0],
+            activityReference.get().getContentResolver().update(LocationsContentProvider
+                            .CONTENT_URI, contentValues[0],
                     selection, null);
 
             return null;
@@ -230,7 +241,7 @@ public class EditMarkerActivity extends AppCompatActivity implements
                 // Setting Notees (used to be color) for marker
                 contentValues.put(LocationsDB.FIELD_COLOR, editNotes.getText().toString());
                 // Creating an instance of LocationInsertTask
-                LocationUpdateTask updateTask = new LocationUpdateTask();
+                LocationUpdateTask updateTask = new LocationUpdateTask(this);
                 // Storing the changes to SQLite database
                 updateTask.execute(contentValues);
 
@@ -246,6 +257,7 @@ public class EditMarkerActivity extends AppCompatActivity implements
         return super.onOptionsItemSelected(item);
     }
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         Uri uri = LocationsContentProvider.CONTENT_URI_SELECT;
@@ -254,7 +266,7 @@ public class EditMarkerActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor arg1) {
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor arg1) {
 
         editMarker = findViewById(R.id.editTitle);
         editMarker.setText(arg1.getString(arg1.getColumnIndex(LocationsDB.FIELD_DISC)));
@@ -302,7 +314,7 @@ public class EditMarkerActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
     }
 
     private void updateLabel() {

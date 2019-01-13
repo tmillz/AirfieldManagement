@@ -9,10 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 
-public class LocationsDB extends SQLiteOpenHelper {
+class LocationsDB extends SQLiteOpenHelper {
 
     // Database name
-    static String DBNAME = "Locations";
+    private static final String DBNAME = "Locations";
 
     // Version number of the database
     private static final int VERSION = 4;  //used to be 3
@@ -45,7 +45,7 @@ public class LocationsDB extends SQLiteOpenHelper {
     private static final String DATABASE_TABLE = "locations";
 
     // An instance variable for SQLiteDatabase
-    private SQLiteDatabase mDB;  
+    private final SQLiteDatabase mDB;
     
 
     // Constructor
@@ -78,22 +78,14 @@ public class LocationsDB extends SQLiteOpenHelper {
 
     // Inserts a new location to the table locations
     public long insert(ContentValues values){
-        long rowID = mDB.insert(DATABASE_TABLE, null, values);
-        return rowID;
-    }   
-
-    // Deletes all locations from the table
-    public int del(){
-        int cnt = mDB.delete(DATABASE_TABLE, null , null);
-        return cnt;
+        return mDB.insert(DATABASE_TABLE, null, values);
     }
-    
+
     // Delete record based on row _id
     public int deleteId(String rowId) {
         String whereClause = FIELD_ROW_ID + "=?";
         String[] whereArgs = new String[] { rowId };
-    	int cnt = mDB.delete(DATABASE_TABLE, whereClause, whereArgs);
-        return cnt;
+        return mDB.delete(DATABASE_TABLE, whereClause, whereArgs);
     }
     
     // Select record based on row _id
@@ -109,8 +101,7 @@ public class LocationsDB extends SQLiteOpenHelper {
     public int update(ContentValues values, String selection){
         String whereClause = FIELD_ROW_ID + "=?";
         String[] whereArgs = new String[] { selection };
-        int cnt = mDB.update(DATABASE_TABLE, values, whereClause, whereArgs);
-        return cnt;
+        return mDB.update(DATABASE_TABLE, values, whereClause, whereArgs);
     }
       
     // Returns all the locations from the table
@@ -129,14 +120,14 @@ public class LocationsDB extends SQLiteOpenHelper {
     		
     		try {
     		    // Version 4 MOD
-                mDB.execSQL("ALTER TABLE locations" + " ADD COLUMN pic STRING DEFAULT null");
+                mDB.execSQL("ALTER TABLE locations" + " ADD COLUMN pic TEXT DEFAULT null");
             } catch (SQLException e) {
                 Log.i("ADD COLUMN pic", "pic already exists");
             }
 
             try {
     		    // Version 5 MOD
-                mDB.execSQL("ALTER TABLE locations" + " ADD COLUMN date STRING DEFAULT null");
+                mDB.execSQL("ALTER TABLE locations" + " ADD COLUMN date TEXT DEFAULT null");
             } catch (SQLException e) {
                 Log.i("ADD COLUMN date", "date already exists");
             }

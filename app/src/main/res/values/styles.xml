@@ -5,49 +5,84 @@
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
-            <!--Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.-->
+        @drawable/ic_arrow_back_black_24dp
+        @drawable/ic_menu_black_24dp
+        @drawable/ic_library_books_black_24dp
+        @drawable/ic_md_jet_black_24dp
+        @drawable/ic_warning_black_24dp
+        @drawable/ic_link_black_24dp
+        @drawable/ic_map_black_24dp
+        @drawable/ic_star_black_24dp
+        @drawable/ic_email_black_24dp
+        @drawable/ic_action_important
+        @drawable/ic_action_map
+        @drawable/ic_action_search
+        @drawable/ic_action_warning
+        @drawable/ic_save_black_24dp
+        @drawable/ic_delete_forever_black_24dp
+        @drawable/ic_calculator
+        @color/highlight_light
+
     </style>
     
     <style name="AppBaseTheme.Dark" parent="@style/Theme.AppCompat.NoActionBar">
-        <!--Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.-->
+        @drawable/ic_arrow_back_white_24dp
+        @drawable/ic_menu_white_24dp
+        @drawable/ic_library_books_white_24dp
+        @drawable/ic_md_jet_white_24dp
+        @drawable/ic_warning_white_24dp
+        @drawable/ic_link_white_24dp
+        @drawable/ic_map_white_24dp
+        @drawable/ic_star_white_24dp
+        @drawable/ic_email_white_24dp
+        @drawable/ic_action_important_dark
+        @drawable/ic_action_map_dark
+        @drawable/ic_action_search_dark
+        @drawable/ic_action_warning_dark
+        @drawable/ic_action_web_site_dark
+        @drawable/ic_calculator_dark
+        @drawable/ic_save_white_24dp
+        @drawable/ic_delete_forever_white_24dp
+        @drawable/arrow_right
+        @color/highlight_dark
     </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="ic_drawer"> @drawable/ic_drawer</item>
-        <item name="airplane"> @drawable/ic_action_airplane_mode_on</item>
-        <item name="email"> @drawable/ic_action_email</item>
-        <item name="important"> @drawable/ic_action_important</item>
-        <item name="map"> @drawable/ic_action_map</item>
-        <item name="paste"> @drawable/ic_action_paste</item>
-        <item name="search"> @drawable/ic_action_search</item>
-        <item name="warning"> @drawable/ic_action_warning</item>
-        <item name="web"> @drawable/ic_action_web_site</item>
-        <item name="calc"> @drawable/ic_calculator</item>
-        <item name="save"> @drawable/ic_save_black_24dp</item>
-        <item name="delete"> @drawable/ic_delete_forever_black_24dp</item>
+        <item name="ic_arrow_back">@drawable/ic_arrow_back_black_24dp</item>
+        <item name="ic_menu">@drawable/ic_menu_black_24dp</item>
+        <item name="ic_library_books">@drawable/ic_library_books_black_24dp</item>
+        <item name="ic_md_jet">@drawable/ic_md_jet_black_24dp</item>
+        <item name="ic_warning">@drawable/ic_warning_black_24dp</item>
+        <item name="ic_link">@drawable/ic_link_black_24dp</item>
+        <item name="ic_map">@drawable/ic_map_black_24dp</item>
+        <item name="ic_star">@drawable/ic_star_black_24dp</item>
+        <item name="ic_email">@drawable/ic_email_black_24dp</item>
+        <item name="ic_search">@drawable/ic_search_black_24dp</item>
+        <item name="ic_md_calculator">@drawable/ic_md_calculator_black_24dp</item>
+        <item name="ic_save">@drawable/ic_save_black_24dp</item>
+        <item name="ic_delete">@drawable/ic_delete_forever_black_24dp</item>
+        <item name="arrow_right">@drawable/ic_keyboard_arrow_right_black_24dp</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="highlight">@color/highlight_light</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
     <style name="AppTheme.Dark" parent="@style/Theme.AppCompat.NoActionBar">
-        <item name="ic_drawer"> @drawable/ic_drawer_white</item>
-        <item name="airplane"> @drawable/ic_action_airplane_mode_on_dark</item>
-        <item name="email"> @drawable/ic_action_email_dark</item>
-        <item name="important"> @drawable/ic_action_important_dark</item>
-        <item name="map"> @drawable/ic_action_map_dark</item>
-        <item name="paste"> @drawable/ic_action_paste_dark</item>
-        <item name="search"> @drawable/ic_action_search_dark</item>
-        <item name="warning"> @drawable/ic_action_warning_dark</item>
-        <item name="web"> @drawable/ic_action_web_site_dark</item>
-        <item name="calc"> @drawable/ic_calculator_dark</item>
-        <item name="save"> @drawable/ic_save_white_24dp</item>
-        <item name="delete"> @drawable/ic_delete_forever_white_24dp</item>
+        <item name="ic_arrow_back">@drawable/ic_arrow_back_white_24dp</item>
+        <item name="ic_menu">@drawable/ic_menu_white_24dp</item>
+        <item name="ic_library_books">@drawable/ic_library_books_white_24dp</item>
+        <item name="ic_md_jet">@drawable/ic_md_jet_white_24dp</item>
+        <item name="ic_warning">@drawable/ic_warning_white_24dp</item>
+        <item name="ic_link">@drawable/ic_link_white_24dp</item>
+        <item name="ic_map">@drawable/ic_map_white_24dp</item>
+        <item name="ic_star">@drawable/ic_star_white_24dp</item>
+        <item name="ic_email">@drawable/ic_email_white_24dp</item>
+        <item name="ic_search">@drawable/ic_search_white_24dp</item>
+        <item name="ic_md_calculator">@drawable/ic_md_calculator_white_24dp</item>
+        <item name="ic_save">@drawable/ic_save_white_24dp</item>
+        <item name="ic_delete">@drawable/ic_delete_forever_white_24dp</item>
+        <item name="arrow_right">@drawable/ic_keyboard_arrow_right_white_24dp</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="highlight">@color/highlight_dark</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->

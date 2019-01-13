@@ -1,6 +1,7 @@
 package com.tmillz.airfieldmanagement;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
@@ -10,8 +11,8 @@ import android.widget.TextView;
 
 public class QuickRefrences extends Fragment {
 
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState){
+	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState){
 		View view =inflater.inflate(R.layout.quickrefrences, container, false);
 
 		TextView textView1 = view.findViewById(R.id.textView1);

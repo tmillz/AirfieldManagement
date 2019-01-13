@@ -2,6 +2,7 @@ package com.tmillz.airfieldmanagement;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,8 +25,8 @@ public class Calculators extends Fragment {
 	private BigDecimal scaled;
 	private BigDecimal value;
 
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState){
+	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState){
 		View view = inflater.inflate(R.layout.calculators, container, false);
 		Button button1 = view.findViewById(R.id.button1);
 		Button button2 = view.findViewById(R.id.button2);

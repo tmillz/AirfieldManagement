@@ -1,20 +1,17 @@
 package com.tmillz.airfieldmanagement;
 
-import android.support.annotation.Keep;
-
 /**
  * Created by Terrance Miller on 8/4/17.
  */
 
-@Keep
-public class LocationsObject {
+class LocationsObject {
 
-    public String date;
-    public String id_by;
-    public Double lat;
-    public Double lng;
-    public String notes;
-    public String title;
+    private String date;
+    private String id_by;
+    private Double lat;
+    private Double lng;
+    private String notes;
+    private String title;
 
     public LocationsObject() {
     }

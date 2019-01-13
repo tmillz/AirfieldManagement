@@ -2,8 +2,8 @@ package com.tmillz.airfieldmanagement;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +14,12 @@ public class MarkersRecCursorAdapter extends
         RecyclerViewCursorAdapter<MarkersRecCursorAdapter.ItemHolder> {
 
     public MarkersRecCursorAdapter() {
-        super(null);
+        super();
     }
 
+    @NonNull
     @Override
-    public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.markers_list,
                 parent, false);
         return new ItemHolder(v);
@@ -36,12 +37,13 @@ public class MarkersRecCursorAdapter extends
 
     public class ItemHolder extends RecyclerView.ViewHolder {
 
-        public TextView title;
-        public TextView idBy;
-        public TextView date;
-        public RelativeLayout viewBackground, viewForeground;
+        private final TextView title;
+        private final TextView idBy;
+        private final TextView date;
+        final RelativeLayout viewBackground;
+        public final RelativeLayout viewForeground;
 
-        public ItemHolder(View itemView) {
+        ItemHolder(View itemView) {
             super (itemView);
             title = itemView.findViewById(R.id.title);
             idBy = itemView.findViewById(R.id.idBy);
@@ -54,7 +56,7 @@ public class MarkersRecCursorAdapter extends
             itemView.setOnClickListener(view -> {
                 RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder)view.getTag();
                 long id = viewHolder.getItemId();
-                Log.e("Yay!", String.valueOf(id));
+                // Log.e("Yay!", String.valueOf(id));
                 Intent intent = new Intent(view.getContext(), EditMarkerActivity.class);
                 intent.putExtra("id", id);
                 view.getContext().startActivity(intent);
@@ -62,15 +64,16 @@ public class MarkersRecCursorAdapter extends
         }
 
         private void bindCursor(Cursor cursor) {
-            title.setText(cursor.getString(cursor.getColumnIndexOrThrow(
+            title.setText(String.format("Title: %s", cursor.getString(cursor.getColumnIndexOrThrow(
                     LocationsDB.FIELD_DISC
-            )));
-            idBy.setText(cursor.getString(cursor.getColumnIndexOrThrow(
+            ))));
+
+            idBy.setText(String.format("ID'd By: %s", cursor.getString(cursor.getColumnIndexOrThrow(
                     LocationsDB.FIELD_ZOOM
-            )));
-            date.setText(cursor.getString(cursor.getColumnIndexOrThrow(
+            ))));
+            date.setText(String.format("Date: %s", cursor.getString(cursor.getColumnIndexOrThrow(
                     LocationsDB.FIELD_DATE
-            )));
+            ))));
         }
     }
 }

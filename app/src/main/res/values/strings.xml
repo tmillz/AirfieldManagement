@@ -19,14 +19,14 @@
     <!-- strings in AircraftCursorAdapter -->
     <string name="k">%s K Lbs</string>
     <string name="ft">%s ft</string>
-    <string name="wingspan">Wingspan: </string>
-    <string name="length">Length: </string>
-    <string name="height">Height: </string>
+    <string name="wingspan">Wingspan: %s ft</string>
+    <string name="length">Length: %s ft</string>
+    <string name="height">Height: %s ft</string>
     <string name="vertical_clearance">Vertical Clearance: %s ft</string>
     <string name="max_to_weight">Max T/O Weight: %s K Lbs</string>
     <string name="basic_empty_wt">Basic Empty Wt.: %s K Lbs</string>
     <string name="turning_radius">Turning Radius: %s ft</string>
-    <string name="one_eighty_degree_turn">180&#x2103; Turn Diam: %s ft</string>
+    <string name="one_eighty_degree_turn">180&#xb0; Turn Diam: %s ft</string>
 
     <!-- strings in AirportCursorAdapter -->
     <string name="lat_lng">Lat/Lng %1$s %2$s</string>
@@ -58,4 +58,9 @@
     <string name="rcr_fair">RCR: %s Braking action FAIR</string>
     <string name="rcr_poor">RCR: %s Braking action POOR</string>
     <string name="rcr_nil">RCR: %s Braking action NIL</string>
+
+    <!-- strings in Markers List -->
+    <string name="title">Title: %s</string>
+    <string name="id_by">ID\'d By: %s</string>
+    <string name="date">Date: %s</string>
 </resources>

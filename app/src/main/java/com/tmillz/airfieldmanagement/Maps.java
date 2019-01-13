@@ -38,6 +38,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.lang.ref.WeakReference;
+import java.util.Objects;
+
 import static android.content.ContentValues.TAG;
 
 public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>,
@@ -45,25 +48,24 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 		GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
 	private GoogleMap mMap;
-	EditText editTitle;
+	private EditText editTitle;
 	private final int TAG_CODE_PERMISSION_LOCATION = 1;
 	private long markerId = 0;
-	LocationRequest locationRequest;
-	GoogleApiClient googleApiClient;
-	Location location;
+	private GoogleApiClient googleApiClient;
+	private Location location;
 	// DatabaseReference myRef;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState){
 
 		View view = inflater.inflate(R.layout.maps, container, false);
 
 		SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
 				.findFragmentById(R.id.map);
-		mapFragment.getMapAsync(this);
+		Objects.requireNonNull(mapFragment).getMapAsync(this);
 
-		editTitle = (EditText) view.findViewById(R.id.editTitle);
+		editTitle = view.findViewById(R.id.editTitle);
 
 		// Firebase Setup
 		// FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -157,7 +159,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
             // Setting Notes of marker
             contentValues.put(LocationsDB.FIELD_COLOR, "" );
             // Creating an instance of LocationInsertTask
-            LocationInsertTask insertTask = new LocationInsertTask();
+            LocationInsertTask insertTask = new LocationInsertTask(this);
             // Storing the latitude, longitude and zoom level to SQLite database
             insertTask.execute(contentValues);
             //Log.v("TAG", contentValues.toString());
@@ -187,7 +189,7 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
         });
 
 		// Check location permissions, if needed request from user
-		if (ContextCompat.checkSelfPermission(getActivity(),
+		if (ContextCompat.checkSelfPermission(Objects.requireNonNull(getActivity()),
 				android.Manifest.permission.ACCESS_FINE_LOCATION) !=
 				PackageManager.PERMISSION_GRANTED &&
 				ContextCompat.checkSelfPermission(getActivity(),
@@ -255,9 +257,9 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 	@SuppressWarnings({"MissingPermission"})
 	public void onConnected(Bundle bundle) {
 
-		locationRequest = new LocationRequest();
+		LocationRequest locationRequest = new LocationRequest();
 
-		Intent intent = getActivity().getIntent();
+		Intent intent = Objects.requireNonNull(getActivity()).getIntent();
 		Uri data = intent.getData();
 
 		if (data != null) {
@@ -302,27 +304,41 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ll, 15));
 	}
 
-	private class LocationInsertTask extends AsyncTask<ContentValues, Void, Void>{
+	private static class LocationInsertTask extends AsyncTask<ContentValues, Void, Void>{
+
+		private final WeakReference<Maps> activityReference;
+
+		LocationInsertTask(Maps context) {
+			activityReference = new WeakReference<>(context);
+		}
+
 		@Override
 		protected Void doInBackground(ContentValues... contentValues) {
 			// Setting up values to insert locations into SQLite database
-            getActivity().getContentResolver().insert(LocationsContentProvider.CONTENT_URI,
+            Objects.requireNonNull(activityReference.get().getContext()).getContentResolver()
+					.insert(LocationsContentProvider.CONTENT_URI,
 					contentValues[0]);
 			return null;
 		}
+
+		@Override
+		protected void onPostExecute(Void aVoid) {
+			super.onPostExecute(aVoid);
+		}
 	}
 
+	@NonNull
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
 		// Uri to the content provider LocationsContentProvider
 		Uri uri = LocationsContentProvider.CONTENT_URI;
 		// Fetches all the rows from locations table
-        return new CursorLoader(getActivity(), uri, null, null, null,
-				null);
+        return new CursorLoader(Objects.requireNonNull(getActivity()), uri, null,
+                null, null,null);
 	}
 
 	@Override
-	public void onLoadFinished(Loader<Cursor> arg0, Cursor arg1) {
+	public void onLoadFinished(@NonNull Loader<Cursor> arg0, Cursor arg1) {
 		int locationCount;
 		double lat;
 		double lng;
@@ -354,13 +370,13 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 	}
 
 	@Override
-	public void onLoaderReset(Loader<Cursor> arg0) {
+	public void onLoaderReset(@NonNull Loader<Cursor> arg0) {
 
 	}
 
-	public void getLocationServices() {
+	private void getLocationServices() {
 
-		if (ContextCompat.checkSelfPermission(getActivity(),
+		if (ContextCompat.checkSelfPermission(Objects.requireNonNull(getActivity()),
 				android.Manifest.permission.ACCESS_FINE_LOCATION) ==
 				PackageManager.PERMISSION_GRANTED &&
 				ContextCompat.checkSelfPermission(getActivity(),
@@ -373,7 +389,8 @@ public class Maps extends Fragment implements LoaderManager.LoaderCallbacks<Curs
 			int status = api.isGooglePlayServicesAvailable(getActivity());
 
 			// Prompt user to turn on GPS if GPS is off
-			if (!((LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE))
+			if (!((LocationManager) Objects.requireNonNull(getActivity()
+                    .getSystemService(Context.LOCATION_SERVICE)))
 					.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 				// prompt user to enable gps
 				Intent gpsOptionsIntent = new Intent(

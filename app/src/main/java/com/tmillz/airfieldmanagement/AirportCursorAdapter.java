@@ -9,8 +9,8 @@ import android.widget.TextView;
 class AirportCursorAdapter extends ResourceCursorAdapter {
 
 
-    AirportCursorAdapter(Context context, int layout, Cursor c, int flags) {
-        super(context, layout, c, flags);
+    AirportCursorAdapter(Context context, Cursor c) {
+        super(context, R.layout.activity_search_results, c, 0);
     }
 
     @Override

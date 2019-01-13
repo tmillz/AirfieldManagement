@@ -10,7 +10,7 @@ import android.preference.PreferenceManager;
 
 public class Preferences extends PreferenceFragment implements OnSharedPreferenceChangeListener {
 	
-	public static final String KEY_CHOOSE_THEME = "choose_theme";
+	private static final String KEY_CHOOSE_THEME = "choose_theme";
 	
 	 @Override
 	 public void onCreate(Bundle savedInstanceState) {

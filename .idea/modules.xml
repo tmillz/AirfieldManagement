@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AirfieldManagement.iml" filepath="$PROJECT_DIR$/AirfieldManagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Google Play Downloader Library/Google Play Downloader Library.iml" filepath="$PROJECT_DIR$/Google Play Downloader Library/Google Play Downloader Library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Google Play License Library/Google Play License Library.iml" filepath="$PROJECT_DIR$/Google Play License Library/Google Play License Library.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 class AircraftCursorAdapter extends ResourceCursorAdapter {
 
-	AircraftCursorAdapter(Context context, int layout, Cursor cursor, int flags) {
-		super(context, layout, cursor, flags);
+	AircraftCursorAdapter(Context context, Cursor cursor) {
+		super(context, R.layout.aircraft_specs, cursor, 0);
 	}
 
 	@Override
@@ -18,9 +18,7 @@ class AircraftCursorAdapter extends ResourceCursorAdapter {
 
 		String picID = arg1.getString(arg1.getColumnIndex("pic"));
 
-		String test = "test";
-		
-		int id = context.getResources().getIdentifier(
+        int id = context.getResources().getIdentifier(
 				"com.tmillz.airfieldmanagement:drawable/" + picID, null,
 				null);
 		
@@ -28,18 +26,16 @@ class AircraftCursorAdapter extends ResourceCursorAdapter {
 		pic.setImageResource(id);
 		
 		TextView wingSpan = view.findViewById(R.id.wingSpan);
-		// wingSpan.setText(context.getString(R.string.ft,
-		// 		arg1.getString(arg1.getColumnIndex("wing_span"))));
-		//String ftString = context.getString(R.string.ft);
-		wingSpan.setText(context.getString(R.string.ft,
+
+		wingSpan.setText(context.getString(R.string.wingspan,
 				arg1.getString(arg1.getColumnIndex("wing_span"))));
 		
 		TextView length = view.findViewById(R.id.length);
-		length.setText(context.getString(R.string.ft,
+		length.setText(context.getString(R.string.length,
 				arg1.getString(arg1.getColumnIndex("length"))));
 		
 		TextView height = view.findViewById(R.id.height);
-		height.setText(context.getString(R.string.ft,
+		height.setText(context.getString(R.string.height,
 				arg1.getString(arg1.getColumnIndex("height"))));
 		
 		TextView vert_clr = view.findViewById(R.id.vertClearance);

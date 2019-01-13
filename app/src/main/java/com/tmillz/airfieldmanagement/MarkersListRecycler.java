@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -17,21 +18,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Objects;
+
 public class MarkersListRecycler extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
     private final static int LOADER_ID = 0;
     private RecyclerView mRecyclerView;
-    MarkersRecCursorAdapter adapter;
-    RecyclerView.LayoutManager mLayoutManager;
+    private MarkersRecCursorAdapter adapter;
     //final ColorDrawable background = new ColorDrawable(Color.RED);
 
     @Override
-    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.markers_list_recycler, container, false);
         mRecyclerView =  view.findViewById(R.id.recycler_view);
 
         mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this.getContext());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(adapter);
 
@@ -45,12 +47,12 @@ public class MarkersListRecycler extends Fragment implements LoaderManager.Loade
         return view;
     }
 
-    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(
+    private final ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(
             0, ItemTouchHelper.LEFT) {
 
         @Override
-        public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder,
-                              RecyclerView.ViewHolder target) {
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder,
+                              @NonNull RecyclerView.ViewHolder target) {
              return false;
         }
 
@@ -65,7 +67,7 @@ public class MarkersListRecycler extends Fragment implements LoaderManager.Loade
         }
 
         @Override
-        public void onChildDrawOver(Canvas c, RecyclerView recyclerView,
+        public void onChildDrawOver(@NonNull Canvas c, @NonNull RecyclerView recyclerView,
                                     RecyclerView.ViewHolder viewHolder, float dX, float dY,
                                     int actionState, boolean isCurrentlyActive) {
             final View foregroundView = ((MarkersRecCursorAdapter.ItemHolder)
@@ -75,15 +77,16 @@ public class MarkersListRecycler extends Fragment implements LoaderManager.Loade
         }
 
         @Override
-        public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+        public void clearView(@NonNull RecyclerView recyclerView,
+                              @NonNull RecyclerView.ViewHolder viewHolder) {
             final View foregroundView = ((MarkersRecCursorAdapter.ItemHolder)
                     viewHolder).viewForeground;
             getDefaultUIUtil().clearView(foregroundView);
         }
 
         @Override
-        public void onChildDraw(Canvas c, RecyclerView recyclerView,
-                                RecyclerView.ViewHolder viewHolder, float dX, float dY,
+        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView,
+                                @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY,
                                 int actionState, boolean isCurrentlyActive) {
             // view the background view
 
@@ -97,15 +100,11 @@ public class MarkersListRecycler extends Fragment implements LoaderManager.Loade
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
             // Row is swiped from recycler view
             // remove it from adapter
-            getActivity().getContentResolver().delete(LocationsContentProvider.CONTENT_URI,
+            Objects.requireNonNull(getActivity()).getContentResolver()
+                    .delete(LocationsContentProvider.CONTENT_URI,
                     null, new String[]{String.valueOf(viewHolder.getItemId())});
 
             //adapter.notifyItemRemoved(viewHolder.getLayoutPosition());
-        }
-
-        @Override
-        public int convertToAbsoluteDirection(int flags, int layoutDirection) {
-            return super.convertToAbsoluteDirection(flags, layoutDirection);
         }
 
     };
@@ -116,20 +115,17 @@ public class MarkersListRecycler extends Fragment implements LoaderManager.Loade
         getLoaderManager().initLoader(LOADER_ID, null, this);
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle arg1) {
         Uri uri = LocationsContentProvider.CONTENT_URI;
-        return new CursorLoader(getActivity(), uri, null, null, null,
+        return new CursorLoader(Objects.requireNonNull(getActivity()), uri, null,
+                null, null,
                 null);
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
 
         if (adapter == null) {
             adapter = new MarkersRecCursorAdapter();
@@ -140,7 +136,7 @@ public class MarkersListRecycler extends Fragment implements LoaderManager.Loade
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         adapter.swapCursor(null);
     }
 }

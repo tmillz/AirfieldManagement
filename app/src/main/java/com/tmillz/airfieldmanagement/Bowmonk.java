@@ -1,6 +1,7 @@
 package com.tmillz.airfieldmanagement;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,18 +15,17 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class Bowmonk extends Fragment {
+
+	private TextView rcr;
+	private EditText bm;
+	private String bms;
+	private BigDecimal scaled;
+	private BigDecimal value;
 	
-	Button calculate;
-	TextView rcr;
-	EditText bm;
-	String bms;
-	BigDecimal scaled;
-	BigDecimal value;
-	
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState){
+	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState){
 		View view = inflater.inflate(R.layout.bowmonk, container, false);
-		calculate = view.findViewById(R.id.button1);
+		Button calculate = view.findViewById(R.id.button1);
 		bm = view.findViewById(R.id.editText1);
 		rcr = view.findViewById(R.id.textView3);
 

@@ -1,24 +1,25 @@
 package com.tmillz.airfieldmanagement;
 
 import android.database.Cursor;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
-public abstract class RecyclerViewCursorAdapter<VH extends RecyclerView.ViewHolder>
+abstract class RecyclerViewCursorAdapter<VH extends RecyclerView.ViewHolder>
         extends RecyclerView.Adapter<VH> {
 
     private Cursor mCursor;
     private boolean mDataValid;
     private int mRowIDColumn;
 
-    public abstract void onBindViewHolder(VH holder, Cursor cursor);
+    protected abstract void onBindViewHolder(VH holder, Cursor cursor);
 
-    RecyclerViewCursorAdapter(Cursor cursor) {
+    RecyclerViewCursorAdapter() {
         setHasStableIds(true);
-        swapCursor(cursor);
+        swapCursor(null);
     }
 
     @Override
-    public void onBindViewHolder(VH holder, int position){
+    public void onBindViewHolder(@NonNull VH holder, int position){
         if(!mDataValid) {
             throw new IllegalStateException(
                     "Cannot look up item id when cursor is in invalid state");
@@ -54,7 +55,7 @@ public abstract class RecyclerViewCursorAdapter<VH extends RecyclerView.ViewHold
         return mCursor.getLong(mRowIDColumn);
     }
 
-    public void swapCursor(Cursor newCursor) {
+    void swapCursor(Cursor newCursor) {
         if (newCursor == mCursor) {
             return;
         }

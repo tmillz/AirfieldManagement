@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import java.util.Objects;
+
 public class ShowSettings extends AppCompatActivity {
 
 	@Override
@@ -26,7 +28,7 @@ public class ShowSettings extends AppCompatActivity {
 		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 		ActionBar actionBar = getSupportActionBar();
-		actionBar.setTitle(R.string.settings);
+		Objects.requireNonNull(actionBar).setTitle(R.string.settings);
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
 		getFragmentManager().beginTransaction().replace(R.id.content_frame,
