@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AirfieldManagement.iml" filepath="$PROJECT_DIR$/AirfieldManagement.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Google Play Downloader Library/Google Play Downloader Library.iml" filepath="$PROJECT_DIR$/Google Play Downloader Library/Google Play Downloader Library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Google Play License Library/Google Play License Library.iml" filepath="$PROJECT_DIR$/Google Play License Library/Google Play License Library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/airfield_manager_android.iml" filepath="$PROJECT_DIR$/airfield_manager_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/downloader_library/downloader_library.iml" filepath="$PROJECT_DIR$/downloader_library/downloader_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zip_file/zip_file.iml" filepath="$PROJECT_DIR$/zip_file/zip_file.iml" />
     </modules>
   </component>
 </project>

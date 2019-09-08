@@ -2,10 +2,12 @@ package com.tmillz.airfieldmanagement;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.support.v4.widget.ResourceCursorAdapter;
+//import android.support.v4.widget.ResourceCursorAdapter;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.cursoradapter.widget.ResourceCursorAdapter;
 
 class AircraftCursorAdapter extends ResourceCursorAdapter {
 
