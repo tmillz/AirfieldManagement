@@ -3,10 +3,14 @@ package com.tmillz.airfieldmanagement;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+//import android.support.v7.app.ActionBar;
+//import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.Objects;
 

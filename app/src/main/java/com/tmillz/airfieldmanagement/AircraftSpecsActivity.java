@@ -5,10 +5,13 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+//import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class AircraftSpecsActivity extends AppCompatActivity {
 

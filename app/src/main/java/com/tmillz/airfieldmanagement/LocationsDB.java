@@ -15,7 +15,7 @@ class LocationsDB extends SQLiteOpenHelper {
     private static final String DBNAME = "Locations";
 
     // Version number of the database
-    private static final int VERSION = 4;  //used to be 3
+    private static final int VERSION = 6;  // Added sync column
 
     // Field 1 of the table locations, which is the primary key
     public static final String FIELD_ROW_ID = "_id";
@@ -40,6 +40,9 @@ class LocationsDB extends SQLiteOpenHelper {
 
     // Field 8 of the table locations, stores color
     public static final String FIELD_DATE = "date";
+
+    // Field 9 of the table locations, stores color
+    public static final String FIELD_SYNC = "sync";
 
     // A constant, stores the the table name
     private static final String DATABASE_TABLE = "locations";
@@ -69,7 +72,8 @@ class LocationsDB extends SQLiteOpenHelper {
                             FIELD_DISC + " text , " +  // AKA Title
                             FIELD_COLOR + " real , " + // AKA Notes
                             FIELD_PIC + " text , " +
-                            FIELD_DATE + " text " +
+                            FIELD_DATE + " text, " +
+                            FIELD_SYNC + " integer " +
                         " ) ";
 
         db.execSQL(sql);
@@ -130,6 +134,13 @@ class LocationsDB extends SQLiteOpenHelper {
                 mDB.execSQL("ALTER TABLE locations" + " ADD COLUMN date TEXT DEFAULT null");
             } catch (SQLException e) {
                 Log.i("ADD COLUMN date", "date already exists");
+            }
+
+            try {
+                // Version 6 MOD
+                mDB.execSQL("ALTER TABLE locations" + " ADD COLUMN sync INTEGER DEFAULT 0");
+            } catch (SQLException e) {
+                Log.i("ADD COLUMN sync", "sync already exists");
             }
     	}
     }
