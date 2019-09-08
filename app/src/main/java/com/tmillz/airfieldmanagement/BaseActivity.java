@@ -1,27 +1,25 @@
 package com.tmillz.airfieldmanagement;
 
 import android.app.Activity;
-import android.app.PendingIntent;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-//import android.support.annotation.NonNull;
-//import android.support.annotation.Nullable;
-//import android.support.design.widget.NavigationView;
-//import android.support.v4.app.Fragment;
-//import android.support.v4.app.FragmentManager;
-//import android.support.v4.view.GravityCompat;
-//import android.support.v4.widget.DrawerLayout;
-//import android.support.v7.app.ActionBar;
-//import android.support.v7.app.AppCompatActivity;
-//import android.support.v7.widget.SearchView;
-//import android.support.v7.widget.Toolbar;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,17 +27,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.bumptech.glide.Glide;
 import com.facebook.AccessToken;
@@ -49,9 +36,6 @@ import com.facebook.Profile;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.vending.expansion.downloader.DownloaderClientMarshaller;
-import com.google.android.vending.expansion.downloader.Helpers;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -229,37 +213,6 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
 
             }
         });
-
-        // Check if expansion files are available before going any further
-        /*if (!expansionFilesDelivered()) {
-            // Build an Intent to start this activity from the Notification
-            Intent notifierIntent = new Intent(this, this.getClass());
-            notifierIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-                    Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
-                    notifierIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-            // Start the download service (if required)
-            int startResult =
-                    0;
-            try {
-                startResult = DownloaderClientMarshaller.startDownloadServiceIfRequired(this,
-                        pendingIntent, ExpDownloaderService.class);
-            } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
-            }
-            // If download has started, initialize this activity to show
-            // download progress
-            if (startResult != DownloaderClientMarshaller.NO_DOWNLOAD_REQUIRED) {
-                // This is where you do set up to display the download
-                // progress (next step)
-                return;
-            } // If the download wasn't necessary, fall through to start the app
-        }
-        //startApp(); // Expansion files are available, start the app
-        */
-
 	}
 
     private void switchContent(Fragment fragment){
@@ -383,41 +336,6 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
             userEmail.setText("");
         }
     }
-
-    boolean expansionFilesDelivered() {
-        for (XAPKFile xf : xAPKS) {
-            String fileName = Helpers.getExpansionAPKFileName(this, xf.mIsMain,
-                    xf.mFileVersion);
-            if (!Helpers.doesFileExist(this, fileName, xf.mFileSize, false))
-                return false;
-        }
-        return true;
-    }
-
-    private static class XAPKFile {
-        public final boolean mIsMain;
-        public final int mFileVersion;
-        public final long mFileSize;
-
-        XAPKFile(boolean isMain, int fileVersion, long fileSize) {
-            mIsMain = isMain;
-            mFileVersion = fileVersion;
-            mFileSize = fileSize;
-        }
-    }
-
-    private static final XAPKFile[] xAPKS = {
-            new XAPKFile(
-                    true, // true signifies a main file
-                    23, // the version of the APK that the file was uploade against
-                    687801613L // the length of the file in bytes
-            ),
-            new XAPKFile(
-                    false, // false signifies a patch file
-                    23, // the version of the APK that the patch file was uploaded against
-                    512860L // the length of the patch file in bytes
-            )
-    };
 
     /*@Override
     public void onBackPressed(){

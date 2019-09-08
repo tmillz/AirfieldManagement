@@ -2,16 +2,13 @@ package com.tmillz.airfieldmanagement;
 
 import android.content.Intent;
 import android.database.Cursor;
-//import android.support.annotation.NonNull;
-//import android.support.v7.widget.RecyclerView;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class MarkersRecCursorAdapter extends
         RecyclerViewCursorAdapter<MarkersRecCursorAdapter.ItemHolder> {
@@ -21,7 +18,7 @@ public class MarkersRecCursorAdapter extends
     }
 
     @NonNull
-    //@Override
+    @Override
     public ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.markers_list,
                 parent, false);

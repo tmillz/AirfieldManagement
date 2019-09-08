@@ -4,9 +4,9 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-//import android.support.annotation.NonNull;
-//import android.support.v4.app.ListFragment;
-//import android.support.v4.content.FileProvider;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ListFragment;
+import android.support.v4.content.FileProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +17,6 @@ import android.widget.Toast;
 
 import com.android.vending.expansion.zipfile.APKExpansionSupport;
 import com.android.vending.expansion.zipfile.ZipResourceFile;
-
-import androidx.annotation.NonNull;
-import androidx.core.content.FileProvider;
-import androidx.fragment.app.ListFragment;
 
 import org.apache.commons.io.IOUtils;
 
@@ -82,7 +78,9 @@ public class RegsSub extends ListFragment {
 
 		//get expansion apk
 		try {
-			expansionFile = APKExpansionSupport.getAPKExpansionZipFile(context, 23, 0);
+			expansionFile =
+					APKExpansionSupport.getAPKExpansionZipFile(context,
+							23, 0);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

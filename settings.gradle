@@ -1,4 +1,3 @@
 include ':app'
-include ':library'
-include ':downloader_library'
-include ':zip_file'
+include ':Google Play License Library'
+include ':Google Play Downloader Library'

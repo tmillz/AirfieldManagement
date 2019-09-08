@@ -1,11 +1,8 @@
 package com.tmillz.airfieldmanagement;
 
 import android.database.Cursor;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-//import android.support.annotation.NonNull;
-//import android.support.v7.widget.RecyclerView;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 
 abstract class RecyclerViewCursorAdapter<VH extends RecyclerView.ViewHolder>
         extends RecyclerView.Adapter<VH> {

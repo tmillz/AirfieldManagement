@@ -6,9 +6,7 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-//import android.support.annotation.NonNull;
-
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import java.sql.SQLException;
 import java.util.Objects;
