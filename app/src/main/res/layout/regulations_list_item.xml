@@ -12,8 +12,8 @@
         android:layout_gravity="center_vertical"
         android:src="?attr/ic_library_books" />
 
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/RegName"
+    <TextView
+        android:id="@+id/RegName"
               android:layout_width="match_parent"
               android:layout_height="?android:attr/listPreferredItemHeight"
               android:textAppearance="?android:attr/textAppearanceListItemSmall"

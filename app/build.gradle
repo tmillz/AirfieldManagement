@@ -13,20 +13,16 @@ android {
         applicationId "com.tmillz.airfieldmanagement"
         minSdkVersion 16
         targetSdkVersion 28
-        //buildConfigField('String', 'Map_API_Key_Release', "\"${Map_API_Key_Release}\"")
-        //buildConfigField('String', 'Map_API_Key_Debug', "\"${Map_API_Key_Debug}\"")
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-            //resValue 'string', 'map_api_key', Map_API_Key_Release
             manifestPlaceholders = [ map_api_key: System.getenv('Map_API_Key_Release')]
         }
 
         debug {
-            //resValue 'string', 'map_api_key', Map_API_Key_Debug
             manifestPlaceholders = [ map_api_key: System.getenv('Map_API_Key_Debug')]
         }
     }

@@ -64,7 +64,8 @@
 			            android:focusable="true"
 			            android:focusableInTouchMode="true"
 			            android:gravity="center|center_horizontal"
-			            android:inputType="numberDecimal|numberSigned">
+			            android:inputType="numberDecimal|numberSigned"
+                        android:importantForAutofill="no">
 			
 			            <requestFocus android:layout_width="wrap_content" />
 			            
@@ -108,7 +109,8 @@
 			            android:longClickable="false"
 						android:clickable="false"    
 						android:cursorVisible="false"
-						android:editable="false"/>
+						android:editable="false"
+                        android:importantForAutofill="no" />
         
     			</TableRow>
 
@@ -156,7 +158,8 @@
             			android:focusable="true"
             			android:focusableInTouchMode="true"
 			            android:gravity="center|center_horizontal"
-            			android:inputType="numberDecimal|numberSigned"/>
+            			android:inputType="numberDecimal|numberSigned"
+                        android:importantForAutofill="no" />
         
     			</TableRow>
 
@@ -196,7 +199,8 @@
             			android:longClickable="false"
 						android:clickable="false"    
 						android:cursorVisible="false"
-						android:editable="false">
+						android:editable="false"
+                        android:importantForAutofill="no">
         			</EditText>
         			
     			</TableRow>

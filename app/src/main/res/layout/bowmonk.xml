@@ -27,7 +27,8 @@
         android:gravity="center"
         android:ems="6"
         android:inputType="numberDecimal|numberSigned"
-        android:hint="Enter RCR">
+        android:hint="Enter RCR"
+        android:importantForAutofill="no">
         <!--requestFocus /-->
     </EditText>
 
