@@ -91,10 +91,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         // Build a GoogleApiClient with access to the Google Sign-In API and the
         // options specified by gso.
-        /*mGoogleApiClient = new GoogleApiClient.Builder(this)
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();*/
+                .build();
 
         SignInButton signIn = findViewById(R.id.sign_in_button);
         Button signOut = findViewById(R.id.sign_out);
