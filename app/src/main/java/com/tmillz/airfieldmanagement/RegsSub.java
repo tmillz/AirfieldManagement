@@ -15,16 +15,14 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.util.IOUtils;
-import com.google.android.vending.expansion.zipfile.APKExpansionSupport;
-import com.google.android.vending.expansion.zipfile.ZipResourceFile;
+import com.android.vending.expansion.zipfile.APKExpansionSupport;
+import com.android.vending.expansion.zipfile.ZipResourceFile;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.ListFragment;
 
-
-import org.apache.commons.io.IOUtil;
+import org.apache.commons.io.IOUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -84,7 +82,7 @@ public class RegsSub extends ListFragment {
 
 		//get expansion apk
 		try {
-			expansionFile = APKExpansionSupport.getAPKExpansionZipFile(context, 24, 0);
+			expansionFile = APKExpansionSupport.getAPKExpansionZipFile(context, 23, 0);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -99,8 +97,7 @@ public class RegsSub extends ListFragment {
 				InputStream inputStream = expansionFile.getInputStream(filename);
 				File file = new File(context.getCacheDir(), filename);
 				OutputStream outputStream = new FileOutputStream(file);
-				//IOUtils.copy(inputStream, outputStream);
-				IOUtil.copy(inputStream, outputStream);
+				IOUtils.copy(inputStream, outputStream);
 				outputStream.close();
 				Intent pdfIntent = new Intent(Intent.ACTION_VIEW,
 						FileProvider.getUriForFile(context,

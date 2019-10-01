@@ -2,7 +2,8 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    >
 
 <com.google.android.material.appbar.AppBarLayout
     android:id="@+id/app_bar_layout"
@@ -13,7 +14,8 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fitsSystemWindows="true"/>
+    android:fitsSystemWindows="true"
+    android:minHeight="?attr/actionBarSize"/>
     <!--app:popupTheme="@style/Theme.AppCompat.NoActionBar"-->
     <!--android:background="?attr/colorPrimary"-->
 

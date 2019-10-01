@@ -6,7 +6,7 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        minSdkVersion 4
+        minSdkVersion 3
         targetSdkVersion 28
     }
 
@@ -20,8 +20,4 @@ android {
     lintOptions {
         abortOnError false
     }
-}
-
-dependencies {
-    implementation project(path: ':zip_file2')
 }
