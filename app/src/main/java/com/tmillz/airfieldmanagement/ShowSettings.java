@@ -31,6 +31,7 @@ public class ShowSettings extends AppCompatActivity {
 
 		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
+		toolbar.setElevation(1);
 		ActionBar actionBar = getSupportActionBar();
 		Objects.requireNonNull(actionBar).setTitle(R.string.settings);
 		actionBar.setDisplayHomeAsUpEnabled(true);

@@ -10,18 +10,8 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Messenger;
 import android.preference.PreferenceManager;
-//import android.support.annotation.NonNull;
-//import android.support.annotation.Nullable;
-//import android.support.design.widget.NavigationView;
-//import android.support.v4.app.Fragment;
-//import android.support.v4.app.FragmentManager;
-//import android.support.v4.view.GravityCompat;
-//import android.support.v4.widget.DrawerLayout;
-//import android.support.v7.app.ActionBar;
-//import android.support.v7.app.AppCompatActivity;
-//import android.support.v7.widget.SearchView;
-//import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -36,6 +26,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -50,15 +41,19 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.vending.expansion.downloader.DownloadProgressInfo;
 import com.google.android.vending.expansion.downloader.DownloaderClientMarshaller;
 import com.google.android.vending.expansion.downloader.Helpers;
+import com.google.android.vending.expansion.downloader.IDownloaderClient;
+import com.google.android.vending.expansion.downloader.impl.DownloadNotification;
+import com.google.android.vending.expansion.downloader.impl.DownloadsDB;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
 public class BaseActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks
-        , GoogleApiClient.OnConnectionFailedListener {
+        , IDownloaderClient, GoogleApiClient.OnConnectionFailedListener {
 
     private DrawerLayout mDrawerLayout;
     private final int mTitleRes;
@@ -68,6 +63,7 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
     private ImageView profileImage;
     private TextView userName;
     private TextView userEmail;
+    private NotificationCompat.Builder mNotification;
 
     public BaseActivity(int titleRes){
 		mTitleRes = titleRes;
@@ -82,6 +78,7 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         Objects.requireNonNull(actionBar).setDisplayHomeAsUpEnabled(true);
+
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         boolean choose_theme = pref.getBoolean("choose_theme", false);
@@ -230,22 +227,38 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
             }
         });
 
-        // Check if expansion files are available before going any further
+
+        /*if(!expansionFilesDelivered()) {
+            try {
+                Intent notifierIntent = new Intent(this, this.getClass());
+                notifierIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
+                        notifierIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                DownloaderClientMarshaller.startDownloadServiceIfRequired(this, pendingIntent, ExpDownloaderService.class);
+
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+        }*/
+
+
         /*if (!expansionFilesDelivered()) {
             // Build an Intent to start this activity from the Notification
-            Intent notifierIntent = new Intent(this, this.getClass());
-            notifierIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-                    Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Intent notifierIntent = new Intent(this, BaseActivity.class);
+            notifierIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.setPackage("com.android.vending");
 
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
                     notifierIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             // Start the download service (if required)
-            int startResult =
-                    0;
+            int startResult = 0;
             try {
                 startResult = DownloaderClientMarshaller.startDownloadServiceIfRequired(this,
-                        pendingIntent, ExpDownloaderService.class);
+                                pendingIntent, ExpDownloaderService.class);
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
@@ -254,13 +267,61 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
             if (startResult != DownloaderClientMarshaller.NO_DOWNLOAD_REQUIRED) {
                 // This is where you do set up to display the download
                 // progress (next step)
-                return;
-            } // If the download wasn't necessary, fall through to start the app
-        }
-        //startApp(); // Expansion files are available, start the app
-        */
+                // Instantiate a member instance of IStub
 
-	}
+                downloaderClientStub = DownloaderClientMarshaller.CreateStub(this,
+                        ExpDownloaderService.class);
+                // Inflate layout that shows download progress
+                //setContentView(R.layout.downloader_ui);
+
+                //return;
+            } // If the download wasn't necessary, fall through to start the app
+        }*/
+
+        DownloadsDB db = DownloadsDB.getDB(this);
+        db.updateMetadata(24, 0);
+
+        check_apkx();
+
+    }
+
+    void check_apkx() {
+        if (!expansionFilesDelivered()) {
+
+            mNotification = new NotificationCompat.Builder(this, "DL_NOTIFY")
+                    .setContentTitle("Download")
+                    .setContentText("Regs");
+
+            try {
+                Intent launchIntent = BaseActivity.this.getIntent();
+                Intent intentToLaunchThisActivityFromNotification = new Intent(
+                        BaseActivity.this, BaseActivity.this.getClass());
+                intentToLaunchThisActivityFromNotification.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intentToLaunchThisActivityFromNotification.setAction(launchIntent.getAction());
+
+                if (launchIntent.getCategories() != null) {
+                    for (String category : launchIntent.getCategories()) {
+                        intentToLaunchThisActivityFromNotification.addCategory(category);
+                    }
+                }
+                // Build PendingIntent used to open this activity from
+                // Notification
+                PendingIntent pendingIntent = PendingIntent.getActivity(
+                        BaseActivity.this,
+                        0, intentToLaunchThisActivityFromNotification,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+                // Request to start the download
+                DownloaderClientMarshaller.startDownloadServiceIfRequired(this,
+                        pendingIntent, ExpDownloaderService.class);
+
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
 
     private void switchContent(Fragment fragment){
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
@@ -394,6 +455,22 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
         return true;
     }
 
+    @Override
+    public void onServiceConnected(Messenger m) {
+
+    }
+
+    @Override
+    public void onDownloadStateChanged(int newState) {
+
+    }
+
+    @Override
+    public void onDownloadProgress(DownloadProgressInfo progress) {
+
+    }
+
+
     private static class XAPKFile {
         public final boolean mIsMain;
         public final int mFileVersion;
@@ -407,33 +484,16 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
     }
 
     private static final XAPKFile[] xAPKS = {
-            new XAPKFile(
-                    true, // true signifies a main file
-                    23, // the version of the APK that the file was uploade against
-                    687801613L // the length of the file in bytes
-            ),
-            new XAPKFile(
-                    false, // false signifies a patch file
-                    23, // the version of the APK that the patch file was uploaded against
-                    512860L // the length of the patch file in bytes
-            )
+        new XAPKFile(
+                true, // true signifies a main file
+                24, // the version of the APK that the file was uploade against
+                139321461L // the length of the file in bytes
+        )//,
+        //new XAPKFile(
+        //        true, // false signifies a patch file
+        //        23, // the version of the APK that the patch file was uploaded against
+        //        145752064L // the length of the file in bytes
+        //)
     };
-
-    /*@Override
-    public void onBackPressed(){
-        if (fragmentManager.getBackStackEntryCount() > 0) {
-            Log.i("MainActivity", "popping backstack");
-            //fragmentManager.popBackStack();
-            Fragment fragment = fragmentManager.findFragmentByTag("Regulations");
-            if (fragment instanceof RegsSub) {
-                    setTitle("Regulations");
-            }
-        } else {
-            Log.i("MainActivity", "nothing on backstack, calling super");
-            super.onBackPressed();
-        }
-
-        Log.d("Test", "Back button pressed");
-    }*/
 
 }

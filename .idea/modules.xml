@@ -3,10 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/airfield_manager_android.iml" filepath="$PROJECT_DIR$/airfield_manager_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apkx_library/apkx_library.iml" filepath="$PROJECT_DIR$/apkx_library/apkx_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/downloader_library/downloader_library.iml" filepath="$PROJECT_DIR$/downloader_library/downloader_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/zip_file/zip_file.iml" filepath="$PROJECT_DIR$/zip_file/zip_file.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zip_file2/zip_file2.iml" filepath="$PROJECT_DIR$/zip_file2/zip_file2.iml" />
     </modules>
   </component>
 </project>

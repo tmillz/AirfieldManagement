@@ -65,6 +65,7 @@
         <item name="arrow_right">@drawable/ic_keyboard_arrow_right_black_24dp</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="highlight">@color/highlight_light</item>
+        <item name="android:spotShadowAlpha">0.5</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
@@ -85,6 +86,7 @@
         <item name="arrow_right">@drawable/ic_keyboard_arrow_right_white_24dp</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="highlight">@color/highlight_dark</item>
+        <item name="android:spotShadowAlpha">0.5</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 

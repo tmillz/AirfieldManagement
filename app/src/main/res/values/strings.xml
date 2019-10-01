@@ -7,10 +7,14 @@
     <string name="action_search">Search</string>
     <string name="search_hint">Search ICAO (4 letters)</string>
     <string name="settings_description">Settings</string>
-    <string name="link"><a href="https://www.aisr.nas.faa.gov/AISR/">https://www.aisr.nas.faa.gov/AISR/</a></string>
-    <string name="link2"><a href="http://www.faa.gov/air_traffic/publications/atpubs/LID/L_B.htm">Location Identifiers (US 3 letter Decode)</a></string>
-    <string name="link3"><a href="http://www.e-publishing.af.mil/">http://www.e-publishing.af.mil/</a></string>
-    <string name="link4"><a href="https://transportation.wes.army.mil/acnpcn/Default.aspx">ACN PCN Calculators</a></string>
+    <string name="link"><a href="https://www.aisr.nas.faa.gov/AISR/">
+        https://www.aisr.nas.faa.gov/AISR/</a></string>
+    <string name="link2"><a href="http://www.faa.gov/air_traffic/publications/atpubs/LID/L_B.htm">
+        Location Identifiers (US 3 letter Decode)</a></string>
+    <string name="link3"><a href="http://www.e-publishing.af.mil/">http://www.e-publishing.af.mil/
+    </a></string>
+    <string name="link4"><a href="https://transportation.wes.army.mil/acnpcn/Default.aspx">
+        ACN PCN Calculators</a></string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="rationale_location">need permission</string>

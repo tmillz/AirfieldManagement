@@ -1,5 +1,7 @@
 package com.tmillz.airfieldmanagement;
 
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
@@ -9,6 +11,8 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+
+
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -60,6 +64,38 @@ public class MainActivity extends BaseActivity {
 	    }
 
 		super.onCreate(savedInstanceState);
+
+		/*if (!expansionFilesDelivered()) {
+			// Build an Intent to start this activity from the Notification
+			Intent notifierIntent = new Intent(this, BaseActivity.class);
+			notifierIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+			PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
+					notifierIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+			// Start the download service (if required)
+			int startResult = 0;
+			try {
+				startResult = DownloaderClientMarshaller.startDownloadServiceIfRequired(this,
+						pendingIntent, ExpDownloaderService.class);
+			} catch (PackageManager.NameNotFoundException e) {
+				e.printStackTrace();
+			}
+			// If download has started, initialize this activity to show
+			// download progress
+			if (startResult != DownloaderClientMarshaller.NO_DOWNLOAD_REQUIRED) {
+				// This is where you do set up to display the download
+				// progress (next step)
+				// Instantiate a member instance of IStub
+
+				downloaderClientStub = DownloaderClientMarshaller.CreateStub(this,
+						ExpDownloaderService.class);
+				// Inflate layout that shows download progress
+				//setContentView(R.layout.downloader_ui);
+
+				//return;
+			} // If the download wasn't necessary, fall through to start the app
+		}*/
 	}
 
 	private void copyAssets() {

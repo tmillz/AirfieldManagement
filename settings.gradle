@@ -1,4 +1,4 @@
 include ':app'
 include ':library'
-include ':downloader_library'
-include ':zip_file'
+include ':apkx_library'
+include ':zip_file2'

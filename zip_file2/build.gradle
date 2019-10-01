@@ -3,10 +3,9 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 28
     buildToolsVersion "28.0.3"
-    useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        minSdkVersion 4
+        minSdkVersion 5
         targetSdkVersion 28
     }
 
@@ -16,12 +15,4 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
-
-    lintOptions {
-        abortOnError false
-    }
-}
-
-dependencies {
-    implementation project(path: ':zip_file2')
 }
